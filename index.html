@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Il Mondo di Tiko | VV Dream Creations</title>
+    <meta name="description" content="Libri illustrati per bambini, storie della buonanotte e crescita emotiva." />
+    
+    <!-- Google Fonts: Quicksand (Headings) and Poppins (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'tiko-cream': '#FFFDD0',
+              'tiko-yellow': '#FACC15',
+              'tiko-orange': '#FDBA74',
+              'tiko-blue': '#7DD3FC',
+              'tiko-green': '#10B981',
+              'tiko-dark': '#1F2937',
+            },
+            fontFamily: {
+              sans: ['Poppins', 'sans-serif'],
+              display: ['Quicksand', 'sans-serif'],
+            },
+            animation: {
+              'gradient': 'gradient 8s linear infinite',
+              'float': 'float 6s ease-in-out infinite',
+            },
+            keyframes: {
+              gradient: {
+                '0%, 100%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'left center'
+                },
+                '50%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'right center'
+                },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Utility for hiding scrollbar in modal but allowing scroll */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* 3D Transform Utilities */
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+      .preserve-3d {
+        transform-style: preserve-3d;
+      }
+      .backface-hidden {
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+      .rotate-y-180 {
+        transform: rotateY(180deg);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.23.26"
+  }
+}
+</script>
+</head>
+  <body class="bg-gray-900 text-tiko-dark antialiased overflow-x-hidden selection:bg-tiko-yellow selection:text-white">
+    <div id="root"></div>
+  </body>
+</html>
