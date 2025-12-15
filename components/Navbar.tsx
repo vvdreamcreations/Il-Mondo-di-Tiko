@@ -8,8 +8,8 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/libri', label: 'Libri' },
     { to: '/chi-siamo', label: 'Chi siamo' },
+    { to: '/libri', label: 'Libri' },
     { to: '/newsletter', label: 'Newsletter' },
     { to: '/privacy-policy', label: 'Privacy Policy' },
   ];
@@ -33,10 +33,9 @@ const Navbar: React.FC = () => {
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `font-medium transition-all duration-300 relative ${
-                      isActive
-                        ? 'text-tiko-yellow'
-                        : 'text-white hover:text-tiko-yellow'
+                    `font-medium transition-all duration-300 relative ${isActive
+                      ? 'text-tiko-yellow'
+                      : 'text-white hover:text-tiko-yellow'
                     }`
                   }
                 >
@@ -84,10 +83,9 @@ const Navbar: React.FC = () => {
                       to={link.to}
                       onClick={() => setIsMenuOpen(false)}
                       className={({ isActive }) =>
-                        `block px-4 py-2 rounded-lg font-medium transition-colors ${
-                          isActive
-                            ? 'bg-tiko-yellow/20 text-tiko-yellow'
-                            : 'text-white hover:bg-white/10 hover:text-tiko-yellow'
+                        `block px-4 py-2 rounded-lg font-medium transition-colors ${isActive
+                          ? 'bg-tiko-yellow/20 text-tiko-yellow'
+                          : 'text-white hover:bg-white/10 hover:text-tiko-yellow'
                         }`
                       }
                     >

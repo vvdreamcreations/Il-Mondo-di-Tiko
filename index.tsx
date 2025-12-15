@@ -7,6 +7,7 @@ import LibriPage from './pages/LibriPage';
 import ChiSiamoPage from './pages/ChiSiamoPage';
 import NewsletterPage from './pages/NewsletterPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import ScrollToTop from './components/ScrollToTop';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -17,6 +18,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
