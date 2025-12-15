@@ -11,6 +11,7 @@ const Navbar: React.FC = () => {
     { to: '/chi-siamo', label: 'Chi siamo' },
     { to: '/libri', label: 'Libri' },
     { to: '/newsletter', label: 'Newsletter' },
+    { to: '/gallery', label: 'Gallery' },
     { to: '/privacy-policy', label: 'Privacy Policy' },
   ];
 

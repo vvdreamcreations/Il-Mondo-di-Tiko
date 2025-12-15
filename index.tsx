@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import LibriPage from './pages/LibriPage';
 import ChiSiamoPage from './pages/ChiSiamoPage';
 import NewsletterPage from './pages/NewsletterPage';
+import GalleryPage from './pages/GalleryPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -25,6 +26,7 @@ root.render(
           <Route path="libri" element={<LibriPage />} />
           <Route path="chi-siamo" element={<ChiSiamoPage />} />
           <Route path="newsletter" element={<NewsletterPage />} />
+          <Route path="gallery" element={<GalleryPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
         </Route>
       </Routes>
