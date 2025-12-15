@@ -103,6 +103,7 @@ const App: React.FC = () => {
               playsInline
               preload="auto"
               className="w-full h-full object-cover"
+              style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
             >
               <source src="/Forest.mp4" type="video/mp4" />
             </video>
@@ -119,8 +120,9 @@ const App: React.FC = () => {
               ref={video2Ref}
               muted
               playsInline
-              preload="auto"
+              preload="none"
               className="w-full h-full object-cover"
+              style={{ willChange: 'opacity', transform: 'translateZ(0)' }}
             >
               <source src="/Forest.mp4" type="video/mp4" />
             </video>

@@ -15,8 +15,8 @@ const MagicCursor = () => {
             // Add trail point
             setTrail((prev) => {
                 const newTrail = [...prev, { x: mouseX, y: mouseY, id: trailId++ }];
-                // Keep only last 8 trail points
-                return newTrail.slice(-8);
+                // Keep only last 5 trail points (reduced for performance)
+                return newTrail.slice(-5);
             });
         };
 
@@ -25,7 +25,7 @@ const MagicCursor = () => {
         // Clear trail periodically
         const trailClearInterval = setInterval(() => {
             setTrail((prev) => prev.slice(1));
-        }, 50);
+        }, 80); // Increased interval for better performance
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);

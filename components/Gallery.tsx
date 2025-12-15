@@ -109,7 +109,7 @@ const Gallery: React.FC = () => {
                         ref={scrollRef}
                         className="flex gap-6 cursor-grab active:cursor-grabbing"
                         animate={{
-                            x: isPaused ? undefined : [0, '-33.333%'],
+                            x: (isPaused || selectedImage) ? undefined : [0, '-33.333%'],
                         }}
                         transition={{
                             x: {
