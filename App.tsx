@@ -87,14 +87,7 @@ const App: React.FC = () => {
 
         {/* LAYER 1: DEEP VISUALS (Video/Image) */}
         <div className="absolute inset-0 w-full h-full">
-          {/* Fallback Image - Magical Forest */}
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=1600&auto=format&fit=crop"
-              alt="Bosco magico"
-              className="w-full h-full object-cover opacity-80"
-            />
-          </div>
+          {/* No fallback image needed - video will load */}
 
           {/* Video 1 */}
           <motion.div
