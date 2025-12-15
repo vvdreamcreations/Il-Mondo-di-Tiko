@@ -29,6 +29,15 @@ const Gallery: React.FC = () => {
     // Duplicate images for seamless infinite loop
     const duplicatedImages = [...images, ...images, ...images];
 
+    // Navigation function for manual scrolling
+    const scroll = (direction: 'left' | 'right') => {
+        if (scrollRef.current) {
+            const scrollAmount = 400;
+            const currentScroll = scrollRef.current.scrollLeft || 0;
+            scrollRef.current.scrollLeft = currentScroll + (direction === 'right' ? scrollAmount : -scrollAmount);
+        }
+    };
+
     // Don't render if no images
     if (images.length === 0) {
         return null;
@@ -70,6 +79,27 @@ const Gallery: React.FC = () => {
                     onTouchStart={() => setIsPaused(true)}
                     onTouchEnd={() => setIsPaused(false)}
                 >
+                    {/* Navigation Arrows */}
+                    <button
+                        onClick={() => scroll('left')}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-4 bg-tiko-yellow/90 hover:bg-tiko-yellow rounded-full shadow-xl hover:scale-110 transition-all duration-300"
+                        aria-label="Scorri a sinistra"
+                    >
+                        <svg className="w-6 h-6 text-tiko-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+
+                    <button
+                        onClick={() => scroll('right')}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-4 bg-tiko-yellow/90 hover:bg-tiko-yellow rounded-full shadow-xl hover:scale-110 transition-all duration-300"
+                        aria-label="Scorri a destra"
+                    >
+                        <svg className="w-6 h-6 text-tiko-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+
                     {/* Gradient overlays for fade effect */}
                     <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none" />
                     <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none" />

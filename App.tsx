@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import MagicCursor from './components/MagicCursor';
 import { motion } from 'framer-motion';
 
 const App: React.FC = () => {
@@ -144,6 +145,9 @@ const App: React.FC = () => {
       <div className="relative z-10 flex-grow flex flex-col">
         <Outlet />
       </div>
+
+      {/* Magic Cursor */}
+      <MagicCursor />
     </div>
   );
 };
