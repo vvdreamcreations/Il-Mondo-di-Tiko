@@ -86,7 +86,7 @@ export const REVIEWS: Review[] = [
   },
   {
     id: 3,
-    author: 'Mamma Lettora',
+    author: 'Chiara',
     rating: 5,
     text: "Finalmente una storia che educa senza essere noiosa. I disegni sono pura magia, sembra di entrare nel bosco con Tiko."
   },

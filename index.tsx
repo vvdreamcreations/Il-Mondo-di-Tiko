@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
+import HomePage from './pages/HomePage';
+import LibriPage from './pages/LibriPage';
+import ChiSiamoPage from './pages/ChiSiamoPage';
+import NewsletterPage from './pages/NewsletterPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -10,6 +16,16 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="libri" element={<LibriPage />} />
+          <Route path="chi-siamo" element={<ChiSiamoPage />} />
+          <Route path="newsletter" element={<NewsletterPage />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
