@@ -1,23 +1,30 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X } from 'lucide-react';
 
+
 const Gallery: React.FC = () => {
-    const [images, setImages] = useState<string[]>([]);
     const [isPaused, setIsPaused] = useState(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Dynamically load all images from /Carosello folder using Vite's import.meta.glob
-    useEffect(() => {
-        const loadImages = async () => {
-            const imageModules = import.meta.glob('/Carosello/*.{jpg,jpeg,png,gif,webp,svg}', { eager: true });
-            const imagePaths = Object.keys(imageModules).map((path) => path);
-            setImages(imagePaths);
-        };
-
-        loadImages();
-    }, []);
+    // Static list of images in public/Carosello/ folder
+    // Update this array when adding new images to the Carosello folder
+    const images = [
+        '/Carosello/03.png',
+        '/Carosello/04.png',
+        '/Carosello/06.png',
+        '/Carosello/1.png',
+        '/Carosello/10.png',
+        '/Carosello/12.png',
+        '/Carosello/16.png',
+        '/Carosello/Coniglietto 1.jpg',
+        '/Carosello/Coniglietto 2.jpg',
+        '/Carosello/Coniglietto 3.jpg',
+        '/Carosello/Pennello 1.jpg',
+        '/Carosello/Pennello 2.jpg',
+        '/Carosello/Pennello 3.jpg',
+    ];
 
     // Duplicate images for seamless infinite loop
     const duplicatedImages = [...images, ...images, ...images];
@@ -86,7 +93,7 @@ const Gallery: React.FC = () => {
                     >
                         {duplicatedImages.map((imagePath, index) => (
                             <motion.div
-                                key={`${imagePath}-${index}`}
+                                key={`${imagePath} -${index} `}
                                 className="relative group"
                                 whileHover={{ scale: 1.05, zIndex: 20 }}
                                 transition={{ duration: 0.3 }}
@@ -102,7 +109,7 @@ const Gallery: React.FC = () => {
                                     {/* Image */}
                                     <img
                                         src={imagePath}
-                                        alt={`Galleria ${index + 1}`}
+                                        alt={`Galleria ${index + 1} `}
                                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                         loading="lazy"
                                         draggable="false"
