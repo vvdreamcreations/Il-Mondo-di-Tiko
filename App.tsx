@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import MagicCursor from './components/MagicCursor';
 import { motion } from 'framer-motion';
+
+// Lazy load non-critical components
+const MagicCursor = lazy(() => import('./components/MagicCursor'));
 
 const App: React.FC = () => {
   const [video1Loaded, setVideo1Loaded] = useState(false);
@@ -148,8 +150,10 @@ const App: React.FC = () => {
         <Outlet />
       </div>
 
-      {/* Magic Cursor */}
-      <MagicCursor />
+      {/* Magic Cursor - Lazy loaded */}
+      <Suspense fallback={null}>
+        <MagicCursor />
+      </Suspense>
     </div>
   );
 };

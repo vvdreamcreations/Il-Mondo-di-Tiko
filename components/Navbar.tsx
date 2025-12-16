@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
                   key={link.to}
                   to={link.to}
                   className={({ isActive }) =>
-                    `font-medium transition-all duration-300 relative ${isActive
+                    `font-medium transition-all duration-300 relative inline-block px-3 py-2 ${isActive
                       ? 'text-tiko-yellow'
                       : 'text-white hover:text-tiko-yellow'
                     }`
