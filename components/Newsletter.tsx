@@ -26,6 +26,41 @@ const Newsletter: React.FC = () => {
     };
     (window as any).AUTOHIDE = Boolean(0);
 
+    // Handle form submission to prevent white page redirect
+    setTimeout(() => {
+      const form = document.getElementById('sib-form') as HTMLFormElement;
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(form);
+          const successMsg = document.getElementById('success-message');
+          const errorMsg = document.getElementById('error-message');
+
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              mode: 'no-cors' // Brevo doesn't support CORS, but submission will still work
+            });
+
+            // Show success message (no-cors doesn't allow reading response, assume success)
+            if (successMsg && errorMsg) {
+              successMsg.classList.remove('hidden');
+              errorMsg.classList.add('hidden');
+              form.reset();
+            }
+          } catch (error) {
+            // Show error message
+            if (errorMsg && successMsg) {
+              errorMsg.classList.remove('hidden');
+              successMsg.classList.add('hidden');
+            }
+          }
+        });
+      }
+    }, 1000);
+
     return () => {
       document.body.removeChild(script);
     };
