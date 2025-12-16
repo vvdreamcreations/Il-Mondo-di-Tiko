@@ -113,8 +113,8 @@ const Gallery: React.FC = () => {
 
                                     {/* Image */}
                                     <img
-                                        src={imagePath}
-                                        alt={`Galleria ${index + 1}`}
+                                        src={image.thumb}
+                                        alt={image.alt}
                                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                         loading="lazy"
                                         draggable="false"
