@@ -26,6 +26,25 @@ const Newsletter: React.FC = () => {
     };
     (window as any).AUTOHIDE = Boolean(0);
 
+    // Handle form submit to show success without white page
+    setTimeout(() => {
+      const form = document.getElementById('sib-form') as HTMLFormElement;
+      if (form) {
+        form.addEventListener('submit', () => {
+          // After form submits to hidden iframe, show success message
+          setTimeout(() => {
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+            if (successMsg && errorMsg) {
+              successMsg.classList.remove('hidden');
+              errorMsg.classList.add('hidden');
+              form.reset();
+            }
+          }, 1500); // Wait for iframe to complete
+        });
+      }
+    }, 1000);
+
     return () => {
       document.body.removeChild(script);
     };
@@ -93,11 +112,16 @@ const Newsletter: React.FC = () => {
 
             {/* Form */}
             <div id="sib-container" className="bg-gradient-to-br from-tiko-orange/20 to-tiko-yellow/20 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-tiko-yellow/30 shadow-[0_0_30px_rgba(250,204,21,0.2)]">
+
+              {/* Hidden iframe to catch form submission */}
+              <iframe name="hidden_iframe" style={{ display: 'none' }}></iframe>
+
               <form
                 id="sib-form"
                 method="POST"
                 action="https://2a1d1407.sibforms.com/serve/MUIFAJN6Tk0Q5be4BfpRBKTpF2wb8ssZVqbQABBMNRRgdQiHKqOJ50bOsyBridRX-bN20xCLwo39GNVRenOWowG-8BW9Xk8M_EKr4iM0X7qC-_WgZeY1s5gukEmpBANGYzddxOTcaOxgvWDwS9VNBb0SYmN1VX49hnaATNqnNWC5C78NozF44xZluyI2SJzb5Eeqy7Lgo_cYYTvQOg=="
                 data-type="subscription"
+                target="hidden_iframe"
                 className="space-y-5"
               >
 
