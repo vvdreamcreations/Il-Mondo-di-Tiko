@@ -6,21 +6,21 @@ const Gallery: React.FC = () => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Static list of images in public/Carosello/ folder
+    // Optimized images: lightweight thumbnails for carousel, full-size for modal
     const images = [
-        '/Carosello/03.png',
-        '/Carosello/04.png',
-        '/Carosello/06.png',
-        '/Carosello/1.png',
-        '/Carosello/10.png',
-        '/Carosello/12.png',
-        '/Carosello/16.png',
-        '/Carosello/Coniglietto 1.jpg',
-        '/Carosello/Coniglietto 2.jpg',
-        '/Carosello/Coniglietto 3.jpg',
-        '/Carosello/Pennello 1.jpg',
-        '/Carosello/Pennello 2.jpg',
-        '/Carosello/Pennello 3.jpg',
+        { thumb: '/Carosello/thumbs/03.webp', full: '/Carosello/full/03.png', alt: 'Galleria 1' },
+        { thumb: '/Carosello/thumbs/04.webp', full: '/Carosello/full/04.png', alt: 'Galleria 2' },
+        { thumb: '/Carosello/thumbs/06.webp', full: '/Carosello/full/06.png', alt: 'Galleria 3' },
+        { thumb: '/Carosello/thumbs/1.webp', full: '/Carosello/full/1.png', alt: 'Galleria 4' },
+        { thumb: '/Carosello/thumbs/10.webp', full: '/Carosello/full/10.png', alt: 'Galleria 5' },
+        { thumb: '/Carosello/thumbs/12.webp', full: '/Carosello/full/12.png', alt: 'Galleria 6' },
+        { thumb: '/Carosello/thumbs/16.webp', full: '/Carosello/full/16.png', alt: 'Galleria 7' },
+        { thumb: '/Carosello/thumbs/Coniglietto 1.webp', full: '/Carosello/full/Coniglietto 1.jpg', alt: 'Coniglietto 1' },
+        { thumb: '/Carosello/thumbs/Coniglietto 2.webp', full: '/Carosello/full/Coniglietto 2.jpg', alt: 'Coniglietto 2' },
+        { thumb: '/Carosello/thumbs/Coniglietto 3.webp', full: '/Carosello/full/Coniglietto 3.jpg', alt: 'Coniglietto 3' },
+        { thumb: '/Carosello/thumbs/Pennello 1.webp', full: '/Carosello/full/Pennello 1.jpg', alt: 'Pennello 1' },
+        { thumb: '/Carosello/thumbs/Pennello 2.webp', full: '/Carosello/full/Pennello 2.jpg', alt: 'Pennello 2' },
+        { thumb: '/Carosello/thumbs/Pennello 3.webp', full: '/Carosello/full/Pennello 3.jpg', alt: 'Pennello 3' },
     ];
 
     // Don't render if no images
@@ -95,7 +95,7 @@ const Gallery: React.FC = () => {
                             scrollbarColor: '#FACC15 #1F2937',
                         }}
                     >
-                        {images.map((imagePath, index) => (
+                        {images.map((image, index) => (
                             <motion.div
                                 key={index}
                                 initial={{ opacity: 0, scale: 0.9 }}
@@ -106,7 +106,7 @@ const Gallery: React.FC = () => {
                             >
                                 <div
                                     className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
-                                    onClick={() => setSelectedImage(imagePath)}
+                                    onClick={() => setSelectedImage(image.full)}
                                 >
                                     {/* Glow effect */}
                                     <div className="absolute inset-0 bg-gradient-to-br from-tiko-yellow/30 via-transparent to-tiko-orange/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
