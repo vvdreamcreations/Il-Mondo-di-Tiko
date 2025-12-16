@@ -20,7 +20,7 @@ const Values: React.FC = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.4 }}
                 className="bg-white/10 backdrop-blur-2xl rounded-[3rem] p-8 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20"
             >
                 <div className="text-center mb-16">

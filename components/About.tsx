@@ -8,7 +8,7 @@ const About: React.FC = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         className="bg-white/90 backdrop-blur-xl rounded-[3rem] p-8 md:p-16 shadow-2xl border border-white/40 overflow-hidden"
       >
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
@@ -19,7 +19,7 @@ const About: React.FC = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             {/* Quote Banner - Above Tiko */}
             <motion.div
@@ -50,7 +50,7 @@ const About: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
           >
             <span className="text-tiko-orange font-bold uppercase tracking-widest text-sm mb-2 block">Chi Siamo</span>
             <h2 className="font-display text-4xl lg:text-5xl font-bold text-tiko-dark mb-8 leading-tight">

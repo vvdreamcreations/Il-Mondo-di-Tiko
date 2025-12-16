@@ -53,7 +53,7 @@ const Newsletter: React.FC = () => {
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.4 }}
         className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-[3rem] p-8 md:p-16 shadow-[0_0_60px_rgba(0,0,0,0.8)] flex flex-col items-center gap-8 max-w-6xl mx-auto border border-tiko-yellow/30"
       >
 

@@ -47,7 +47,7 @@ const Gallery: React.FC = () => {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.4 }}
                         className="text-center"
                     >
                         <div className="flex items-center justify-center gap-2 mb-3">

@@ -7,8 +7,14 @@ const MagicCursor = () => {
         let mouseX = 0;
         let mouseY = 0;
         let trailId = 0;
+        let lastTime = 0;
 
         const handleMouseMove = (e: MouseEvent) => {
+            const now = Date.now();
+            // Throttle to 60fps (16ms)
+            if (now - lastTime < 16) return;
+            lastTime = now;
+
             mouseX = e.clientX;
             mouseY = e.clientY;
 
@@ -20,7 +26,7 @@ const MagicCursor = () => {
             });
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
         // Clear trail periodically
         const trailClearInterval = setInterval(() => {
