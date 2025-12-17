@@ -63,8 +63,15 @@ const TopicSurvey: React.FC = () => {
       // Determine which topic was selected
       const votedTopic = customTopic.trim() ? `Altro: ${customTopic}` : selectedTopic;
 
-      // Send email via Brevo
-      await sendBrevoEmail(votedTopic);
+      // Try to send email via Brevo (but don't fail if it doesn't work)
+      try {
+        await sendBrevoEmail(votedTopic);
+        console.log('Email sent successfully');
+      } catch (emailError) {
+        // Email failed, but we continue anyway
+        console.warn('Email sending failed (expected on GitHub Pages):', emailError);
+        // This is normal on GitHub Pages where .env is not available
+      }
 
       // Update local state (optimistic update)
       if (surveyData) {
