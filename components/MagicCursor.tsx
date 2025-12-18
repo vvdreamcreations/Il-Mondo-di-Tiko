@@ -74,32 +74,46 @@ const MagicCursor = () => {
                 />
             ))}
 
-            {/* Main star cursor */}
+            {/* Main star cursor - Always visible with clear pointer */}
             <div
-                className="fixed pointer-events-none z-[10000] transition-transform duration-100 ease-out"
+                className="fixed pointer-events-none z-[10000]"
                 style={{
                     left: `${trail[trail.length - 1]?.x || 0}px`,
                     top: `${trail[trail.length - 1]?.y || 0}px`,
                     transform: 'translate(-50%, -50%)',
                 }}
             >
-                {/* Outer glow */}
-                <div className="absolute inset-0 w-8 h-8 -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-full h-full rounded-full bg-tiko-yellow/20 blur-md animate-pulse" />
+                {/* Outer glow - removed pulse for constant visibility */}
+                <div className="absolute inset-0 w-10 h-10 -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-full h-full rounded-full bg-tiko-yellow/30 blur-md" />
                 </div>
 
-                {/* Star icon */}
+                {/* Directional Star with elongated top point */}
                 <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="text-tiko-yellow drop-shadow-[0_0_8px_rgba(250,204,21,0.8)] -translate-x-1/2 -translate-y-1/2"
+                    width="28"
+                    height="32"
+                    viewBox="0 0 28 32"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="-translate-x-1/2 -translate-y-1/2"
                     style={{
-                        filter: 'drop-shadow(0 0 4px rgba(250, 204, 21, 0.6))',
+                        filter: 'drop-shadow(0 0 6px rgba(250, 204, 21, 0.8)) drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))',
                     }}
                 >
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    {/* White border for contrast */}
+                    <path
+                        d="M14 2 L16 12 L26 14 L17 19 L19 29 L14 24 L9 29 L11 19 L2 14 L12 12 Z"
+                        fill="white"
+                        stroke="white"
+                        strokeWidth="1.5"
+                    />
+                    {/* Yellow star fill */}
+                    <path
+                        d="M14 3 L16 12 L25 14 L17 19 L19 28 L14 23.5 L9 28 L11 19 L3 14 L12 12 Z"
+                        fill="#FACC15"
+                    />
+                    {/* Brighter center for pointer clarity */}
+                    <circle cx="14" cy="12" r="2" fill="#FFF4A3" />
                 </svg>
             </div>
         </>
