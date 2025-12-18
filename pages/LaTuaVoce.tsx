@@ -9,12 +9,12 @@ const LaTuaVoce: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col">
             {/* Hero Section */}
-            <section className="container mx-auto px-4 pt-32 pb-16">
+            <section className="container mx-auto px-4 pt-24 pb-8">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
+                    className="text-center mb-8"
                 >
                     <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-tiko-yellow/20 backdrop-blur-sm border border-tiko-yellow/30">
                         <Heart className="w-5 h-5 text-tiko-yellow" />
@@ -29,7 +29,7 @@ const LaTuaVoce: React.FC = () => {
                 </motion.div>
 
                 {/* Features */}
-                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16 items-center">
+                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -81,17 +81,17 @@ const LaTuaVoce: React.FC = () => {
             </section>
 
             {/* Survey Section */}
-            <section className="mb-24">
+            <section className="mb-12">
                 <TopicSurvey />
             </section>
 
             {/* Suggestion Form Section */}
-            <section className="mb-24">
+            <section className="mb-12">
                 <TopicSuggestionForm />
             </section>
 
             {/* Closing Message */}
-            <section className="container mx-auto px-4 pb-24">
+            <section className="container mx-auto px-4 pb-12">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
