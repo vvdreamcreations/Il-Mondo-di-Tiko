@@ -27,9 +27,9 @@ const TopicSurvey: React.FC = () => {
   const [error, setError] = useState<string>('');
 
   // Load survey data from Google Sheets
-  const loadSurveyData = async () => {
+  const loadSurveyData = async (silent = false) => {
     try {
-      setIsLoading(true);
+      if (!silent) setIsLoading(true);
       setError('');
       const response = await fetch(GOOGLE_SHEETS_API);
       const data = await response.json();
@@ -55,9 +55,9 @@ const TopicSurvey: React.FC = () => {
   };
 
   useEffect(() => {
-    loadSurveyData();
-    // Refresh data every 30 seconds to show real-time updates
-    const interval = setInterval(loadSurveyData, 30000);
+    loadSurveyData(false); // Initial load with loading screen
+    // Refresh data every 30 seconds silently (no loading screen)
+    const interval = setInterval(() => loadSurveyData(true), 30000);
     return () => clearInterval(interval);
   }, []);
 
@@ -97,8 +97,8 @@ const TopicSurvey: React.FC = () => {
           trackSurveyVote(selectedTopic, topicName);
         }
 
-        // Reload data to show updated counts
-        await loadSurveyData();
+        // Reload data silently to show updated counts
+        await loadSurveyData(true);
 
         // Keep success message visible
         setTimeout(() => setShowSuccess(false), 5000);
