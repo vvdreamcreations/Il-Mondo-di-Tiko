@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 const LibriPage: React.FC = () => {
     return (
-        <div className="flex-grow flex flex-col pb-24">
+        <div className="min-h-screen flex flex-col pb-24">
             <div className="container mx-auto px-4 pt-32">
                 {/* Page Header */}
                 <motion.div
