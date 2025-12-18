@@ -8,11 +8,12 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/chi-siamo', label: 'Chi siamo' },
+    { to: '/chi-siamo', label: 'Chi Siamo' },
     { to: '/libri', label: 'Libri' },
-    { to: '/newsletter', label: 'Newsletter' },
     { to: '/gallery', label: 'Gallery' },
-    { to: '/privacy-policy', label: 'Privacy Policy' },
+    { to: '/la-tua-voce', label: 'La Tua Voce' },
+    { to: '/newsletter', label: 'Newsletter' },
+    { to: '/privacy-policy', label: 'Privacy' },
   ];
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);

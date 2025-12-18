@@ -6,8 +6,6 @@ import MagicCard from '../components/MagicCard';
 import BookModal from '../components/BookModal';
 import Gallery from '../components/Gallery';
 import Reviews from '../components/Reviews';
-import TopicSurvey from '../components/TopicSurvey';
-import TopicSuggestionForm from '../components/TopicSuggestionForm';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
 import { BOOKS } from '../constants';
@@ -82,10 +80,6 @@ const HomePage: React.FC = () => {
                 <Gallery />
 
                 <Reviews />
-
-                <TopicSurvey />
-
-                <TopicSuggestionForm />
 
                 <Newsletter />
             </div>

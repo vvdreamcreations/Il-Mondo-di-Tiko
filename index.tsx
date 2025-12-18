@@ -10,6 +10,7 @@ import GalleryPage from './pages/GalleryPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CookiePolicy from './pages/CookiePolicy';
+import LaTuaVoce from './pages/LaTuaVoce';
 import ScrollToTop from './components/ScrollToTop';
 
 const rootElement = document.getElementById('root');
@@ -29,6 +30,7 @@ root.render(
           <Route path="chi-siamo" element={<ChiSiamoPage />} />
           <Route path="newsletter" element={<NewsletterPage />} />
           <Route path="gallery" element={<GalleryPage />} />
+          <Route path="la-tua-voce" element={<LaTuaVoce />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="privacy" element={<PrivacyPolicy />} />
           <Route path="cookie-policy" element={<CookiePolicy />} />
