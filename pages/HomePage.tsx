@@ -65,10 +65,10 @@ const HomePage: React.FC = () => {
                                 <motion.div
                                     key={book.id}
                                     className="flex justify-center"
-                                    initial={{ opacity: 0, y: 50, rotateX: -10 }}
-                                    whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.05, duration: 0.8, type: "spring", bounce: 0.4 }}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
                                 >
                                     <MagicCard book={book} onOpenDetails={handleOpenDetails} compact />
                                 </motion.div>

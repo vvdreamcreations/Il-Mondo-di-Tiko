@@ -40,7 +40,7 @@ const Values: React.FC = () => {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
+                                transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
                                 whileHover={{
                                     y: -12,
                                     scale: 1.03,
