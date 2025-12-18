@@ -76,14 +76,11 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
         <div
           className="absolute inset-0 h-full w-full backface-hidden rotate-y-180 rounded-[2rem] shadow-2xl p-8 flex flex-col justify-between items-center text-center bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-4 border-tiko-yellow/30"
         >
-          <div className={`w-full flex-grow flex flex-col justify-center ${compact ? 'mt-2' : 'mt-4'}`}>
-            <div className={`inline-flex items-center justify-center ${compact ? 'p-3 mb-3' : 'p-4 mb-6'} rounded-full bg-tiko-yellow/20 backdrop-blur-sm mx-auto shadow-[0_0_20px_rgba(250,204,21,0.3)] animate-float border border-tiko-yellow/30`}>
-              <Sparkles className={`${compact ? 'w-6 h-6' : 'w-8 h-8'} text-tiko-yellow fill-current`} />
+          <div className="w-full flex-grow flex flex-col justify-center items-center px-4">
+            <div className="mb-6">
+              <Sparkles className={`${compact ? 'w-8 h-8' : 'w-10 h-10'} text-tiko-yellow fill-current animate-pulse`} />
             </div>
-
-            <h4 className={`font-display font-bold ${compact ? 'text-lg mb-2' : 'text-xl mb-3'} text-tiko-yellow uppercase tracking-wider drop-shadow-lg`}>La Magia</h4>
-
-            <p className={`font-sans text-white/90 ${compact ? 'text-sm mb-2' : 'text-lg mb-4'} italic leading-relaxed px-2 font-medium drop-shadow-md`}>
+            <p className={`font-sans text-white/95 ${compact ? 'text-base leading-snug' : 'text-xl leading-relaxed'} italic font-medium drop-shadow-md text-center`}>
               "{book.shortDescription}"
             </p>
           </div>

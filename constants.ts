@@ -8,14 +8,14 @@ export const BOOKS: Book[] = [
     age: '3-6 anni',
     price: '€ 10,99',
     coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0F9NZJ3CZ.01.LZZZZZZZ.jpg',
-    shortDescription: 'La magia della creatività e dei colori.',
-    fullDescription: 'Tiko trova un pennello speciale che colora il mondo con le emozioni. Una storia per imparare a esprimere ciò che si ha nel cuore attraverso l\'arte e la fantasia.',
+    shortDescription: 'Un\'avventura a colori per scoprire il valore dell\'amicizia.',
+    fullDescription: 'Tiko scopre che i colori più belli non sono quelli di un quadro, ma quelli che nascono dai legami speciali. Una storia dolce che insegna come l\'amicizia vera possa colorare la vita e rendere ogni momento un capolavoro di emozioni.',
     benefits: [
-      { title: 'Creatività', description: 'Stimola l\'immaginazione e l\'arte.' },
-      { title: 'Espressione emotiva', description: 'Imparare a comunicare i sentimenti.' },
-      { title: 'Fiducia', description: 'Credere nelle proprie capacità uniche.' }
+      { title: 'Amicizia', description: 'Il valore dei legami speciali.' },
+      { title: 'Fiducia', description: 'Credere in se stessi e negli altri.' },
+      { title: 'Resilienza', description: 'La magia di non arrendersi mai.' }
     ],
-    targetAudience: 'Perfetto per stimolare la creatività nei bambini.',
+    targetAudience: 'Perfetto per insegnare il valore dell\'amicizia e della non rinuncia.',
     themeColor: 'bg-orange-100'
   },
   {
@@ -25,8 +25,8 @@ export const BOOKS: Book[] = [
     age: '3-6 anni',
     price: '€ 10,99',
     coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0FNCSWHNM.01.LZZZZZZZ.jpg',
-    shortDescription: 'Un piccolo segreto per trovare la serenità.',
-    fullDescription: 'Quando la rabbia o l\'agitazione arrivano, Tiko impara un trucco magico con un sassolino per ritrovare la pace interiore e sorridere di nuovo.',
+    shortDescription: 'Un piccolo segreto per gestire la rabbia e ritrovare la serenità.',
+    fullDescription: 'Anche i piccoli scoiattoli si arrabbiano! Tiko impara un trucco magico per trasformare la rabbia in calma. Una guida gentile che insegna ai bambini ad ascoltare le proprie emozioni e a ritrovare la pace interiore con un respiro profondo.',
     benefits: [
       { title: 'Gestione della rabbia', description: 'Tecniche semplici per calmarsi.' },
       { title: 'Mindfulness', description: 'Vivere il momento presente.' },
@@ -42,11 +42,11 @@ export const BOOKS: Book[] = [
     age: '3-6 anni',
     price: '€ 10,99',
     coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0FJ1JZQSV.01.LZZZZZZZ.jpg',
-    shortDescription: 'Una storia tenera sull\'amicizia e l\'accoglienza.',
-    fullDescription: 'Tiko incontra Bibi, un coniglietto timido. Insieme scopriranno che la gentilezza è la chiave per costruire legami speciali e superare la timidezza.',
+    shortDescription: 'Una tenera favola sulla bellezza dell\'accoglienza e dell\'adozione.',
+    fullDescription: 'Il cuore non ha confini quando si tratta di voler bene. Tiko accoglie Bibi e scopre che famiglia non è solo chi ti assomiglia, ma chi ti sceglie con amore. Un racconto delicato per spiegare ai più piccoli la meraviglia dell\'adozione.',
     benefits: [
-      { title: 'Amicizia', description: 'Il valore di accogliere gli altri.' },
-      { title: 'Gentilezza', description: 'Piccoli gesti che scaldano il cuore.' },
+      { title: 'Accoglienza', description: 'Aprire il cuore agli altri.' },
+      { title: 'Adozione', description: 'L\'amore che crea una famiglia.' },
       { title: 'Inclusione', description: 'Nessuno deve sentirsi solo.' }
     ],
     targetAudience: 'Per insegnare la gentilezza e la socializzazione.',
@@ -59,8 +59,8 @@ export const BOOKS: Book[] = [
     age: '3-6 anni',
     price: '€ 10,99',
     coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0FTS8H6ZJ.01.LZZZZZZZ.jpg',
-    shortDescription: 'Il vero significato del Natale nel bosco.',
-    fullDescription: 'Non sono i regali a rendere speciale il Natale, ma lo stare insieme. Tiko e i suoi amici festeggiano condividendo calore, gioia e affetto sotto l\'albero.',
+    shortDescription: 'Scopri che il dono più prezioso non si trova sotto l\'albero.',
+    fullDescription: 'Le luci brillano, ma Tiko impara che la vera magia del Natale non sono i giocattoli. Una storia incantevole che ricorda a grandi e piccini che il regalo più grande è il tempo trascorso insieme a chi si ama.',
     benefits: [
       { title: 'Condivisione', description: 'La gioia di stare insieme.' },
       { title: 'Valori familiari', description: 'Il calore delle tradizioni.' },
