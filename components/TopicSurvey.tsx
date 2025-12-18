@@ -32,6 +32,7 @@ const TopicSurvey: React.FC = () => {
   const [previousVote, setPreviousVote] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
+  const [isVoteModification, setIsVoteModification] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>('');
 
@@ -81,6 +82,9 @@ const TopicSurvey: React.FC = () => {
     setIsSubmitting(true);
 
     try {
+      // Check if this is a vote modification BEFORE making changes
+      const isModification = previousVote !== '';
+
       // Submit vote to Google Sheets
       // Using text/plain to avoid CORS preflight (OPTIONS) that Apps Script doesn't handle
       const response = await fetch(GOOGLE_SHEETS_API, {
@@ -100,6 +104,7 @@ const TopicSurvey: React.FC = () => {
         // Save vote locally
         localStorage.setItem('userTopicVote', selectedTopic);
         setPreviousVote(selectedTopic);
+        setIsVoteModification(isModification); // Set based on check above
         setShowSuccess(true);
 
         // Track vote in Google Analytics
@@ -227,7 +232,7 @@ const TopicSurvey: React.FC = () => {
                   className="mb-6 p-4 rounded-xl bg-tiko-green/20 border border-tiko-green/40 backdrop-blur-sm"
                 >
                   <p className="text-white font-medium text-center">
-                    🎉 Grazie mille! Il tuo voto è stato registrato con successo!
+                    {isVoteModification ? '✨ Hai modificato il tuo voto!' : '🎉 Grazie mille! Il tuo voto è stato registrato con successo!'}
                   </p>
                 </motion.div>
               )}
