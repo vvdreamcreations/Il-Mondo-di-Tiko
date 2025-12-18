@@ -79,7 +79,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.4, delay: 1 }}
         >
           <a
-            href="#books"
+            href="#/libri"
             className="inline-flex items-center gap-3 bg-gradient-to-r from-tiko-yellow to-[#FF9900] text-tiko-dark px-12 py-5 rounded-full font-bold text-xl shadow-[0_0_40px_rgba(255,165,0,0.5)] hover:shadow-[0_0_60px_rgba(255,165,0,0.8)] hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/20"
           >
             <span className="relative z-10 flex items-center gap-2">
