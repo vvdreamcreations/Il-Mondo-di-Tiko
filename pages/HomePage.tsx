@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
                                     viewport={{ once: true }}
                                     transition={{ delay: index * 0.15, duration: 0.8, type: "spring", bounce: 0.4 }}
                                 >
-                                    <MagicCard book={book} onOpenDetails={handleOpenDetails} />
+                                    <MagicCard book={book} onOpenDetails={handleOpenDetails} compact />
                                 </motion.div>
                             ))}
                         </div>

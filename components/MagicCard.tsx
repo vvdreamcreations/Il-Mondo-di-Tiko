@@ -7,9 +7,10 @@ import { RefreshCw, ArrowRight, Sparkles, ShoppingCart, Check } from 'lucide-rea
 interface MagicCardProps {
   book: Book;
   onOpenDetails: (book: Book) => void;
+  compact?: boolean; // For HomePage optimization
 }
 
-const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails }) => {
+const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = false }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleFlip = () => {
@@ -22,7 +23,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails }) => {
   };
 
   return (
-    <div className="group h-[520px] w-full perspective-1000 cursor-pointer" onClick={handleFlip}>
+    <div className={`group ${compact ? 'h-[420px]' : 'h-[520px]'} w-full perspective-1000 cursor-pointer`} onClick={handleFlip}>
       <motion.div
         className="relative h-full w-full transition-all duration-500 preserve-3d"
         initial={false}
@@ -43,26 +44,26 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails }) => {
             />
 
             {/* Gradient Overlay for Text Visibility */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent pt-32 pb-10 px-8 text-white z-10">
+            <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent ${compact ? 'pt-24 pb-6 px-6' : 'pt-32 pb-10 px-8'} text-white z-10`}>
               <div className="flex justify-between items-start mb-3">
-                <span className="inline-block px-3 py-1 rounded-full bg-tiko-yellow text-tiko-dark text-xs font-black uppercase tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.6)]">
+                <span className={`inline-block px-3 py-1 rounded-full bg-tiko-yellow text-tiko-dark ${compact ? 'text-[10px]' : 'text-xs'} font-black uppercase tracking-widest shadow-[0_0_15px_rgba(250,204,21,0.6)]`}>
                   {book.age}
                 </span>
                 <div className="bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-colors duration-300">
-                  <RefreshCw className="w-4 h-4 transition-transform duration-500 group-hover:rotate-180" />
+                  <RefreshCw className={`${compact ? 'w-3.5 h-3.5' : 'w-4 h-4'} transition-transform duration-500 group-hover:rotate-180`} />
                 </div>
               </div>
 
-              <h3 className="font-display font-bold text-2xl leading-tight mb-3 drop-shadow-lg min-h-[4rem]">
+              <h3 className={`font-display font-bold ${compact ? 'text-xl' : 'text-2xl'} leading-tight mb-3 drop-shadow-lg ${compact ? 'min-h-[3rem]' : 'min-h-[4rem]'}`}>
                 {book.title}
               </h3>
 
               <div className="flex items-center justify-between mt-2">
-                <p className="text-tiko-yellow font-bold text-3xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">{book.price}</p>
+                <p className={`text-tiko-yellow font-bold ${compact ? 'text-2xl' : 'text-3xl'} drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}>{book.price}</p>
                 <motion.div
                   initial={{ opacity: 0, x: -10 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  className="text-xs text-gray-300 font-medium"
+                  className={`${compact ? 'text-[10px]' : 'text-xs'}  text-gray-300 font-medium`}
                 >
                   Scopri di più
                 </motion.div>
