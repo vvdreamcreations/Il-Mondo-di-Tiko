@@ -35,7 +35,7 @@ const LaTuaVoce: React.FC = () => {
                         className="mt-8 flex justify-center"
                     >
                         <img
-                            src="/tiko-greeting.png"
+                            src="/tiko-saluta.png"
                             alt="Tiko che saluta"
                             className="h-48 md:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:scale-105 transition-transform duration-300"
                         />
