@@ -11,14 +11,14 @@ const Footer: React.FC = () => {
             <img
               src="/vv-dream-creations-logo.png"
               alt="VV Dream Creations Logo"
-              className="h-16 md:h-24 lg:h-28 w-auto object-contain hover:scale-105 transition-transform duration-300"
+              className="h-32 md:h-48 lg:h-56 w-auto max-w-[85%] object-contain hover:scale-105 transition-transform duration-300"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 const parent = e.currentTarget.parentElement;
                 if (parent) {
                   const fallback = document.createElement('span');
                   fallback.innerText = "VV Dream Creations";
-                  fallback.className = "font-display font-bold text-xl md:text-2xl text-white";
+                  fallback.className = "font-display font-bold text-3xl md:text-5xl text-white";
                   parent.appendChild(fallback);
                 }
               }}
