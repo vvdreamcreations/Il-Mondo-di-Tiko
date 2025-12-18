@@ -3,12 +3,17 @@ import { useEffect, useState } from 'react';
 const MagicCursor = () => {
     const [trail, setTrail] = useState<Array<{ x: number; y: number; id: number }>>([]);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         let mouseX = 0;
         let mouseY = 0;
         let trailId = 0;
         let lastTime = 0;
+        let hideTimeout: NodeJS.Timeout;
+
+        // Check if touch device
+        const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
         const handleMouseMove = (e: MouseEvent) => {
             const now = Date.now();
@@ -21,6 +26,17 @@ const MagicCursor = () => {
 
             // Update mouse position for main cursor
             setMousePos({ x: mouseX, y: mouseY });
+
+            // Show cursor
+            setIsVisible(true);
+
+            // On touch devices, hide cursor after 500ms of inactivity
+            if (isTouchDevice) {
+                clearTimeout(hideTimeout);
+                hideTimeout = setTimeout(() => {
+                    setIsVisible(false);
+                }, 500);
+            }
 
             // Add trail point
             setTrail((prev) => {
@@ -40,6 +56,7 @@ const MagicCursor = () => {
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             clearInterval(trailClearInterval);
+            clearTimeout(hideTimeout);
         };
     }, []);
 
@@ -62,7 +79,7 @@ const MagicCursor = () => {
       `}</style>
 
             {/* Trail particles */}
-            {trail.map((point, index) => (
+            {isVisible && trail.map((point, index) => (
                 <div
                     key={point.id}
                     className="fixed w-2 h-2 rounded-full pointer-events-none z-[9999]"
@@ -79,23 +96,26 @@ const MagicCursor = () => {
             ))}
 
             {/* Custom SVG Cursor */}
-            <div
-                className="fixed pointer-events-none z-[10000]"
-                style={{
-                    left: `${mousePos.x}px`,
-                    top: `${mousePos.y}px`,
-                    transform: 'translate(-50%, -50%)',
-                }}
-            >
-                <img
-                    src="/magic-mouse-svg.svg"
-                    alt="cursor"
-                    className="w-8 h-8"
+            {isVisible && (
+                <div
+                    className="fixed pointer-events-none z-[10000] transition-opacity duration-300"
                     style={{
-                        filter: 'drop-shadow(0 0 4px rgba(250, 204, 21, 0.6))',
+                        left: `${mousePos.x}px`,
+                        top: `${mousePos.y}px`,
+                        transform: 'translate(-50%, -50%)',
+                        opacity: isVisible ? 1 : 0,
                     }}
-                />
-            </div>
+                >
+                    <img
+                        src="/magic-mouse-svg.svg"
+                        alt="cursor"
+                        className="w-8 h-8"
+                        style={{
+                            filter: 'drop-shadow(0 0 4px rgba(250, 204, 21, 0.6))',
+                        }}
+                    />
+                </div>
+            )}
 
         </>
     );
