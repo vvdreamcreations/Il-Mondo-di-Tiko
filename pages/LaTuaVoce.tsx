@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Heart, Lightbulb, Vote, Sparkles } from 'lucide-react';
 import TopicSurvey from '../components/TopicSurvey';
 import TopicSuggestionForm from '../components/TopicSuggestionForm';
+import Footer from '../components/Footer';
 
 const LaTuaVoce: React.FC = () => {
     return (
@@ -25,6 +26,20 @@ const LaTuaVoce: React.FC = () => {
                     <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
                         Le tue opinioni e le tue idee sono preziose per noi! Partecipa attivamente nella creazione delle nuove avventure di Tiko votando il tema che preferisci o suggerendocene uno nuovo.
                     </p>
+
+                    {/* Tiko Greeting Image */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="mt-8 flex justify-center"
+                    >
+                        <img
+                            src="/tiko-greeting.png"
+                            alt="Tiko che saluta"
+                            className="h-48 md:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:scale-105 transition-transform duration-300"
+                        />
+                    </motion.div>
                 </motion.div>
 
                 {/* Features */}
@@ -92,6 +107,8 @@ const LaTuaVoce: React.FC = () => {
                     </p>
                 </motion.div>
             </section>
+
+            <Footer />
         </div>
     );
 };

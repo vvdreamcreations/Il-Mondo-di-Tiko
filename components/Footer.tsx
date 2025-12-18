@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
             <img
               src="/vv-dream-creations-logo.png"
               alt="VV Dream Creations Logo"
-              className="h-12 md:h-16 lg:h-20 w-auto object-contain hover:scale-105 transition-transform duration-300"
+              className="h-16 md:h-24 lg:h-28 w-auto object-contain hover:scale-105 transition-transform duration-300"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 const parent = e.currentTarget.parentElement;

@@ -16,6 +16,16 @@ const ChiSiamoPage: React.FC = () => {
                     <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
                         Chi Siamo
                     </h1>
+                    <div className="flex justify-center mb-8">
+                        <img
+                            src="/vv-dream-creations-logo.png"
+                            alt="VV Dream Creations Logo"
+                            className="h-20 md:h-28 lg:h-32 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                            onError={(e) => {
+                                e.currentTarget.style.display = 'none';
+                            }}
+                        />
+                    </div>
                     <div className="h-1.5 w-32 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto rounded-full mt-8 shadow-[0_0_20px_rgba(253,186,116,0.6)]" />
                 </motion.div>
 
