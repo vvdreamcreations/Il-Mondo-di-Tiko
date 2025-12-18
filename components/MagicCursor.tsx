@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 const MagicCursor = () => {
     const [trail, setTrail] = useState<Array<{ x: number; y: number; id: number }>>([]);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         let mouseX = 0;
@@ -17,6 +18,9 @@ const MagicCursor = () => {
 
             mouseX = e.clientX;
             mouseY = e.clientY;
+
+            // Update mouse position for main cursor
+            setMousePos({ x: mouseX, y: mouseY });
 
             // Add trail point
             setTrail((prev) => {
@@ -41,13 +45,13 @@ const MagicCursor = () => {
 
     return (
         <>
-            {/* CSS for custom cursor */}
+            {/* CSS to hide system cursor */}
             <style>{`
         * {
-          cursor: url('/magic-mouse-svg.svg'), auto !important;
+          cursor: none !important;
         }
         a, button, [role="button"] {
-          cursor: url('/magic-mouse-svg.svg'), pointer !important;
+          cursor: none !important;
         }
         
         @media (pointer: coarse) {
@@ -73,6 +77,25 @@ const MagicCursor = () => {
                     }}
                 />
             ))}
+
+            {/* Custom SVG Cursor */}
+            <div
+                className="fixed pointer-events-none z-[10000]"
+                style={{
+                    left: `${mousePos.x}px`,
+                    top: `${mousePos.y}px`,
+                    transform: 'translate(-50%, -50%)',
+                }}
+            >
+                <img
+                    src="/magic-mouse-svg.svg"
+                    alt="cursor"
+                    className="w-8 h-8"
+                    style={{
+                        filter: 'drop-shadow(0 0 4px rgba(250, 204, 21, 0.6))',
+                    }}
+                />
+            </div>
 
         </>
     );
