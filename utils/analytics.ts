@@ -1,7 +1,8 @@
 // Google Analytics 4 Event Tracking Utilities
+import { hasAnalyticsConsent } from './consent';
 
-// Check if gtag is available
-const isGtagAvailable = () => typeof window !== 'undefined' && typeof window.gtag === 'function';
+// Check if gtag is available AND user has given consent
+const isGtagAvailable = () => typeof window !== 'undefined' && typeof window.gtag === 'function' && hasAnalyticsConsent();
 
 // Survey Vote Event
 export const trackSurveyVote = (topicId: string, topicName: string) => {

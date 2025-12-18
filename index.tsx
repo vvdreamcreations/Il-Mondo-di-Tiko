@@ -8,6 +8,8 @@ import ChiSiamoPage from './pages/ChiSiamoPage';
 import NewsletterPage from './pages/NewsletterPage';
 import GalleryPage from './pages/GalleryPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import CookiePolicy from './pages/CookiePolicy';
 import ScrollToTop from './components/ScrollToTop';
 
 const rootElement = document.getElementById('root');
@@ -28,6 +30,8 @@ root.render(
           <Route path="newsletter" element={<NewsletterPage />} />
           <Route path="gallery" element={<GalleryPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="privacy" element={<PrivacyPolicy />} />
+          <Route path="cookie-policy" element={<CookiePolicy />} />
         </Route>
       </Routes>
     </HashRouter>

@@ -30,6 +30,16 @@ const Footer: React.FC = () => {
             <a href="https://www.facebook.com/profile.php?id=61568152116518" target="_blank" rel="noopener noreferrer" className="hover:text-tiko-yellow transition-colors hover:scale-110 transform duration-200">Facebook</a>
             <a href="https://www.amazon.it/stores/VV-Dream-Creations/author/B0FJGCG3CM?ref=sr_ntt_srch_lnk_1&qid=1765724311&sr=8-1&shoppingPortalEnabled=true" target="_blank" rel="noopener noreferrer" className="hover:text-tiko-yellow transition-colors hover:scale-110 transform duration-200">Amazon</a>
             <Link to="/privacy-policy" className="hover:text-tiko-yellow transition-colors hover:scale-110 transform duration-200">Privacy Policy</Link>
+            <Link to="/cookie-policy" className="hover:text-tiko-yellow transition-colors hover:scale-110 transform duration-200">Cookie Policy</Link>
+            <button
+              onClick={() => {
+                localStorage.removeItem('cookieConsent');
+                window.location.reload();
+              }}
+              className="hover:text-tiko-orange transition-colors hover:scale-110 transform duration-200 underline underline-offset-2"
+            >
+              Gestisci Cookie
+            </button>
           </div>
 
           <p className="text-white/60 text-xs md:text-sm leading-relaxed">

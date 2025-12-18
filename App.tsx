@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import CookieConsent from './components/CookieConsent';
 import { motion } from 'framer-motion';
+import { hasAnalyticsConsent, initializeAnalytics } from './utils/consent';
 
 // Lazy load non-critical components
 const MagicCursor = lazy(() => import('./components/MagicCursor'));
@@ -36,6 +38,13 @@ const App: React.FC = () => {
           console.log("Video 1 autoplay prevented:", error);
         });
       }
+    }
+  }, []);
+
+  // Check for existing analytics consent and initialize if approved
+  useEffect(() => {
+    if (hasAnalyticsConsent()) {
+      initializeAnalytics();
     }
   }, []);
 
@@ -154,6 +163,9 @@ const App: React.FC = () => {
       <Suspense fallback={null}>
         <MagicCursor />
       </Suspense>
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
 };
