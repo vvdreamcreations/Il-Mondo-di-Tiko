@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
 
           <p className="text-white/60 text-xs md:text-sm leading-relaxed">
             © {new Date().getFullYear()} VV Dream Creations. Tutti i diritti riservati. <br className="hidden sm:inline" />
-            <span className="sm:inline block mt-1 sm:mt-0">Designed with ❤️ for magic moments.</span>
+            <span className="sm:inline block mt-1 sm:mt-0">Creato con ❤️ per momenti magici.</span>
           </p>
         </div>
       </div>
