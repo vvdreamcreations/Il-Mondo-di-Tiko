@@ -80,7 +80,8 @@ const TopicSurvey: React.FC = () => {
           'Content-Type': 'text/plain',
         },
         body: JSON.stringify({
-          topicId: selectedTopic
+          topicId: selectedTopic,
+          previousVote: previousVote // Send previous vote for replacement logic
         })
       });
 
@@ -101,8 +102,7 @@ const TopicSurvey: React.FC = () => {
         // Reload data silently to show updated counts
         await loadSurveyData(true);
 
-        // Keep success message visible
-        setTimeout(() => setShowSuccess(false), 5000);
+        // Success message stays visible (no timeout removal)
 
       } else {
         throw new Error(result.error || 'Submission failed');
