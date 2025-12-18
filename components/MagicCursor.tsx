@@ -44,10 +44,10 @@ const MagicCursor = () => {
             {/* CSS for custom cursor */}
             <style>{`
         * {
-          cursor: url('/magic-mous.cur'), auto !important;
+          cursor: url('/magic-mouse-svg.svg'), auto !important;
         }
         a, button, [role="button"] {
-          cursor: url('/magic-mous.cur'), pointer !important;
+          cursor: url('/magic-mouse-svg.svg'), pointer !important;
         }
         
         @media (pointer: coarse) {
