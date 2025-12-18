@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Vote, Send, TrendingUp, Sparkles, RefreshCw } from 'lucide-react';
 import { trackSurveyVote } from '../utils/analytics';
 
-const GOOGLE_SHEETS_API = 'https://script.google.com/macros/s/AKfycbz9OSH8tDjFTtdeF2QzDDWxSMDhIY9hOnUG7sM-iA0/dev';
+const GOOGLE_SHEETS_API = 'https://script.google.com/macros/s/AKfycbyWS5IpWOttunyK8haK4Ubv8Ui87tvuh11LXX8dOZK2FdwpRrBxb-qBEhFTv-AOeYJN/exec';
 
 interface SurveyData {
   topics: {
@@ -224,8 +224,8 @@ const TopicSurvey: React.FC = () => {
                 <label
                   key={id}
                   className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all ${selectedTopic === id
-                      ? 'bg-tiko-yellow/30 border-2 border-tiko-yellow shadow-[0_0_20px_rgba(250,204,21,0.3)]'
-                      : 'bg-white/5 border-2 border-white/10 hover:bg-white/10 hover:border-white/20'
+                    ? 'bg-tiko-yellow/30 border-2 border-tiko-yellow shadow-[0_0_20px_rgba(250,204,21,0.3)]'
+                    : 'bg-white/5 border-2 border-white/10 hover:bg-white/10 hover:border-white/20'
                     }`}
                 >
                   <input
@@ -302,10 +302,10 @@ const TopicSurvey: React.FC = () => {
                         animate={{ width: `${topic.percentage}%` }}
                         transition={{ duration: 1, ease: 'easeOut', delay: index * 0.1 }}
                         className={`h-full flex items-center justify-end pr-3 ${index === 0
-                            ? 'bg-gradient-to-r from-tiko-yellow to-tiko-orange'
-                            : index === 1
-                              ? 'bg-gradient-to-r from-tiko-blue/80 to-tiko-blue'
-                              : 'bg-gradient-to-r from-white/40 to-white/20'
+                          ? 'bg-gradient-to-r from-tiko-yellow to-tiko-orange'
+                          : index === 1
+                            ? 'bg-gradient-to-r from-tiko-blue/80 to-tiko-blue'
+                            : 'bg-gradient-to-r from-white/40 to-white/20'
                           }`}
                       >
                         <span className="text-white text-xs font-bold drop-shadow-md">
