@@ -198,7 +198,7 @@ const TopicSurvey: React.FC = () => {
             <span className="font-bold uppercase tracking-widest text-sm text-white/80">Il Tuo Parere Conta</span>
           </div>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg">
-            Quale Tema Ti Piacerebbe Vedere?
+            Quale tema ti piacerebbe leggere?
           </h2>
           <p className="text-white/90 text-lg max-w-2xl mx-auto leading-relaxed">
             Aiutaci a scegliere il tema del prossimo libro di Tiko! Ogni voto conta.

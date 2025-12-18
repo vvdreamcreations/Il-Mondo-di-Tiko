@@ -21,10 +21,10 @@ const LaTuaVoce: React.FC = () => {
                         <span className="text-white/90 text-sm font-bold">LA TUA VOCE</span>
                     </div>
                     <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                        Il Tuo Parere Guida le Nostre Storie
+                        Il tuo parere aiuta a creare le nostre storie
                     </h1>
                     <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                        Le tue opinioni e le tue idee sono preziose per noi! Partecipa attivamente nella creazione delle nuove avventure di Tiko votando il tema che preferisci o suggerendocene uno nuovo.
+                        Le tue opinioni e le tue idee sono preziose per noi! Partecipa attivamente nella creazione delle nuove avventure di Tiko votando il tema che preferisci o suggerendone uno nuovo.
                     </p>
                 </motion.div>
 
