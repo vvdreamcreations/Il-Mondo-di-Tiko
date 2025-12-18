@@ -18,13 +18,21 @@ const Navbar: React.FC = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
       <div className="container mx-auto">
         <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-6 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-white/20">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
-            <NavLink to="/" className="font-display text-2xl font-bold text-white hover:text-tiko-yellow transition-colors">
+            <NavLink
+              to="/"
+              onClick={scrollToTop}
+              className="font-display text-2xl font-bold text-white hover:text-tiko-yellow transition-colors"
+            >
               Il Mondo di Tiko
             </NavLink>
 
@@ -34,6 +42,7 @@ const Navbar: React.FC = () => {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  onClick={scrollToTop}
                   className={({ isActive }) =>
                     `font-medium transition-all duration-300 relative inline-block px-3 py-2 ${isActive
                       ? 'text-tiko-yellow'
@@ -83,7 +92,10 @@ const Navbar: React.FC = () => {
                     <NavLink
                       key={link.to}
                       to={link.to}
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={() => {
+                        scrollToTop();
+                        setIsMenuOpen(false);
+                      }}
                       className={({ isActive }) =>
                         `block px-4 py-2 rounded-lg font-medium transition-colors ${isActive
                           ? 'bg-tiko-yellow/20 text-tiko-yellow'
