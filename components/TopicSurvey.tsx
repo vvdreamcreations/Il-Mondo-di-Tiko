@@ -25,7 +25,6 @@ interface SurveyData {
 const TopicSurvey: React.FC = () => {
   const [surveyData, setSurveyData] = useState<SurveyData | null>(null);
   const [selectedTopic, setSelectedTopic] = useState<string>('');
-  const [customTopic, setCustomTopic] = useState<string>('');
   const [hasVoted, setHasVoted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
@@ -52,20 +51,17 @@ const TopicSurvey: React.FC = () => {
       return;
     }
 
-    if (!selectedTopic && !customTopic.trim()) {
-      alert('Per favore, seleziona un tema o scrivine uno personalizzato.');
+    if (!selectedTopic) {
+      alert('Per favore, seleziona un tema.');
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      // Determine which topic was selected
-      const votedTopic = customTopic.trim() ? `Altro: ${customTopic}` : selectedTopic;
-
       // Try to send email via Brevo (but don't fail if it doesn't work)
       try {
-        await sendBrevoEmail(votedTopic);
+        await sendBrevoEmail(selectedTopic);
         console.log('Email sent successfully');
       } catch (emailError) {
         // Email failed, but we continue anyway
@@ -74,22 +70,9 @@ const TopicSurvey: React.FC = () => {
       }
 
       // Update local state (optimistic update)
-      if (surveyData) {
+      if (surveyData && surveyData.topics[selectedTopic]) {
         const updatedData = { ...surveyData };
-
-        if (customTopic.trim()) {
-          // Add to custom topics
-          const existingCustom = updatedData.customTopics.find(t => t.text === customTopic);
-          if (existingCustom) {
-            existingCustom.votes++;
-          } else {
-            updatedData.customTopics.push({ text: customTopic, votes: 1 });
-          }
-        } else if (selectedTopic && updatedData.topics[selectedTopic]) {
-          // Increment predefined topic
-          updatedData.topics[selectedTopic].votes++;
-        }
-
+        updatedData.topics[selectedTopic].votes++;
         updatedData.totalVotes++;
         setSurveyData(updatedData);
       }
@@ -110,14 +93,17 @@ const TopicSurvey: React.FC = () => {
     }
   };
 
-  const sendBrevoEmail = async (votedTopic: string) => {
+  const sendBrevoEmail = async (topicId: string) => {
     // Calculate rankings for email
     const rankings = calculateRankings();
+
+    // Get topic name
+    const topicName = surveyData?.topics[topicId]?.name || topicId;
 
     const emailBody = `
 Nuovo voto ricevuto per il sondaggio sui temi dei libri!
 
-✅ Tema scelto: ${votedTopic}
+✅ Tema scelto: ${topicName}
 📅 Data: ${new Date().toLocaleString('it-IT')}
 
 📊 CLASSIFICA ATTUALE:
@@ -153,23 +139,11 @@ Questo messaggio è stato generato automaticamente dal sondaggio su vvdreamcreat
   const calculateRankings = () => {
     if (!surveyData) return [];
 
-    const allTopics = [
-      ...Object.entries(surveyData.topics).map(([id, topic]) => ({
-        id,
-        name: `${topic.emoji} ${topic.name}`,
-        votes: topic.votes
-      }))
-    ];
-
-    // Aggregate all custom topics into "Altri"
-    const customTopicsTotal = surveyData.customTopics.reduce((sum, ct) => sum + ct.votes, 0);
-    if (customTopicsTotal > 0) {
-      allTopics.push({
-        id: 'custom-all',
-        name: '✏️ Altri',
-        votes: customTopicsTotal
-      });
-    }
+    const allTopics = Object.entries(surveyData.topics).map(([id, topic]) => ({
+      id,
+      name: `${topic.emoji} ${topic.name}`,
+      votes: topic.votes
+    }));
 
     const total = surveyData.totalVotes || 1;
 
@@ -263,7 +237,6 @@ Questo messaggio è stato generato automaticamente dal sondaggio su vvdreamcreat
                         checked={selectedTopic === id}
                         onChange={(e) => {
                           setSelectedTopic(e.target.value);
-                          setCustomTopic(''); // Clear custom if selecting predefined
                         }}
                         className="w-5 h-5 text-tiko-blue focus:ring-2 focus:ring-tiko-blue cursor-pointer"
                       />
@@ -272,29 +245,6 @@ Questo messaggio è stato generato automaticamente dal sondaggio su vvdreamcreat
                       </span>
                     </label>
                   ))}
-                </div>
-
-                {/* Custom Topic Input */}
-                <div className="pt-4 border-t border-white/20">
-                  <label className="block text-tiko-yellow font-bold mb-2 text-sm drop-shadow-md">
-                    Oppure suggerisci un tema:
-                  </label>
-                  <input
-                    type="text"
-                    value={customTopic}
-                    onChange={(e) => {
-                      setCustomTopic(e.target.value);
-                      if (e.target.value.trim()) {
-                        setSelectedTopic(''); // Clear radio if typing custom
-                      }
-                    }}
-                    placeholder="Es: La pazienza, Il coraggio..."
-                    maxLength={100}
-                    className="w-full px-4 py-3 rounded-xl bg-black/30 backdrop-blur-sm border-2 border-white/20 focus:outline-none focus:ring-4 focus:ring-tiko-blue/60 focus:border-tiko-blue/50 transition-all placeholder:text-white/40 text-white font-medium"
-                  />
-                  <p className="text-white/60 text-xs mt-2">
-                    Scrivi qui se nessuna delle opzioni ti convince completamente
-                  </p>
                 </div>
 
                 {/* Submit Button */}
