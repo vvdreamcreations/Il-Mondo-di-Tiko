@@ -9,7 +9,7 @@ export const BOOKS: Book[] = [
     price: '€ 10,99',
     coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0F9NZJ3CZ.01.LZZZZZZZ.jpg',
     shortDescription: 'Un\'avventura a colori per scoprire il valore dell\'amicizia.',
-    fullDescription: 'Tiko scopre che i colori più belli non sono quelli di un quadro, ma quelli che nascono dai legami speciali. Una storia dolce che insegna come l\'amicizia vera possa colorare la vita e rendere ogni momento un capolavoro di emozioni.',
+    fullDescription: 'Scopri la magia dell\'amicizia con Tiko. Una storia illustrata che insegna il coraggio, l\'unicità e il potere della gentilezza. Perché insieme si va più lontano, e ogni momento condiviso può diventare un capolavoro di emozioni.',
     benefits: [
       { title: 'Amicizia', description: 'Il valore dei legami speciali.' },
       { title: 'Fiducia', description: 'Credere in se stessi e negli altri.' },
