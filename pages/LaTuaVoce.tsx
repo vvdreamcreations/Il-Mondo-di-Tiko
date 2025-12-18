@@ -26,24 +26,10 @@ const LaTuaVoce: React.FC = () => {
                     <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
                         Le tue opinioni e le tue idee sono preziose per noi! Partecipa attivamente nella creazione delle nuove avventure di Tiko votando il tema che preferisci o suggerendocene uno nuovo.
                     </p>
-
-                    {/* Tiko Greeting Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.3, duration: 0.5 }}
-                        className="mt-8 flex justify-center"
-                    >
-                        <img
-                            src="/tiko-saluta.png"
-                            alt="Tiko che saluta"
-                            className="h-48 md:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:scale-105 transition-transform duration-300"
-                        />
-                    </motion.div>
                 </motion.div>
 
                 {/* Features */}
-                <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-16">
+                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16 items-center">
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -59,6 +45,20 @@ const LaTuaVoce: React.FC = () => {
                         <p className="text-white/80 text-sm">
                             Scegli quale tema emotivo vorresti vedere nel prossimo libro di Tiko. Il tuo voto conta davvero!
                         </p>
+                    </motion.div>
+
+                    {/* Tiko Greeting Image */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.25, duration: 0.5 }}
+                        className="flex justify-center md:col-span-1"
+                    >
+                        <img
+                            src="/tiko-saluta.png"
+                            alt="Tiko che saluta"
+                            className="h-48 md:h-56 lg:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:scale-105 transition-transform duration-300"
+                        />
                     </motion.div>
 
                     <motion.div
