@@ -73,16 +73,26 @@ const LibriPage: React.FC = () => {
                                         </div>
                                     )}
 
-                                    {/* Amazon Link */}
-                                    <a
-                                        href={`https://www.amazon.it/dp/${book.asin}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 bg-gradient-to-r from-tiko-yellow to-tiko-orange text-white font-semibold px-8 py-3 rounded-full hover:shadow-[0_0_30px_rgba(250,204,21,0.5)] transition-all duration-300 transform hover:scale-105"
-                                    >
-                                        <span>Acquista su Amazon</span>
-                                        <ExternalLink size={20} />
-                                    </a>
+                                    {/* Price and CTA */}
+                                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                        {/* Price */}
+                                        <div className="flex items-baseline gap-2">
+                                            <span className="text-tiko-yellow font-bold text-3xl md:text-4xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                                                {book.price}
+                                            </span>
+                                        </div>
+
+                                        {/* Amazon Link */}
+                                        <a
+                                            href={`https://www.amazon.it/dp/${book.asin}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 bg-gradient-to-r from-tiko-yellow to-tiko-orange text-white font-semibold px-8 py-3 rounded-full hover:shadow-[0_0_30px_rgba(250,204,21,0.5)] transition-all duration-300 transform hover:scale-105"
+                                        >
+                                            <span>Acquista su Amazon</span>
+                                            <ExternalLink size={20} />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </motion.article>
