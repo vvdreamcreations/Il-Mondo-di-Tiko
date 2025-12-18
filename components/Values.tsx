@@ -82,7 +82,7 @@ const Values: React.FC = () => {
             {/* Value Detail Modal */}
             <AnimatePresence>
                 {selectedValue && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-20 md:pt-24">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -96,7 +96,7 @@ const Values: React.FC = () => {
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 30 }}
                             transition={{ type: "spring", duration: 0.6, bounce: 0.3 }}
-                            className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[85vh] md:max-h-[80vh]"
+                            className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[80vh] md:max-h-[85vh]"
                         >
                             <button
                                 onClick={() => setSelectedValue(null)}
@@ -144,15 +144,6 @@ const Values: React.FC = () => {
                                             </p>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="p-6 md:p-8 border-t border-gray-100 bg-white mt-auto">
-                                    <button
-                                        onClick={() => setSelectedValue(null)}
-                                        className="w-full py-4 rounded-xl bg-tiko-dark text-white font-bold hover:bg-tiko-blue transition-colors duration-300 shadow-lg"
-                                    >
-                                        Chiudi
-                                    </button>
                                 </div>
                             </div>
                         </motion.div>

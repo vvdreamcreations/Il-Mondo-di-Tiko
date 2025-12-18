@@ -14,10 +14,31 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onClose }) => {
     const [marketing, setMarketing] = useState(true);
 
     useEffect(() => {
+        // Load saved consent if exists to populate checkboxes
+        const saved = getConsent();
+        if (saved) {
+            setAnalytics(saved.analytics);
+            setMarketing(saved.marketing);
+        }
+
         // Show banner if no consent decision has been made
         if (!hasConsentDecision()) {
             setIsVisible(true);
         }
+
+        // Listen for open settings event from Footer
+        const handleOpenSettings = () => {
+            const current = getConsent();
+            if (current) {
+                setAnalytics(current.analytics);
+                setMarketing(current.marketing);
+            }
+            setIsVisible(true);
+            setShowCustomize(true);
+        };
+
+        window.addEventListener('openCookieSettings', handleOpenSettings);
+        return () => window.removeEventListener('openCookieSettings', handleOpenSettings);
     }, []);
 
     const handleAcceptAll = () => {
@@ -148,7 +169,7 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onClose }) => {
                                         <div className="flex-1">
                                             <h3 className="font-bold text-white mb-1">Cookie Essenziali</h3>
                                             <p className="text-white/70 text-sm">
-                                                Necessari per il funzionamento del sito (es: preferenze voto sondaggio). Sempre attivi.
+                                                Necessari per il funzionamento del sito. Sempre attivi.
                                             </p>
                                         </div>
                                         <div className="ml-4 px-3 py-1 rounded-full bg-tiko-green/20 text-tiko-green text-xs font-bold">

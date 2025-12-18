@@ -112,7 +112,7 @@ export const VALUES: ValueItem[] = [
     title: "Educano con Dolcezza",
     description: "Ogni storia aiuta i piccoli lettori a riconoscere emozioni e coltivare la gentilezza.",
     fullDescription: "Non ci sono lezioni noiose qui, solo esempi gentili. Attraverso le azioni di Tiko, i bambini imparano che essere gentili non è solo 'buona educazione', ma un superpotere che rende il mondo più bello. Le storie affrontano temi complessi come la condivisione e il perdono con una semplicità disarmante.",
-    image: "https://images.unsplash.com/photo-1549488497-6cb569d020e5?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1000&auto=format&fit=crop",
     iconName: 'Heart'
   },
   {

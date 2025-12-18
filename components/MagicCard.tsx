@@ -76,14 +76,14 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
         <div
           className="absolute inset-0 h-full w-full backface-hidden rotate-y-180 rounded-[2rem] shadow-2xl p-8 flex flex-col justify-between items-center text-center bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-4 border-tiko-yellow/30"
         >
-          <div className="mt-4 w-full flex-grow flex flex-col justify-center">
-            <div className="inline-flex items-center justify-center p-4 rounded-full bg-tiko-yellow/20 backdrop-blur-sm mb-6 mx-auto shadow-[0_0_20px_rgba(250,204,21,0.3)] animate-float border border-tiko-yellow/30">
-              <Sparkles className="w-8 h-8 text-tiko-yellow fill-current" />
+          <div className={`w-full flex-grow flex flex-col justify-center ${compact ? 'mt-2' : 'mt-4'}`}>
+            <div className={`inline-flex items-center justify-center ${compact ? 'p-3 mb-3' : 'p-4 mb-6'} rounded-full bg-tiko-yellow/20 backdrop-blur-sm mx-auto shadow-[0_0_20px_rgba(250,204,21,0.3)] animate-float border border-tiko-yellow/30`}>
+              <Sparkles className={`${compact ? 'w-6 h-6' : 'w-8 h-8'} text-tiko-yellow fill-current`} />
             </div>
 
-            <h4 className="font-display font-bold text-xl text-tiko-yellow mb-3 uppercase tracking-wider drop-shadow-lg">La Magia</h4>
+            <h4 className={`font-display font-bold ${compact ? 'text-lg mb-2' : 'text-xl mb-3'} text-tiko-yellow uppercase tracking-wider drop-shadow-lg`}>La Magia</h4>
 
-            <p className="font-sans text-white/90 text-lg italic leading-relaxed px-2 mb-4 font-medium drop-shadow-md">
+            <p className={`font-sans text-white/90 ${compact ? 'text-sm mb-2' : 'text-lg mb-4'} italic leading-relaxed px-2 font-medium drop-shadow-md`}>
               "{book.shortDescription}"
             </p>
           </div>
@@ -96,15 +96,15 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="w-full px-6 py-4 bg-gradient-to-r from-[#FF9900] to-[#FFB84D] text-white rounded-2xl font-black text-lg shadow-[0_4px_15px_rgba(255,153,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,153,0,0.6)] hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-3"
+                className={`w-full ${compact ? 'px-4 py-3 text-base' : 'px-6 py-4 text-lg'} bg-gradient-to-r from-[#FF9900] to-[#FFB84D] text-white rounded-2xl font-black shadow-[0_4px_15px_rgba(255,153,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,153,0,0.6)] hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-3`}
               >
-                <ShoppingCart size={24} className="animate-bounce" />
+                <ShoppingCart size={compact ? 20 : 24} className="animate-bounce" />
                 Acquista su Amazon
               </a>
 
               {/* Kindle Unlimited Text */}
-              <div className="flex items-center justify-center gap-1.5 text-white font-bold text-xs py-1.5 px-4 bg-tiko-blue/20 backdrop-blur-sm rounded-full mx-auto border border-tiko-blue/40 shadow-sm">
-                <Check size={14} className="text-tiko-green" strokeWidth={4} />
+              <div className={`flex items-center justify-center gap-1.5 text-white font-bold ${compact ? 'text-[10px] py-1 px-3' : 'text-xs py-1.5 px-4'} bg-tiko-blue/20 backdrop-blur-sm rounded-full mx-auto border border-tiko-blue/40 shadow-sm`}>
+                <Check size={compact ? 12 : 14} className="text-tiko-green" strokeWidth={4} />
                 <span>Gratis con <strong className="text-tiko-blue">Kindle Unlimited</strong></span>
               </div>
             </div>
@@ -115,7 +115,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
                 e.stopPropagation();
                 onOpenDetails(book);
               }}
-              className="w-full group/btn px-6 py-3 bg-transparent border-2 border-white/30 text-white rounded-2xl font-bold hover:border-tiko-yellow hover:text-tiko-yellow hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm"
+              className={`w-full group/btn ${compact ? 'px-4 py-2.5 text-sm' : 'px-6 py-3 text-base'} bg-transparent border-2 border-white/30 text-white rounded-2xl font-bold hover:border-tiko-yellow hover:text-tiko-yellow hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm`}
             >
               <span className="relative z-10">Dettagli & Benefici</span>
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />

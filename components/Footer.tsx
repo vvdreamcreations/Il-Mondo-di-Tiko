@@ -33,8 +33,7 @@ const Footer: React.FC = () => {
             <Link to="/cookie-policy" className="hover:text-tiko-yellow transition-colors hover:scale-110 transform duration-200">Cookie Policy</Link>
             <button
               onClick={() => {
-                localStorage.removeItem('cookieConsent');
-                window.location.reload();
+                window.dispatchEvent(new Event('openCookieSettings'));
               }}
               className="hover:text-tiko-orange transition-colors hover:scale-110 transform duration-200 underline underline-offset-2"
             >
