@@ -68,7 +68,7 @@ const HomePage: React.FC = () => {
                                     initial={{ opacity: 0, y: 50, rotateX: -10 }}
                                     whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.15, duration: 0.8, type: "spring", bounce: 0.4 }}
+                                    transition={{ delay: index * 0.05, duration: 0.8, type: "spring", bounce: 0.4 }}
                                 >
                                     <MagicCard book={book} onOpenDetails={handleOpenDetails} compact />
                                 </motion.div>

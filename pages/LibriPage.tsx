@@ -31,7 +31,7 @@ const LibriPage: React.FC = () => {
                             key={book.id}
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.2, duration: 0.8 }}
+                            transition={{ delay: index * 0.05, duration: 0.8 }}
                             className="bg-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20 hover:border-tiko-yellow/50 transition-all duration-300"
                         >
                             <div className="flex flex-col md:flex-row gap-8 items-start">

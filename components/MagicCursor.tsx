@@ -75,6 +75,11 @@ const MagicCursor = () => {
           * {
             cursor: auto !important;
           }
+          /* Hide custom cursor completely on touch devices */
+          .custom-cursor,
+          .custom-cursor-trail {
+            display: none !important;
+          }
         }
       `}</style>
 
@@ -82,7 +87,7 @@ const MagicCursor = () => {
             {isVisible && trail.map((point, index) => (
                 <div
                     key={point.id}
-                    className="fixed w-2 h-2 rounded-full pointer-events-none z-[9999]"
+                    className="custom-cursor-trail fixed w-2 h-2 rounded-full pointer-events-none z-[9999]"
                     style={{
                         left: `${point.x}px`,
                         top: `${point.y}px`,
@@ -98,7 +103,7 @@ const MagicCursor = () => {
             {/* Custom SVG Cursor */}
             {isVisible && (
                 <div
-                    className="fixed pointer-events-none z-[10000] transition-opacity duration-300"
+                    className="custom-cursor fixed pointer-events-none z-[10000] transition-opacity duration-300"
                     style={{
                         left: `${mousePos.x}px`,
                         top: `${mousePos.y}px`,

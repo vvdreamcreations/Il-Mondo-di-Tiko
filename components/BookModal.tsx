@@ -15,7 +15,7 @@ const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 pt-24">
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 pt-20 md:pt-24">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -31,7 +31,7 @@ const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 50 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900/98 to-gray-800/98 backdrop-blur-xl rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.8)] overflow-hidden max-h-[75vh] flex flex-col md:flex-row border border-white/10"
+            className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900/98 to-gray-800/98 backdrop-blur-xl rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.8)] overflow-hidden max-h-[80vh] md:max-h-[85vh] overflow-y-auto flex flex-col md:flex-row border border-white/10"
           >
             <button
               onClick={(e) => {
