@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Vote, Send, TrendingUp, Sparkles, RefreshCw } from 'lucide-react';
 import { trackSurveyVote } from '../utils/analytics';
 
-const GOOGLE_SHEETS_API = 'https://script.google.com/macros/s/AKfycbzKF4_RDL751h8pCeBod89evoS9VOxXD-6QWS1ZlsfSNO0vNpW6SuQ_Ulng3sXtI_ox/exec';
+const GOOGLE_SHEETS_API = 'https://script.google.com/macros/s/AKfycbymjnZz6m-V6opavDqzp7Cip2uRZuD7xTfN8zhnxswhUucWx_rDl-K7SRRaDm-JDYB9/exec';
 
 interface SurveyData {
   topics: {
