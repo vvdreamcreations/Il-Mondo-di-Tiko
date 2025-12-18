@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Vote, Send, TrendingUp, Sparkles, RefreshCw } from 'lucide-react';
 import { trackSurveyVote } from '../utils/analytics';
 
-const GOOGLE_SHEETS_API = 'https://script.google.com/macros/s/AKfycbymjnZz6m-V6opavDqzp7Cip2uRZuD7xTfN8zhnxswhUucWx_rDl-K7SRRaDm-JDYB9/exec';
+const GOOGLE_SHEETS_API = 'https://script.google.com/macros/s/AKfycbyDrbPqNC9_PIDSDaBlZw-7aSfFt4bZoBJ0zdlAXwJoOdDWK_kE-IvBSfORK_Y3qmd6/exec';
 
 interface SurveyData {
   topics: {
@@ -21,10 +21,10 @@ const TopicSurvey: React.FC = () => {
   // Initialize with default topics for instant display
   const [surveyData, setSurveyData] = useState<SurveyData | null>({
     topics: {
-      'fear': { id: 'fear', name: 'La paura', emoji: '😨', votes: 0 },
-      'jealousy': { id: 'jealousy', name: 'La gelosia', emoji: '😠', votes: 0 },
+      'fear': { id: 'fear', name: 'La paura', emoji: '😱', votes: 0 },
+      'jealousy': { id: 'jealousy', name: 'La gelosia tra fratelli', emoji: '😠', votes: 0 },
       'sharing': { id: 'sharing', name: 'La condivisione', emoji: '🤝', votes: 0 },
-      'friendship': { id: 'friendship', name: "L'amicizia", emoji: '💖', votes: 0 }
+      'sadness': { id: 'sadness', name: 'La tristezza', emoji: '😢', votes: 0 }
     },
     totalVotes: 0
   });
