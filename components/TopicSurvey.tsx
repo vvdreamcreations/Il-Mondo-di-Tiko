@@ -189,23 +189,23 @@ const TopicSurvey: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-[3rem] p-8 md:p-12 shadow-[0_0_60px_rgba(0,0,0,0.8)] border border-tiko-yellow/30"
+        className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-[3rem] p-6 md:p-10 shadow-[0_0_60px_rgba(0,0,0,0.8)] border border-tiko-yellow/30"
       >
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-2 mb-3">
+        <div className="text-center mb-4 md:mb-6">
+          <div className="flex items-center justify-center gap-2 mb-2">
             <Vote className="text-tiko-yellow w-6 h-6 animate-pulse" />
             <span className="font-bold uppercase tracking-widest text-sm text-white/80">Il Tuo Parere Conta</span>
           </div>
-          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-2 drop-shadow-lg">
             Quale Tema Ti Piacerebbe Vedere?
           </h2>
           <p className="text-white/90 text-lg max-w-2xl mx-auto leading-relaxed">
-            Aiutaci a scegliere il tema del prossimo libro di Tiko! Ogni voto conta e puoi modificare la tua scelta in qualsiasi momento.
+            Aiutaci a scegliere il tema del prossimo libro di Tiko! Ogni voto conta.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
           {/* Voting Form */}
           <div>
             {/* Previous Vote Message */}
@@ -213,7 +213,7 @@ const TopicSurvey: React.FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-6 p-4 rounded-xl bg-tiko-blue/20 border border-tiko-blue/40 backdrop-blur-sm"
+                className="mb-4 p-3 rounded-xl bg-tiko-blue/20 border border-tiko-blue/40 backdrop-blur-sm"
               >
                 <p className="text-white/90 text-sm">
                   ✅ <strong>Hai già votato!</strong><br />
@@ -229,7 +229,7 @@ const TopicSurvey: React.FC = () => {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="mb-6 p-4 rounded-xl bg-tiko-green/20 border border-tiko-green/40 backdrop-blur-sm"
+                  className="mb-4 p-3 rounded-xl bg-tiko-green/20 border border-tiko-green/40 backdrop-blur-sm"
                 >
                   <p className="text-white font-medium text-center">
                     {isVoteModification ? '✨ Hai modificato il tuo voto!' : '🎉 Grazie mille! Il tuo voto è stato registrato con successo!'}
@@ -238,11 +238,11 @@ const TopicSurvey: React.FC = () => {
               )}
             </AnimatePresence>
 
-            <form onSubmit={handleSubmit} className="space-y-4 bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
+            <form onSubmit={handleSubmit} className="space-y-3 bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/10">
               {surveyData && Object.entries(surveyData.topics).map(([id, topic]) => (
                 <label
                   key={id}
-                  className={`flex items-center gap-4 p-4 rounded-xl cursor-pointer transition-all ${selectedTopic === id
+                  className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all ${selectedTopic === id
                     ? 'bg-tiko-yellow/30 border-2 border-tiko-yellow shadow-[0_0_20px_rgba(250,204,21,0.3)]'
                     : 'bg-white/5 border-2 border-white/10 hover:bg-white/10 hover:border-white/20'
                     }`}
@@ -263,17 +263,17 @@ const TopicSurvey: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || !selectedTopic}
-                className="w-full bg-gradient-to-r from-tiko-yellow to-tiko-orange text-white font-bold py-4 rounded-xl shadow-[0_4px_20px_rgba(250,204,21,0.4)] hover:shadow-[0_6px_30px_rgba(250,204,21,0.6)] hover:scale-105 transition-all transform flex items-center justify-center gap-2 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="w-full bg-gradient-to-r from-tiko-yellow to-tiko-orange text-white font-bold py-3 rounded-xl shadow-[0_4px_20px_rgba(250,204,21,0.4)] hover:shadow-[0_6px_30px_rgba(250,204,21,0.6)] hover:scale-105 transition-all transform flex items-center justify-center gap-2 text-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Invio in corso...
+                    Invio...
                   </>
                 ) : (
                   <>
                     <Send className="w-5 h-5" />
-                    {previousVote ? 'Modifica il Mio Voto' : 'Invia il Mio Voto'}
+                    {previousVote ? 'Modifica Voto' : 'Invia Voto'}
                   </>
                 )}
               </button>
@@ -282,11 +282,11 @@ const TopicSurvey: React.FC = () => {
 
           {/* Rankings */}
           <div>
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
-              <div className="flex items-center justify-between mb-6">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/10 h-full">
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-2">
                   <TrendingUp className="text-tiko-yellow w-5 h-5" />
-                  <h3 className="font-bold text-white text-lg">Classifica Attuale</h3>
+                  <h3 className="font-bold text-white text-lg">Classifica</h3>
                 </div>
                 <button
                   onClick={loadSurveyData}
@@ -297,7 +297,7 @@ const TopicSurvey: React.FC = () => {
                 </button>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {rankings.map((topic, index) => (
                   <motion.div
                     key={topic.id}
@@ -313,21 +313,21 @@ const TopicSurvey: React.FC = () => {
                         </span>
                         {topic.name}
                       </span>
-                      <span className="text-white/70 font-bold">{topic.votes} {topic.votes === 1 ? 'voto' : 'voti'}</span>
+                      <span className="text-white/70 font-bold">{topic.votes}</span>
                     </div>
-                    <div className="h-8 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm border border-white/20">
+                    <div className="h-6 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm border border-white/20">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${topic.percentage}%` }}
                         transition={{ duration: 1, ease: 'easeOut', delay: index * 0.1 }}
-                        className={`h-full flex items-center justify-end pr-3 ${index === 0
+                        className={`h-full flex items-center justify-end pr-2 ${index === 0
                           ? 'bg-gradient-to-r from-tiko-yellow to-tiko-orange'
                           : index === 1
                             ? 'bg-gradient-to-r from-tiko-blue/80 to-tiko-blue'
                             : 'bg-gradient-to-r from-white/40 to-white/20'
                           }`}
                       >
-                        <span className="text-white text-xs font-bold drop-shadow-md">
+                        <span className="text-white text-[10px] font-bold drop-shadow-md">
                           {topic.percentage}%
                         </span>
                       </motion.div>
@@ -336,7 +336,7 @@ const TopicSurvey: React.FC = () => {
                 ))}
               </div>
 
-              <div className="mt-6 pt-6 border-t border-white/10">
+              <div className="mt-4 pt-4 border-t border-white/10">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-white/70">Voti totali:</span>
                   <span className="text-tiko-yellow font-bold text-lg">{surveyData?.totalVotes || 0}</span>
@@ -347,9 +347,9 @@ const TopicSurvey: React.FC = () => {
         </div>
 
         {/* Footer Info */}
-        <div className="mt-6 text-center">
-          <p className="text-white/50 text-xs">
-            I risultati si aggiornano in tempo reale. Tutti i voti sono anonimi e vengono salvati in modo sicuro.
+        <div className="mt-4 text-center">
+          <p className="text-white/50 text-[10px]">
+            Risultati in tempo reale. Voto anonimo.
           </p>
         </div>
       </motion.div>
