@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { trackBookClick } from '../utils/analytics';
 import { Book } from '../types';
 import { RefreshCw, ArrowRight, Sparkles, ShoppingCart, Check } from 'lucide-react';
 
@@ -13,6 +14,11 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails }) => {
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
+
+    // Track book click in Google Analytics when flipping to see details
+    if (!isFlipped) {
+      trackBookClick(book.id, book.title);
+    }
   };
 
   return (

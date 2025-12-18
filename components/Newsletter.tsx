@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Sparkles, Gift } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { trackNewsletterSignup } from '../utils/analytics';
 
 const Newsletter: React.FC = () => {
   useEffect(() => {
@@ -30,7 +31,16 @@ const Newsletter: React.FC = () => {
     setTimeout(() => {
       const form = document.getElementById('sib-form') as HTMLFormElement;
       if (form) {
-        form.addEventListener('submit', () => {
+        form.addEventListener('submit', (event) => {
+          // Get email value for tracking
+          const emailInput = document.getElementById('EMAIL') as HTMLInputElement;
+          const email = emailInput?.value || '';
+
+          // Track newsletter signup in Google Analytics
+          if (email) {
+            trackNewsletterSignup(email);
+          }
+
           // After form submits to hidden iframe, show success message
           setTimeout(() => {
             const successMsg = document.getElementById('success-message');

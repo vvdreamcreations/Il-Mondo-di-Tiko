@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, Mail, User, Lightbulb } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { trackTopicSuggestion } from '../utils/analytics';
 
 const TopicSuggestionForm: React.FC = () => {
     const [name, setName] = useState<string>('');
@@ -33,6 +34,9 @@ const TopicSuggestionForm: React.FC = () => {
                 },
                 'zbzh-uRIg2LLvbH1O'
             );
+
+            // Track suggestion in Google Analytics
+            trackTopicSuggestion(!!email.trim());
 
             // Show success message
             setShowSuccess(true);

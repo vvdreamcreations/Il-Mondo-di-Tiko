@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Vote, Send, TrendingUp, Sparkles } from 'lucide-react';
+import { trackSurveyVote } from '../utils/analytics';
 
 interface Topic {
   id: string;
@@ -81,6 +82,12 @@ const TopicSurvey: React.FC = () => {
       localStorage.setItem('hasVotedTopic', 'true');
       setHasVoted(true);
       setShowSuccess(true);
+
+      // Track vote in Google Analytics
+      if (surveyData?.topics[selectedTopic]) {
+        const topicName = surveyData.topics[selectedTopic].name;
+        trackSurveyVote(selectedTopic, topicName);
+      }
 
       // Hide success message after 5 seconds
       setTimeout(() => setShowSuccess(false), 5000);
