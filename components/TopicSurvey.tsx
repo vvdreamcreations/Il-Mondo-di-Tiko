@@ -18,7 +18,16 @@ interface SurveyData {
 }
 
 const TopicSurvey: React.FC = () => {
-  const [surveyData, setSurveyData] = useState<SurveyData | null>(null);
+  // Initialize with default topics for instant display
+  const [surveyData, setSurveyData] = useState<SurveyData | null>({
+    topics: {
+      'fear': { id: 'fear', name: 'La paura', emoji: '😨', votes: 0 },
+      'jealousy': { id: 'jealousy', name: 'La gelosia', emoji: '😠', votes: 0 },
+      'sharing': { id: 'sharing', name: 'La condivisione', emoji: '🤝', votes: 0 },
+      'friendship': { id: 'friendship', name: "L'amicizia", emoji: '💖', votes: 0 }
+    },
+    totalVotes: 0
+  });
   const [selectedTopic, setSelectedTopic] = useState<string>('');
   const [previousVote, setPreviousVote] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -135,7 +144,9 @@ const TopicSurvey: React.FC = () => {
       .sort((a, b) => b.votes - a.votes);
   };
 
-  if (isLoading) {
+
+  // Only show full loading screen on very first load when no data at all
+  if (isLoading && !surveyData) {
     return (
       <section className="container mx-auto px-4">
         <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 text-center">
@@ -146,13 +157,14 @@ const TopicSurvey: React.FC = () => {
     );
   }
 
-  if (error) {
+  // Show error only if critical failure and no data
+  if (error && !surveyData) {
     return (
       <section className="container mx-auto px-4">
         <div className="bg-red-500/20 backdrop-blur-xl rounded-3xl p-8 text-center border border-red-500/40">
           <p className="text-white">{error}</p>
           <button
-            onClick={loadSurveyData}
+            onClick={() => loadSurveyData(false)}
             className="mt-4 px-6 py-2 bg-tiko-yellow rounded-xl text-white hover:bg-tiko-orange transition-colors"
           >
             Riprova
@@ -163,6 +175,7 @@ const TopicSurvey: React.FC = () => {
   }
 
   const rankings = calculateRankings();
+
 
   return (
     <section className="container mx-auto px-4">
