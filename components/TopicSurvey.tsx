@@ -73,10 +73,11 @@ const TopicSurvey: React.FC = () => {
 
     try {
       // Submit vote to Google Sheets
+      // Using text/plain to avoid CORS preflight (OPTIONS) that Apps Script doesn't handle
       const response = await fetch(GOOGLE_SHEETS_API, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'text/plain',
         },
         body: JSON.stringify({
           topicId: selectedTopic
