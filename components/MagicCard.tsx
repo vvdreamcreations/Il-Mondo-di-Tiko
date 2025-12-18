@@ -80,30 +80,28 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
             <div className="mb-6">
               <Sparkles className={`${compact ? 'w-8 h-8' : 'w-10 h-10'} text-tiko-yellow fill-current animate-pulse`} />
             </div>
-            <p className={`font-sans text-white/95 ${compact ? 'text-base leading-snug' : 'text-xl leading-relaxed'} italic font-medium drop-shadow-md text-center`}>
+            <p className={`font-sans text-white/95 ${compact ? 'text-base leading-snug' : 'text-xl leading-relaxed'} italic font-medium drop-shadow-md text-center mb-6`}>
               "{book.shortDescription}"
             </p>
           </div>
 
-          <div className="w-full flex flex-col gap-4 mb-4">
+          <div className="w-full flex flex-col gap-3 mb-4 px-2">
             {/* Amazon Button - Prominent */}
-            <div className="flex flex-col gap-2">
-              <a
-                href={`https://www.amazon.it/dp/${book.asin}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className={`w-full ${compact ? 'px-4 py-3 text-base' : 'px-6 py-4 text-lg'} bg-gradient-to-r from-[#FF9900] to-[#FFB84D] text-white rounded-2xl font-black shadow-[0_4px_15px_rgba(255,153,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,153,0,0.6)] hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-3`}
-              >
-                <ShoppingCart size={compact ? 20 : 24} className="animate-bounce" />
-                Acquista su Amazon
-              </a>
+            <a
+              href={`https://www.amazon.it/dp/${book.asin}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className={`w-full ${compact ? 'px-4 py-3 text-base' : 'px-6 py-4 text-lg'} bg-gradient-to-r from-[#FF9900] to-[#FFB84D] text-white rounded-2xl font-black shadow-[0_4px_15px_rgba(255,153,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,153,0,0.6)] hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-3`}
+            >
+              <ShoppingCart size={compact ? 20 : 24} className="animate-bounce" />
+              Acquista su Amazon
+            </a>
 
-              {/* Kindle Unlimited Text */}
-              <div className={`flex items-center justify-center gap-1.5 text-white font-bold ${compact ? 'text-[10px] py-1 px-3' : 'text-xs py-1.5 px-4'} bg-tiko-blue/20 backdrop-blur-sm rounded-full mx-auto border border-tiko-blue/40 shadow-sm`}>
-                <Check size={compact ? 12 : 14} className="text-tiko-green" strokeWidth={4} />
-                <span>Gratis con <strong className="text-tiko-blue">Kindle Unlimited</strong></span>
-              </div>
+            {/* Kindle Unlimited Text - Full Width Consistent Style */}
+            <div className={`w-full flex items-center justify-center gap-1.5 text-white font-bold ${compact ? 'text-[10px] py-2' : 'text-xs py-2.5'} bg-tiko-blue/20 backdrop-blur-sm rounded-xl border border-tiko-blue/40 shadow-sm`}>
+              <Check size={compact ? 12 : 14} className="text-tiko-green" strokeWidth={4} />
+              <span>Gratis con <strong className="text-tiko-blue">Kindle Unlimited</strong></span>
             </div>
 
             {/* Read More Button */}
