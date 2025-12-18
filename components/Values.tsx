@@ -42,12 +42,12 @@ const Values: React.FC = () => {
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1, duration: 0.5, ease: "easeOut" }}
                                 whileHover={{
-                                    y: -12,
-                                    scale: 1.03,
-                                    boxShadow: "0 25px 50px -12px rgba(250, 204, 21, 0.4)",
+                                    y: -8,
+                                    scale: 1.02,
+                                    backgroundColor: "rgba(255, 255, 255, 0.1)", // Slight lighten on hover instead of heavy shadow
                                     borderColor: "rgba(250, 204, 21, 0.5)"
                                 }}
-                                className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 shadow-lg border border-white/10 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
+                                className="bg-white/5 rounded-3xl p-8 shadow-lg border border-white/10 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
                             >
                                 {/* Hover Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-b from-tiko-yellow/10 to-tiko-orange/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
