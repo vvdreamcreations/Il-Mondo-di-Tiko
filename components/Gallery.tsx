@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -158,8 +158,9 @@ const Gallery: React.FC = () => {
             {/* Image Modal */}
             <AnimatePresence>
                 {selectedImage && (
-                    ReactDOM.createPortal(
+                    createPortal(
                         <motion.div
+                            key="gallery-modal"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
