@@ -9,19 +9,19 @@ const Gallery: React.FC = () => {
 
     // Optimized images: lightweight thumbnails for carousel, full-size for modal
     const images = [
-        { thumb: '/Carosello/thumbs/03.webp', full: '/Carosello/full/03.png', alt: 'Galleria 1' },
-        { thumb: '/Carosello/thumbs/04.webp', full: '/Carosello/full/04.png', alt: 'Galleria 2' },
-        { thumb: '/Carosello/thumbs/06.webp', full: '/Carosello/full/06.png', alt: 'Galleria 3' },
-        { thumb: '/Carosello/thumbs/1.webp', full: '/Carosello/full/1.png', alt: 'Galleria 4' },
-        { thumb: '/Carosello/thumbs/10.webp', full: '/Carosello/full/10.png', alt: 'Galleria 5' },
-        { thumb: '/Carosello/thumbs/12.webp', full: '/Carosello/full/12.png', alt: 'Galleria 6' },
-        { thumb: '/Carosello/thumbs/16.webp', full: '/Carosello/full/16.png', alt: 'Galleria 7' },
-        { thumb: '/Carosello/thumbs/Coniglietto 1.webp', full: '/Carosello/full/Coniglietto 1.jpg', alt: 'Coniglietto 1' },
-        { thumb: '/Carosello/thumbs/Coniglietto 2.webp', full: '/Carosello/full/Coniglietto 2.jpg', alt: 'Coniglietto 2' },
-        { thumb: '/Carosello/thumbs/Coniglietto 3.webp', full: '/Carosello/full/Coniglietto 3.jpg', alt: 'Coniglietto 3' },
-        { thumb: '/Carosello/thumbs/Pennello 1.webp', full: '/Carosello/full/Pennello 1.jpg', alt: 'Pennello 1' },
-        { thumb: '/Carosello/thumbs/Pennello 2.webp', full: '/Carosello/full/Pennello 2.jpg', alt: 'Pennello 2' },
-        { thumb: '/Carosello/thumbs/Pennello 3.webp', full: '/Carosello/full/Pennello 3.jpg', alt: 'Pennello 3' },
+        { thumb: '/Carosello/thumbs/03.webp', full: '/Carosello/full/03.png', alt: 'Illustrazione Tiko lo scoiattolo che scopre la magia del bosco' },
+        { thumb: '/Carosello/thumbs/04.webp', full: '/Carosello/full/04.png', alt: 'Disegno per bambini Tiko e amici animali nel bosco incantato' },
+        { thumb: '/Carosello/thumbs/06.webp', full: '/Carosello/full/06.png', alt: 'Tiko lo scoiattolo affronta le sue emozioni - illustrazione libro per bambini' },
+        { thumb: '/Carosello/thumbs/1.webp', full: '/Carosello/full/1.png', alt: 'Copertina libro Tiko e i segreti della natura' },
+        { thumb: '/Carosello/thumbs/10.webp', full: '/Carosello/full/10.png', alt: 'Momento di calma e mindfulness per bambini con Tiko' },
+        { thumb: '/Carosello/thumbs/12.webp', full: '/Carosello/full/12.png', alt: 'Avventure di Tiko lo scoiattolo - storie educative' },
+        { thumb: '/Carosello/thumbs/16.webp', full: '/Carosello/full/16.png', alt: 'Illustrazione magica bosco e animali - Il Mondo di Tiko' },
+        { thumb: '/Carosello/thumbs/Coniglietto 1.webp', full: '/Carosello/full/Coniglietto 1.jpg', alt: 'Coniglietto amico di Tiko - personaggio storie per bambini' },
+        { thumb: '/Carosello/thumbs/Coniglietto 2.webp', full: '/Carosello/full/Coniglietto 2.jpg', alt: 'Coniglietto felice illustrazione libro infanzia' },
+        { thumb: '/Carosello/thumbs/Coniglietto 3.webp', full: '/Carosello/full/Coniglietto 3.jpg', alt: 'Disegno tenero coniglietto per insegnare la gentilezza' },
+        { thumb: '/Carosello/thumbs/Pennello 1.webp', full: '/Carosello/full/Pennello 1.jpg', alt: 'Pennello magico che colora le emozioni - illustrazione' },
+        { thumb: '/Carosello/thumbs/Pennello 2.webp', full: '/Carosello/full/Pennello 2.jpg', alt: 'Arte e creatività per bambini - il pennello di Tiko' },
+        { thumb: '/Carosello/thumbs/Pennello 3.webp', full: '/Carosello/full/Pennello 3.jpg', alt: 'Magia dei colori e delle emozioni nei libri di Tiko' },
     ];
 
     // Don't render if no images

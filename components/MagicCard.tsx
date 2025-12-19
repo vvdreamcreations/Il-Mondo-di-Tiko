@@ -39,7 +39,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
           <div className="h-full w-full relative">
             <img
               src={book.coverImage}
-              alt={book.title}
+              alt={`Copertina del libro ${book.title} - Storia illustrata per bambini sulle emozioni`}
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
 

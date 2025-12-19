@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
         <div className="flex-grow flex flex-col">
             <Helmet>
                 <title>Il Mondo di Tiko | Libri illustrati per bambini e crescita emotiva</title>
-                <meta name="description" content="Scopri Il Mondo di Tiko, libri per bambini che insegnano amicizia, resilienza e gestione delle emozioni. Storie magiche per piccoli lettori." />
+                <meta name="description" content="Scopri il mondo di Tiko: libri illustrati per bambini che insegnano a gestire le emozioni con dolcezza. Storie educative su rabbia, calma e gentilezza per crescere felici." />
                 <script type="application/ld+json">
                     {`
                     {
