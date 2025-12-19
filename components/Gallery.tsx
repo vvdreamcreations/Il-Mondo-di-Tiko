@@ -161,37 +161,33 @@ const Gallery: React.FC = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/90 backdrop-blur-lg"
+                        className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-xl"
                         onClick={() => setSelectedImage(null)}
                     >
-                        <motion.button
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.8 }}
+                        {/* Close Button - Fixed position to ensure visibility */}
+                        <button
                             onClick={(e) => {
                                 e.stopPropagation();
                                 setSelectedImage(null);
                             }}
-                            className="absolute top-6 right-6 z-10 p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-tiko-yellow hover:text-tiko-dark transition-colors border border-white/20 text-white shadow-2xl"
+                            className="absolute top-4 right-4 md:top-8 md:right-8 z-[80] p-3 bg-tiko-yellow text-tiko-dark rounded-full hover:scale-110 transition-transform shadow-lg border-2 border-white/20"
+                            aria-label="Chiudi"
                         >
-                            <X className="w-6 h-6" />
-                        </motion.button>
+                            <X className="w-6 h-6 md:w-8 md:h-8" strokeWidth={3} />
+                        </button>
 
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8 }}
+                            initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.8 }}
-                            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                            className="relative max-w-6xl max-h-[90vh] w-full"
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            className="relative w-full max-w-5xl flex items-center justify-center pointer-events-none"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="relative rounded-2xl overflow-hidden shadow-[0_0_100px_rgba(250,204,21,0.5)] border-4 border-tiko-yellow/50">
-                                <img
-                                    src={selectedImage}
-                                    alt="Immagine ingrandita"
-                                    className="w-full h-full object-contain max-h-[90vh]"
-                                />
-                            </div>
+                            <img
+                                src={selectedImage}
+                                alt="Immagine ingrandita"
+                                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border-4 border-white/10 pointer-events-auto"
+                            />
                         </motion.div>
                     </motion.div>
                 )}
