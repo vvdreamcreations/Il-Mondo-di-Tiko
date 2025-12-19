@@ -156,9 +156,10 @@ const Gallery: React.FC = () => {
             </section>
 
             {/* Image Modal */}
-            <AnimatePresence>
-                {selectedImage && (
-                    createPortal(
+            {/* Image Modal - Rendered via Portal to ensure it is above everything */}
+            {createPortal(
+                <AnimatePresence>
+                    {selectedImage && (
                         <motion.div
                             key="gallery-modal"
                             initial={{ opacity: 0 }}
@@ -192,11 +193,11 @@ const Gallery: React.FC = () => {
                                     className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border-4 border-white/10 pointer-events-auto"
                                 />
                             </motion.div>
-                        </motion.div>,
-                        document.body
-                    )
-                )}
-            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
         </>
     );
 };
