@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
 import Values from '../components/Values';
 import About from '../components/About';
@@ -28,6 +29,25 @@ const HomePage: React.FC = () => {
 
     return (
         <div className="flex-grow flex flex-col">
+            <Helmet>
+                <title>Il Mondo di Tiko | Libri illustrati per bambini e crescita emotiva</title>
+                <meta name="description" content="Scopri Il Mondo di Tiko, libri per bambini che insegnano amicizia, resilienza e gestione delle emozioni. Storie magiche per piccoli lettori." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "Organization",
+                        "name": "VV Dream Creations",
+                        "url": "https://www.vvdreamcreations.it",
+                        "logo": "https://www.vvdreamcreations.it/vv-dream-creations-logo.png",
+                        "sameAs": [
+                            "https://www.facebook.com/vvdreamcreations",
+                            "https://www.instagram.com/vvdreamcreations"
+                        ]
+                    }
+                `}
+                </script>
+            </Helmet>
             <Hero />
 
             {/* Wrapper for sections */}

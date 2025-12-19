@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Heart, Lightbulb, Vote, Sparkles } from 'lucide-react';
 import TopicSurvey from '../components/TopicSurvey';
@@ -8,6 +9,10 @@ import Footer from '../components/Footer';
 const LaTuaVoce: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col">
+            <Helmet>
+                <title>La Tua Voce | Partecipa alla creazione delle storie di Tiko</title>
+                <meta name="description" content="Vota i temi dei prossimi libri e suggerisci nuove idee. Il tuo parere aiuta a creare le avventure di Tiko." />
+            </Helmet>
             {/* Hero Section */}
             <section className="container mx-auto px-4 pt-24 pb-8">
                 <motion.div

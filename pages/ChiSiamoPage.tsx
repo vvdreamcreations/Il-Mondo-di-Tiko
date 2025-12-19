@@ -1,10 +1,15 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
 
 const ChiSiamoPage: React.FC = () => {
     return (
         <div className="flex-grow flex flex-col pb-24">
+            <Helmet>
+                <title>Chi Siamo | VV Dream Creations e Il Mondo di Tiko</title>
+                <meta name="description" content="Conosci gli autori e l'illustratrice dietro Il Mondo di Tiko. La nostra missione è creare storie che ispirano e insegnano valori importanti." />
+            </Helmet>
             <div className="container mx-auto px-4 pt-32">
                 {/* Page Header */}
                 <motion.div

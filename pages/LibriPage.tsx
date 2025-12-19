@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { BOOKS } from '../constants';
@@ -7,6 +8,35 @@ import Footer from '../components/Footer';
 const LibriPage: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col pb-24">
+            <Helmet>
+                <title>I Libri di Tiko | Storie di amicizia, emozioni e magia</title>
+                <meta name="description" content="Esplora la collana di libri di Tiko: il Pennello Magico, il Sassolino della Calma e altri. Favole educative per la crescita dei tuoi bambini." />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org",
+                        "@type": "ItemList",
+                        "itemListElement": [
+                            ${BOOKS.map((book, index) => `{
+                                "@type": "ListItem",
+                                "position": ${index + 1},
+                                "item": {
+                                    "@type": "Book",
+                                    "name": "${book.title}",
+                                    "description": "${book.shortDescription}",
+                                    "image": "${book.coverImage}",
+                                    "url": "https://www.vvdreamcreations.it/libri#${book.id}",
+                                    "author": {
+                                        "@type": "Organization",
+                                        "name": "VV Dream Creations"
+                                    }
+                                }
+                            }`).join(',')}
+                        ]
+                    }
+                `}
+                </script>
+            </Helmet>
             <div className="container mx-auto px-4 pt-32">
                 {/* Page Header */}
                 <motion.div

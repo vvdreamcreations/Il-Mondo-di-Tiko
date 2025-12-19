@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
@@ -6,6 +7,10 @@ import Footer from '../components/Footer';
 const NewsletterPage: React.FC = () => {
     return (
         <div className="flex-grow flex flex-col pb-24">
+            <Helmet>
+                <title>Newsletter | Resta aggiornato sul Mondo di Tiko</title>
+                <meta name="description" content="Iscriviti alla newsletter per ricevere contenuti esclusivi, attività per bambini e anteprime sui nuovi libri." />
+            </Helmet>
             <div className="container mx-auto px-4 pt-32">
                 {/* Page Header */}
                 <motion.div
