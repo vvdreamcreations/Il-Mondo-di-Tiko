@@ -259,8 +259,8 @@ const CookiePolicy: React.FC = () => {
                             </h3>
                             <p className="text-white/90">
                                 Per qualsiasi domanda sui cookie o sulle nostre politiche, contattaci a:{' '}
-                                <a href="mailto:fra.selfpublishing@gmail.com" className="text-tiko-yellow hover:underline font-bold">
-                                    fra.selfpublishing@gmail.com
+                                <a href="mailto:info@vvdreamcreations.it" className="text-tiko-yellow hover:underline font-bold">
+                                    info@vvdreamcreations.it
                                 </a>
                             </p>
                         </div>

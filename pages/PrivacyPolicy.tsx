@@ -48,7 +48,7 @@ const PrivacyPolicy: React.FC = () => {
                         </div>
                         <div className="text-white/90 space-y-2 pl-10">
                             <p><strong>Nome:</strong> VV Dream Creations</p>
-                            <p><strong>Email:</strong> <a href="mailto:fra.selfpublishing@gmail.com" className="text-tiko-yellow hover:text-tiko-orange underline">fra.selfpublishing@gmail.com</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:info@vvdreamcreations.it" className="text-tiko-yellow hover:text-tiko-orange underline">info@vvdreamcreations.it</a></p>
                         </div>
                     </div>
 
@@ -183,7 +183,7 @@ const PrivacyPolicy: React.FC = () => {
                                 <li><strong>Reclamo</strong>: Presentare reclamo al Garante Privacy</li>
                             </ul>
                             <p className="mt-4 text-white/90">
-                                Per esercitare i tuoi diritti, contattaci a: <a href="mailto:fra.selfpublishing@gmail.com" className="text-tiko-yellow hover:underline">fra.selfpublishing@gmail.com</a>
+                                Per esercitare i tuoi diritti, contattaci a: <a href="mailto:info@vvdreamcreations.it" className="text-tiko-yellow hover:underline">info@vvdreamcreations.it</a>
                             </p>
                         </div>
                     </div>
@@ -252,8 +252,8 @@ const PrivacyPolicy: React.FC = () => {
                             </h3>
                             <p className="text-white/90">
                                 Per qualsiasi domanda sulla nostra Privacy Policy o per esercitare i tuoi diritti, contattaci a:{' '}
-                                <a href="mailto:fra.selfpublishing@gmail.com" className="text-tiko-yellow hover:underline font-bold">
-                                    fra.selfpublishing@gmail.com
+                                <a href="mailto:info@vvdreamcreations.it" className="text-tiko-yellow hover:underline font-bold">
+                                    info@vvdreamcreations.it
                                 </a>
                             </p>
                         </div>

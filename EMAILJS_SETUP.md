@@ -39,7 +39,7 @@ Hai già un account EmailJS, quindi:
    ---
    Questo messaggio è stato inviato dal form su vvdreamcreations.it
    ```
-   - To Email: `fra.selfpublishing@gmail.com`
+   - To Email: `info@vvdreamcreations.it`
    - Save
 
 4. **Account** → General → Copia la **Public Key** (es: `AbC123XyZ`)
@@ -95,7 +95,7 @@ funzionerà sia in locale che su GitHub Pages (perché EmailJS funziona lato cli
 **Vantaggi**:
 - ✅ Funziona su hosting statico
 - ✅ API key sicura (gestita da EmailJS)
-- ✅ Email dirette a fra.selfpublishing@gmail.com
+- ✅ Email dirette a info@vvdreamcreations.it
 - ✅ Form separato per non confondere l'utente
 
 ---

@@ -152,7 +152,7 @@ function errorResponse(message) {
 
 **Compila così**:
 - **Descrizione**: `Sondaggio API v1`
-- **Esegui come**: `Me (fra.selfpublishing@gmail.com)` o il tuo account
+- **Esegui come**: `Me (info@vvdreamcreations.it)` o il tuo account
 - **Chi ha accesso**: **Chiunque** ⚠️ IMPORTANTE
 - Click **"Esegui distribuzione"**
 

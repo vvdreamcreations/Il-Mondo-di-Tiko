@@ -47,7 +47,7 @@ const PrivacyPolicyPage: React.FC = () => {
                                 </h2>
                                 <p className="drop-shadow-md">
                                     <strong className="text-tiko-yellow">Titolare del Trattamento dei Dati:</strong> VV Dream Creations<br />
-                                    <strong className="text-tiko-yellow">Email di contatto:</strong> <a href="mailto:fra.selfpublishing@gmail.com" className="text-tiko-yellow hover:text-tiko-orange transition-colors underline">fra.selfpublishing@gmail.com</a>
+                                    <strong className="text-tiko-yellow">Email di contatto:</strong> <a href="mailto:info@vvdreamcreations.it" className="text-tiko-yellow hover:text-tiko-orange transition-colors underline">info@vvdreamcreations.it</a>
                                 </p>
                             </section>
 
@@ -195,7 +195,7 @@ const PrivacyPolicyPage: React.FC = () => {
                                 </p>
                                 <ul className="list-disc list-inside space-y-2 mb-4">
                                     <li className="drop-shadow-md">Per la newsletter: Clicca sul link "Annulla iscrizione" presente in fondo a ogni newsletter ricevuta</li>
-                                    <li className="drop-shadow-md">Per richieste generali: Invia un'email a <a href="mailto:fra.selfpublishing@gmail.com" className="text-tiko-yellow hover:text-tiko-orange transition-colors underline">fra.selfpublishing@gmail.com</a> con oggetto "Richiesta GDPR"</li>
+                                    <li className="drop-shadow-md">Per richieste generali: Invia un'email a <a href="mailto:info@vvdreamcreations.it" className="text-tiko-yellow hover:text-tiko-orange transition-colors underline">info@vvdreamcreations.it</a> con oggetto "Richiesta GDPR"</li>
                                 </ul>
                                 <p className="drop-shadow-md">
                                     Risponderemo alla tua richiesta entro 30 giorni.
@@ -285,7 +285,7 @@ const PrivacyPolicyPage: React.FC = () => {
                                     Per qualsiasi domanda o richiesta relativa a questa Privacy Policy o al trattamento dei tuoi dati personali, puoi contattarci a:
                                 </p>
                                 <p className="drop-shadow-md">
-                                    <strong className="text-tiko-yellow">Email:</strong> <a href="mailto:fra.selfpublishing@gmail.com" className="text-tiko-yellow hover:text-tiko-orange transition-colors underline">fra.selfpublishing@gmail.com</a>
+                                    <strong className="text-tiko-yellow">Email:</strong> <a href="mailto:info@vvdreamcreations.it" className="text-tiko-yellow hover:text-tiko-orange transition-colors underline">info@vvdreamcreations.it</a>
                                 </p>
                                 <p className="drop-shadow-md mt-6 text-center font-semibold text-white">
                                     VV Dream Creations si impegna a rispettare la tua privacy e a trattare i tuoi dati con la massima cura e trasparenza.

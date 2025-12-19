@@ -37,7 +37,7 @@ Per testare che le email vengano inviate correttamente:
 1. Avvia il server di sviluppo: `npm run dev`
 2. Vai alla homepage e scorri fino al sondaggio
 3. Vota per un tema
-4. Controlla la tua casella email `fra.selfpublishing@gmail.com`
+4. Controlla la tua casella email `info@vvdreamcreations.it`
 
 ## Aggiornamento dei Voti nel File JSON
 
