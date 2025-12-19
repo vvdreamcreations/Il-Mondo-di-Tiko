@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -157,39 +158,42 @@ const Gallery: React.FC = () => {
             {/* Image Modal */}
             <AnimatePresence>
                 {selectedImage && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-xl"
-                        onClick={() => setSelectedImage(null)}
-                    >
-                        {/* Close Button - Fixed position to ensure visibility */}
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedImage(null);
-                            }}
-                            className="absolute top-4 right-4 md:top-8 md:right-8 z-[80] p-3 bg-tiko-yellow text-tiko-dark rounded-full hover:scale-110 transition-transform shadow-lg border-2 border-white/20"
-                            aria-label="Chiudi"
-                        >
-                            <X className="w-6 h-6 md:w-8 md:h-8" strokeWidth={3} />
-                        </button>
-
+                    ReactDOM.createPortal(
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            className="relative w-full max-w-5xl flex items-center justify-center pointer-events-none"
-                            onClick={(e) => e.stopPropagation()}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-xl"
+                            onClick={() => setSelectedImage(null)}
                         >
-                            <img
-                                src={selectedImage}
-                                alt="Immagine ingrandita"
-                                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border-4 border-white/10 pointer-events-auto"
-                            />
-                        </motion.div>
-                    </motion.div>
+                            {/* Close Button - Fixed position to ensure visibility */}
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedImage(null);
+                                }}
+                                className="absolute top-4 right-4 md:top-8 md:right-8 z-[10000] p-3 bg-tiko-yellow text-tiko-dark rounded-full hover:scale-110 transition-transform shadow-lg border-2 border-white/20"
+                                aria-label="Chiudi"
+                            >
+                                <X className="w-6 h-6 md:w-8 md:h-8" strokeWidth={3} />
+                            </button>
+
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                className="relative w-full max-w-5xl flex items-center justify-center pointer-events-none"
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <img
+                                    src={selectedImage}
+                                    alt="Immagine ingrandita"
+                                    className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border-4 border-white/10 pointer-events-auto"
+                                />
+                            </motion.div>
+                        </motion.div>,
+                        document.body
+                    )
                 )}
             </AnimatePresence>
         </>
