@@ -192,9 +192,14 @@ const MagicBackground: React.FC = () => {
         }
 
         // --- INSTANTIATION ---
-        const fireflies: Firefly[] = Array.from({ length: 20 }, () => new Firefly());
-        const dustParticles: MagicDust[] = Array.from({ length: 50 }, () => new MagicDust());
-        const leaves: Leaf[] = Array.from({ length: 15 }, () => new Leaf());
+        const isMobile = width < 768;
+        const fireflyCount = isMobile ? 5 : 20;
+        const dustCount = isMobile ? 15 : 50;
+        const leafCount = isMobile ? 4 : 15;
+
+        const fireflies: Firefly[] = Array.from({ length: fireflyCount }, () => new Firefly());
+        const dustParticles: MagicDust[] = Array.from({ length: dustCount }, () => new MagicDust());
+        const leaves: Leaf[] = Array.from({ length: leafCount }, () => new Leaf());
 
         // --- ANIMATION LOOP ---
         let startTimestamp: number | null = null;

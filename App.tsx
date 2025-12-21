@@ -30,7 +30,9 @@ const App: React.FC = () => {
             src="/sfondo-bosco-statico.webp"
             alt="Sfondo Bosco Magico"
             className="w-full h-full object-cover"
-            loading="lazy"
+            loading="eager"
+            width="1920"
+            height="1080"
           />
         </div>
 
