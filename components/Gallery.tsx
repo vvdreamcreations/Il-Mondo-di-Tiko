@@ -69,18 +69,18 @@ const Gallery: React.FC = () => {
                     {/* Navigation Arrows */}
                     <button
                         onClick={() => scroll('left')}
-                        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 p-3 md:p-4 bg-tiko-yellow/90 hover:bg-tiko-yellow rounded-full shadow-2xl hover:scale-110 transition-all duration-300"
+                        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-[60] p-6 bg-tiko-yellow/90 hover:bg-tiko-yellow rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group cursor-pointer"
                         aria-label="Scorri a sinistra"
                     >
-                        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-tiko-dark" strokeWidth={3} />
+                        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-tiko-dark group-hover:-translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
 
                     <button
                         onClick={() => scroll('right')}
-                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 p-3 md:p-4 bg-tiko-yellow/90 hover:bg-tiko-yellow rounded-full shadow-2xl hover:scale-110 transition-all duration-300"
+                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-[60] p-6 bg-tiko-yellow/90 hover:bg-tiko-yellow rounded-full shadow-2xl hover:scale-110 transition-all duration-300 group cursor-pointer"
                         aria-label="Scorri a destra"
                     >
-                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-tiko-dark" strokeWidth={3} />
+                        <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-tiko-dark group-hover:translate-x-1 transition-transform" strokeWidth={3} />
                     </button>
 
                     {/* Gradient overlays */}
@@ -106,7 +106,7 @@ const Gallery: React.FC = () => {
                                 className="relative group flex-shrink-0"
                             >
                                 <div
-                                    className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl cursor-pointer"
+                                    className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer transform-gpu"
                                     onClick={() => setSelectedImage(image.full)}
                                 >
                                     {/* Glow effect */}
@@ -118,6 +118,7 @@ const Gallery: React.FC = () => {
                                         alt={image.alt}
                                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                         loading="lazy"
+                                        decoding="async"
                                         draggable="false"
                                     />
 
@@ -174,7 +175,7 @@ const Gallery: React.FC = () => {
                                     e.stopPropagation();
                                     setSelectedImage(null);
                                 }}
-                                className="absolute top-4 right-4 md:top-8 md:right-8 z-[10000] p-3 bg-tiko-yellow text-tiko-dark rounded-full hover:scale-110 transition-transform shadow-lg border-2 border-white/20"
+                                className="absolute top-4 right-4 md:top-8 md:right-8 z-[10000] p-4 bg-tiko-yellow text-tiko-dark rounded-full hover:scale-110 transition-transform shadow-lg border-2 border-white/20"
                                 aria-label="Chiudi"
                             >
                                 <X className="w-6 h-6 md:w-8 md:h-8" strokeWidth={3} />
@@ -191,6 +192,8 @@ const Gallery: React.FC = () => {
                                     src={selectedImage}
                                     alt="Immagine ingrandita"
                                     className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl border-4 border-white/10 pointer-events-auto"
+                                    loading="eager"
+                                    decoding="async"
                                 />
                             </motion.div>
                         </motion.div>

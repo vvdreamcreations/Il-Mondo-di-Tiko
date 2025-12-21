@@ -25,26 +25,26 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
       <div className="container mx-auto">
-        <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-6 py-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)] border border-white/20">
+        <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-2xl px-6 py-3 shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] border border-white/30 ring-1 ring-white/20 hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] transition-all duration-500">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <NavLink
               to="/"
               onClick={scrollToTop}
-              className="font-display text-2xl font-bold text-white hover:text-tiko-yellow transition-colors"
+              className="font-display text-2xl font-bold text-white hover:text-tiko-yellow transition-colors relative z-10 py-1"
             >
               Il Mondo di Tiko
             </NavLink>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 h-full">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.to}
                   to={link.to}
                   onClick={scrollToTop}
                   className={({ isActive }) =>
-                    `font-medium transition-all duration-300 relative inline-block px-3 py-2 ${isActive
+                    `relative z-50 flex items-center justify-center h-full px-5 py-3 xl:px-6 transition-all duration-300 font-medium text-sm xl:text-base group max-xl:px-3 ${isActive
                       ? 'text-tiko-yellow'
                       : 'text-white hover:text-tiko-yellow'
                     }`
@@ -52,15 +52,17 @@ const Navbar: React.FC = () => {
                 >
                   {({ isActive }) => (
                     <>
-                      {link.label}
+                      <span className="relative z-10">{link.label}</span>
                       {isActive && (
                         <motion.div
                           layoutId="navbar-indicator"
-                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-tiko-yellow rounded-full"
+                          className="absolute -bottom-1 left-3 right-3 h-0.5 bg-tiko-yellow rounded-full"
                           initial={false}
                           transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                         />
                       )}
+                      {/* Hover bg for better hit area visualization (optional) */}
+                      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-xl transition-colors duration-200" />
                     </>
                   )}
                 </NavLink>
@@ -70,7 +72,7 @@ const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
-              className="md:hidden text-white hover:text-tiko-yellow transition-colors"
+              className="lg:hidden text-white hover:text-tiko-yellow transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -85,7 +87,7 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="md:hidden overflow-hidden"
+                className="lg:hidden overflow-hidden"
               >
                 <div className="pt-4 pb-2 space-y-3">
                   {navLinks.map((link) => (

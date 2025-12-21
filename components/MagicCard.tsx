@@ -31,7 +31,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
         transition={{ duration: 0.6, type: 'spring', stiffness: 260, damping: 20 }}
       >
         {/* FRONT FACE */}
-        <div className="absolute inset-0 h-full w-full backface-hidden rounded-[2rem] bg-white shadow-2xl overflow-hidden border border-white/20 transition-all duration-300 group-hover:shadow-[0_20px_50px_rgba(251,191,36,0.3)] group-hover:scale-[1.02] group-hover:border-tiko-yellow/50">
+        <div className="absolute inset-0 h-full w-full backface-hidden rounded-[2rem] bg-white shadow-xl overflow-hidden border border-white/20 transition-all duration-300 group-hover:shadow-[0_15px_40px_rgba(251,191,36,0.2)] group-hover:scale-[1.02] group-hover:border-tiko-yellow/50">
 
           {/* REMOVED the white gradient overlay that was washing out the image */}
 
@@ -41,6 +41,8 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
               src={book.coverImage}
               alt={`Copertina del libro ${book.title} - Storia illustrata per bambini sulle emozioni`}
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
             />
 
             {/* Gradient Overlay for Text Visibility */}
@@ -74,7 +76,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
 
         {/* BACK FACE */}
         <div
-          className="absolute inset-0 h-full w-full backface-hidden rotate-y-180 rounded-[2rem] shadow-2xl px-6 pt-8 pb-12 flex flex-col justify-between items-center text-center bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl border-4 border-tiko-yellow/30"
+          className="absolute inset-0 h-full w-full backface-hidden rotate-y-180 rounded-[2rem] shadow-xl px-6 pt-8 pb-12 flex flex-col justify-between items-center text-center bg-gray-900/80 backdrop-blur-[20px] border-4 border-tiko-yellow/30"
         >
           <div className="w-full flex-grow flex flex-col justify-center items-center px-4">
             <div className="mb-4">
@@ -92,9 +94,9 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className={`w-full ${compact ? 'px-3 py-2 text-sm' : 'px-4 py-2.5 text-base'} bg-gradient-to-r from-[#FF9900] to-[#FFB84D] text-white rounded-xl font-black shadow-[0_4px_15px_rgba(255,153,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,153,0,0.6)] hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2`}
+              className={`w-full ${compact ? 'px-3 py-3 text-sm' : 'px-4 py-3.5 text-base'} bg-gradient-to-r from-[#FF9900] to-[#FFB84D] text-white rounded-xl font-black shadow-[0_4px_15px_rgba(255,153,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,153,0,0.6)] hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer z-50 relative`}
             >
-              <ShoppingCart size={compact ? 16 : 20} className="animate-bounce" />
+              <ShoppingCart size={compact ? 18 : 22} className="animate-bounce" />
               Acquista su Amazon
             </a>
 
@@ -110,10 +112,10 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
                 e.stopPropagation();
                 onOpenDetails(book);
               }}
-              className={`w-full group/btn ${compact ? 'px-3 py-2 text-xs' : 'px-4 py-2 text-sm'} bg-transparent border-2 border-white/30 text-white rounded-xl font-bold hover:border-tiko-yellow hover:text-tiko-yellow hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm`}
+              className={`w-full group/btn ${compact ? 'px-3 py-3 text-xs' : 'px-4 py-3 text-sm'} bg-transparent border-2 border-white/30 text-white rounded-xl font-bold hover:border-tiko-yellow hover:text-tiko-yellow hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm cursor-pointer z-50 relative`}
             >
-              <span className="relative z-10">Dettagli & Benefici</span>
-              <ArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
+              <span className="relative z-10 pointer-events-none">Dettagli & Benefici</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform pointer-events-none" />
             </button>
           </div>
         </div>

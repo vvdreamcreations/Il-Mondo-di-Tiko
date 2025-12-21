@@ -21,16 +21,19 @@ const Values: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.4 }}
-                className="bg-white/10 backdrop-blur-2xl rounded-[3rem] p-8 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20"
+                className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-[3rem] p-6 md:p-12 shadow-[inset_0_0_40px_rgba(255,255,255,0.1)] border border-white/30 relative overflow-hidden"
             >
-                <div className="text-center mb-16">
+                {/* Subtle sheen overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
+
+                <div className="text-center mb-12 relative z-10">
                     <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
                         Perché i nostri libri conquistano<br />grandi e piccoli...
                     </h2>
                     <div className="h-1.5 w-32 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)]" />
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
                     {VALUES.map((value, index) => {
                         const Icon = iconMap[value.iconName as keyof typeof iconMap];
                         return (
@@ -44,31 +47,31 @@ const Values: React.FC = () => {
                                 whileHover={{
                                     y: -8,
                                     scale: 1.02,
-                                    backgroundColor: "rgba(255, 255, 255, 0.1)", // Slight lighten on hover instead of heavy shadow
-                                    borderColor: "rgba(250, 204, 21, 0.5)"
+                                    backgroundColor: "rgba(255, 255, 255, 0.15)",
+                                    borderColor: "rgba(250, 204, 21, 0.6)"
                                 }}
-                                className="bg-white/5 rounded-3xl p-8 shadow-lg border border-white/10 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
+                                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-[inset_0_0_20px_rgba(255,255,255,0.05)] border border-white/20 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
                             >
                                 {/* Hover Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-b from-tiko-yellow/10 to-tiko-orange/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                                 {/* Top Accent Line */}
-                                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-tiko-yellow to-tiko-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center shadow-[0_0_10px_rgba(250,204,21,0.6)]" />
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-tiko-yellow to-tiko-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center shadow-[0_0_10px_rgba(250,204,21,0.6)]" />
 
-                                <div className="relative z-10 w-20 h-20 rounded-2xl bg-tiko-yellow/20 backdrop-blur-sm flex items-center justify-center text-tiko-yellow mb-6 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-colors duration-300 shadow-[0_4px_15px_rgba(250,204,21,0.2)] group-hover:shadow-[0_10px_30px_rgba(250,204,21,0.5)]">
-                                    <Icon size={40} strokeWidth={2} className="transform group-hover:scale-110 transition-transform duration-300" />
+                                <div className="relative z-10 w-16 h-16 rounded-2xl bg-tiko-yellow/20 backdrop-blur-sm flex items-center justify-center text-tiko-yellow mb-4 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-colors duration-300 shadow-[0_4px_15px_rgba(250,204,21,0.2)] group-hover:shadow-[0_10px_30px_rgba(250,204,21,0.5)]">
+                                    <Icon size={32} strokeWidth={2} className="transform group-hover:scale-110 transition-transform duration-300" />
                                 </div>
 
-                                <h3 className="relative z-10 font-display text-xl font-bold text-white mb-3 group-hover:text-tiko-yellow transition-colors drop-shadow-lg">
+                                <h3 className="relative z-10 font-display text-lg font-bold text-white mb-2 group-hover:text-tiko-yellow transition-colors drop-shadow-lg">
                                     {value.title}
                                 </h3>
 
-                                <p className="relative z-10 text-white/80 text-sm leading-relaxed mb-6 flex-grow font-medium drop-shadow-md">
+                                <p className="relative z-10 text-white/80 text-sm leading-relaxed mb-4 flex-grow font-medium drop-shadow-md">
                                     {value.description}
                                 </p>
 
                                 <div
-                                    className="relative z-10 mt-auto px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold text-xs flex items-center gap-2 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-all duration-300 border border-white/20 group-hover:border-tiko-yellow shadow-lg"
+                                    className="relative z-10 mt-auto px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold text-xs flex items-center gap-2 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-all duration-300 border border-white/20 group-hover:border-tiko-yellow shadow-lg w-full justify-center"
                                 >
                                     <Plus size={14} />
                                     <span>Scopri di più</span>
@@ -82,7 +85,7 @@ const Values: React.FC = () => {
             {/* Value Detail Modal */}
             <AnimatePresence>
                 {selectedValue && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-20 md:pt-24">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-16 md:pt-20">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -96,16 +99,17 @@ const Values: React.FC = () => {
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 30 }}
                             transition={{ type: "spring", duration: 0.6, bounce: 0.3 }}
-                            className="bg-white rounded-[2.5rem] shadow-2xl w-full max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[80vh] md:max-h-[85vh]"
+                            className="bg-white/95 backdrop-blur-2xl rounded-[2rem] shadow-2xl w-[95vw] md:w-[90vw] max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[80vh] md:max-h-[85vh]"
                         >
                             <button
                                 onClick={() => setSelectedValue(null)}
-                                className="absolute top-4 right-4 z-50 bg-white/80 backdrop-blur text-gray-500 p-2 rounded-full hover:bg-gray-100 hover:text-red-500 transition-all shadow-lg"
+                                className="absolute top-2 right-2 z-[100] bg-white/80 backdrop-blur text-gray-500 p-4 rounded-full hover:bg-gray-100 hover:text-red-500 transition-all shadow-lg border border-gray-100 cursor-pointer"
+                                aria-label="Chiudi dettaglio"
                             >
-                                <X size={24} />
+                                <X size={28} />
                             </button>
 
-                            {/* Image Section - Sticky on Desktop */}
+                            {/* Image Section - Smaller on mobile */}
                             <div className="w-full md:w-1/2 h-48 md:h-auto relative shrink-0">
                                 <img
                                     src={selectedValue.image}
@@ -118,17 +122,17 @@ const Values: React.FC = () => {
                             </div>
 
                             {/* Content Section - Scrollable */}
-                            <div className="w-full md:w-1/2 flex flex-col bg-white relative h-full max-h-[60vh] md:max-h-full">
-                                <div className="overflow-y-auto p-8 md:p-10 custom-scrollbar">
-                                    <div className="hidden md:flex items-center gap-3 mb-6 text-tiko-orange sticky top-0 bg-white/95 backdrop-blur py-2 z-10">
-                                        <div className="p-2 bg-orange-100 rounded-lg">
+                            <div className="w-full md:w-1/2 flex flex-col relative h-full overflow-hidden">
+                                <div className="overflow-y-auto p-6 md:p-10 custom-scrollbar max-h-full">
+                                    <div className="hidden md:flex items-center gap-3 mb-6 text-tiko-orange pt-2 z-10">
+                                        <div className="p-2 bg-gradient-to-br from-orange-100 to-yellow-50 rounded-xl shadow-inner ml-2">
                                             {React.createElement(iconMap[selectedValue.iconName as keyof typeof iconMap], { size: 24 })}
                                         </div>
-                                        <h3 className="font-display font-bold text-3xl text-tiko-dark">{selectedValue.title}</h3>
+                                        <h3 className="font-display font-bold text-3xl text-tiko-dark drop-shadow-sm">{selectedValue.title}</h3>
                                     </div>
 
-                                    <div className="space-y-6">
-                                        <p className="text-gray-600 leading-relaxed text-lg font-medium">
+                                    <div className="space-y-6 text-left">
+                                        <p className="text-gray-600 leading-relaxed text-base md:text-lg font-medium">
                                             {selectedValue.description}
                                         </p>
 
@@ -139,7 +143,7 @@ const Values: React.FC = () => {
                                                 <Sparkles size={16} className="text-tiko-yellow" />
                                                 Il beneficio per il bambino
                                             </h4>
-                                            <p className="text-gray-600 leading-relaxed italic">
+                                            <p className="text-gray-600 leading-relaxed italic text-sm md:text-base">
                                                 {selectedValue.fullDescription}
                                             </p>
                                         </div>

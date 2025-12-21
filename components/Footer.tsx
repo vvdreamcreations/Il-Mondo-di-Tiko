@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
               onClick={() => {
                 window.dispatchEvent(new Event('openCookieSettings'));
               }}
-              className="hover:text-tiko-orange transition-colors hover:scale-110 transform duration-200 underline underline-offset-2"
+              className="hover:text-tiko-orange transition-colors hover:scale-110 transform duration-200"
             >
               Gestisci Cookie
             </button>

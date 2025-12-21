@@ -79,14 +79,16 @@ const Newsletter: React.FC = () => {
 `}</style>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.4 }}
-        className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-[3rem] p-8 md:p-16 shadow-[0_0_60px_rgba(0,0,0,0.8)] flex flex-col items-center gap-8 max-w-6xl mx-auto border border-tiko-yellow/30"
+        transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
+        className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-[3rem] p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center gap-8 max-w-6xl mx-auto border border-white/30 ring-1 ring-white/10 relative overflow-hidden"
       >
+        {/* Glass Reflection Effect */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
 
-        <div className="w-full text-center text-white">
+        <div className="w-full text-center text-white relative z-10">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Sparkles size={20} className="text-tiko-yellow animate-pulse" />
             <span className="font-bold uppercase tracking-widest text-sm text-white/80">Iscriviti</span>
@@ -138,11 +140,11 @@ const Newsletter: React.FC = () => {
                 {/* Nome Field */}
                 <div className="sib-input sib-form-block">
                   <div className="form__entry entry_block">
-                    <label className="block text-tiko-yellow font-bold mb-2 text-sm drop-shadow-md" htmlFor="NOME">
+                    <label className="block text-tiko-yellow font-bold mb-2 text-sm drop-shadow-md tracking-wider leading-relaxed" htmlFor="NOME">
                       Il tuo nome (opzionale)
                     </label>
                     <input
-                      className="w-full px-5 py-3 rounded-xl bg-black/30 backdrop-blur-sm border-2 border-white/20 focus:outline-none focus:ring-4 focus:ring-tiko-yellow/60 focus:border-tiko-yellow/50 transition-all placeholder:text-white/40 text-white font-medium"
+                      className="w-full px-5 py-4 rounded-xl bg-white/5 backdrop-blur-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-tiko-yellow/50 focus:border-tiko-yellow/50 transition-all placeholder:text-white/30 text-white font-medium shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]"
                       maxLength={200}
                       type="text"
                       id="NOME"
@@ -157,11 +159,11 @@ const Newsletter: React.FC = () => {
                 {/* Email Field */}
                 <div className="sib-input sib-form-block">
                   <div className="form__entry entry_block">
-                    <label className="block text-tiko-yellow font-bold mb-2 text-sm drop-shadow-md" htmlFor="EMAIL">
+                    <label className="block text-tiko-yellow font-bold mb-2 text-sm drop-shadow-md tracking-wider leading-relaxed" htmlFor="EMAIL">
                       La tua email magica *
                     </label>
                     <input
-                      className="w-full px-5 py-3 rounded-xl bg-black/30 backdrop-blur-sm border-2 border-white/20 focus:outline-none focus:ring-4 focus:ring-tiko-yellow/60 focus:border-tiko-yellow/50 transition-all placeholder:text-white/40 text-white font-medium"
+                      className="w-full px-5 py-4 rounded-xl bg-white/5 backdrop-blur-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-tiko-yellow/50 focus:border-tiko-yellow/50 transition-all placeholder:text-white/30 text-white font-medium shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)]"
                       type="email"
                       id="EMAIL"
                       name="EMAIL"
@@ -208,7 +210,7 @@ const Newsletter: React.FC = () => {
 
                 {/* Submit Button */}
                 <button
-                  className="w-full bg-gradient-to-r from-tiko-yellow to-tiko-orange text-tiko-dark font-bold py-4 rounded-xl shadow-[0_4px_20px_rgba(250,204,21,0.4)] hover:shadow-[0_6px_30px_rgba(250,204,21,0.6)] hover:scale-105 transition-all transform flex items-center justify-center gap-2 text-lg border-2 border-tiko-yellow/30"
+                  className="w-full bg-gradient-to-r from-tiko-yellow to-tiko-orange text-tiko-dark font-bold py-4 rounded-full shadow-[0_4px_15px_rgba(250,204,21,0.3)] hover:shadow-[0_6px_25px_rgba(250,204,21,0.5)] hover:scale-102 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 text-lg border-2 border-tiko-yellow/20"
                   type="submit"
                 >
                   <Gift className="w-5 h-5" />

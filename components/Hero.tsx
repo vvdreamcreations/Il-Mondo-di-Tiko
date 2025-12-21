@@ -35,9 +35,9 @@ const Hero: React.FC = () => {
           />
 
           <motion.div
-            className="inline-flex items-center gap-3 py-2 px-6 rounded-full bg-white/10 backdrop-blur-md border border-white/40 text-white font-bold text-sm md:text-base mb-6 shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+            className="inline-flex items-center gap-3 py-2 px-6 rounded-full bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-[20px] border border-white/30 text-white font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(255,255,255,0.1)] ring-1 ring-white/10"
             animate={{
-              boxShadow: ["0 0 10px rgba(255,255,255,0.2)", "0 0 30px rgba(255,255,255,0.6)", "0 0 10px rgba(255,255,255,0.2)"],
+              boxShadow: ["0 0 10px rgba(255,255,255,0.2)", "0 0 30px rgba(255,255,255,0.4)", "0 0 10px rgba(255,255,255,0.2)"],
               borderColor: ["rgba(255,255,255,0.4)", "rgba(255,255,255,0.8)", "rgba(255,255,255,0.4)"]
             }}
             transition={{ duration: 4, repeat: Infinity }}
@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
         >
           <a
             href="#/libri"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-tiko-yellow to-[#FF9900] text-tiko-dark px-12 py-5 rounded-full font-bold text-xl shadow-[0_0_40px_rgba(255,165,0,0.5)] hover:shadow-[0_0_60px_rgba(255,165,0,0.8)] hover:scale-105 transition-all duration-300 relative overflow-hidden group border-2 border-white/20"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-tiko-yellow to-[#FF9900] text-tiko-dark px-12 py-5 rounded-full font-bold text-xl shadow-[0_0_30px_rgba(255,165,0,0.4)] hover:shadow-[0_0_50px_rgba(255,165,0,0.7)] hover:scale-102 active:scale-95 transition-all duration-300 relative overflow-hidden group border-2 border-white/20"
           >
             <span className="relative z-10 flex items-center gap-2">
               Scopri i Libri di Tiko

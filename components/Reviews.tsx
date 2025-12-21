@@ -4,63 +4,66 @@ import { Star, Quote } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Reviews: React.FC = () => {
-  return (
-    <section className="container mx-auto px-4 overflow-hidden">
-      <div className="bg-black/40 backdrop-blur-xl rounded-[3rem] py-16 border border-white/10 shadow-2xl">
-        <div className="container mx-auto px-4 mb-12 text-center">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-            >
-                <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 text-white drop-shadow-md">Dicono di noi</h2>
-                <p className="text-white/80 text-lg">Le parole di chi ha già sognato con Tiko</p>
-            </motion.div>
-        </div>
+    return (
+        <section className="container mx-auto px-4 overflow-hidden py-4 md:py-6">
+            <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-[2rem] py-6 border border-white/30 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] ring-1 ring-white/10 relative overflow-hidden">
+                {/* Glass Sheen */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
 
-        <div className="relative w-full flex overflow-x-hidden group">
-            <motion.div 
-            className="flex gap-8 whitespace-nowrap"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-                repeat: Infinity, 
-                duration: 40, 
-                ease: "linear" 
-            }}
-            >
-            {/* Double the array to create seamless loop */}
-            {[...REVIEWS, ...REVIEWS].map((review, index) => (
-                <div 
-                key={`${review.id}-${index}`} 
-                className="w-[350px] md:w-[450px] bg-white/90 backdrop-blur-sm p-8 rounded-3xl flex-shrink-0 whitespace-normal border border-white/20 shadow-lg relative transform hover:scale-105 transition-transform duration-300"
-                >
-                <Quote className="absolute top-6 right-6 text-tiko-yellow/20 rotate-180" size={60} />
-                
-                <div className="flex gap-1 mb-4 text-tiko-yellow relative z-10">
-                    {[...Array(review.rating)].map((_, i) => (
-                    <Star key={i} size={18} fill="currentColor" strokeWidth={0} />
-                    ))}
+                <div className="container mx-auto px-4 mb-6 text-center relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 className="font-display text-2xl md:text-3xl font-bold mb-1 text-white drop-shadow-md">Dicono di noi</h2>
+                        <p className="text-white/80 text-sm md:text-base">Le parole di chi ha già sognato con Tiko</p>
+                    </motion.div>
                 </div>
-                <p className="text-gray-700 text-lg leading-relaxed mb-6 italic font-medium relative z-10">
-                    "{review.text}"
-                </p>
-                <div className="flex items-center gap-3 relative z-10">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-tiko-orange to-tiko-yellow flex items-center justify-center font-bold text-white text-xl shadow-md">
-                        {review.author.charAt(0)}
-                    </div>
-                    <span className="font-bold text-tiko-dark text-sm uppercase tracking-wide">{review.author}</span>
+
+                <div className="relative w-full flex overflow-x-hidden group py-2">
+                    <motion.div
+                        className="flex gap-4 whitespace-nowrap"
+                        animate={{ x: ["0%", "-50%"] }}
+                        transition={{
+                            repeat: Infinity,
+                            duration: 50,
+                            ease: "linear"
+                        }}
+                    >
+                        {/* Double the array to create seamless loop */}
+                        {[...REVIEWS, ...REVIEWS].map((review, index) => (
+                            <div
+                                key={`${review.id}-${index}`}
+                                className="w-[240px] md:w-[280px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-4 rounded-xl flex-shrink-0 whitespace-normal border border-white/20 shadow-lg relative transform hover:scale-105 transition-transform duration-300 hover:shadow-[0_8px_32px_rgba(31,38,135,0.15)] hover:border-white/40"
+                            >
+                                <Quote className="absolute top-3 right-3 text-white/10 rotate-180" size={24} />
+
+                                <div className="flex gap-0.5 mb-2 text-tiko-yellow relative z-10">
+                                    {[...Array(review.rating)].map((_, i) => (
+                                        <Star key={i} size={10} fill="currentColor" strokeWidth={0} />
+                                    ))}
+                                </div>
+                                <p className="text-white text-xs md:text-sm leading-relaxed mb-3 italic font-medium relative z-10 drop-shadow-sm line-clamp-4">
+                                    "{review.text}"
+                                </p>
+                                <div className="flex items-center gap-2 relative z-10">
+                                    <div className="w-6 h-6 rounded-full bg-gradient-to-tr from-tiko-orange to-tiko-yellow flex items-center justify-center font-bold text-white text-xs shadow-md border border-white/20">
+                                        {review.author.charAt(0)}
+                                    </div>
+                                    <span className="font-bold text-white text-[10px] uppercase tracking-wide drop-shadow-sm">{review.author}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </motion.div>
+
+                    {/* Gradient fades for edges - Improved visibility */}
+                    <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/20 to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900/10 to-transparent z-10 pointer-events-none" />
                 </div>
-                </div>
-            ))}
-            </motion.div>
-            
-            {/* Gradient fades for edges */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black/20 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black/20 to-transparent z-10 pointer-events-none" />
-        </div>
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 };
 
 export default Reviews;
