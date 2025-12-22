@@ -35,14 +35,17 @@ const App: React.FC = () => {
 
         {/* LAYER 1: DEEP VISUALS (Static Image) */}
         <div className="absolute inset-0 w-full h-full">
-          <img
-            src="/sfondo-bosco-statico.webp"
-            alt="Sfondo Bosco Magico"
-            className="w-full h-full object-cover"
-            loading="eager"
-            width="1920"
-            height="1080"
-          />
+          <picture>
+            <source media="(max-width: 768px)" srcSet="/sfondo-bosco-mobile.webp" />
+            <img
+              src="/sfondo-bosco-statico.webp"
+              alt="Sfondo Bosco Magico"
+              className="w-full h-full object-cover"
+              loading="eager"
+              width="1920"
+              height="1080"
+            />
+          </picture>
         </div>
 
         {/* LAYER 2: REAL-TIME PARTICLES (WebGL) */}
