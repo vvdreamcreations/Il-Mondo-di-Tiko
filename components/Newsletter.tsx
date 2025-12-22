@@ -4,8 +4,20 @@ import { motion } from 'framer-motion';
 import { trackNewsletterSignup } from '../utils/analytics';
 
 const Newsletter: React.FC = () => {
+  const containerRef = React.useRef(null);
+  const isInView = (motion as any).useInView ? (motion as any).useInView(containerRef, { once: true, margin: "200px" }) : true; // Fallback safely if version mismatch
+  // Note: framer-motion useInView hook might need import. Let's use standard framer-motion approach or a simple state.
+  // Actually, standard functional component with framer-motion/react imports:
+  // Let's rely on a simpler 'hasInteracted' or just ref check inside effect 
+  // But wait, the component is *already* using motion.div with whileInView.
+  // We can hook into onViewportEnter from motion.div!
+
+  const [shouldLoadScript, setShouldLoadScript] = React.useState(false);
+
   useEffect(() => {
-    // Load Brevo form script
+    if (!shouldLoadScript) return;
+
+    // Load Brevo form script only when section is active
     const script = document.createElement('script');
     script.src = 'https://sibforms.com/forms/end-form/build/main.js';
     script.defer = true;
@@ -28,7 +40,7 @@ const Newsletter: React.FC = () => {
     (window as any).AUTOHIDE = Boolean(0);
 
     // Handle form submit to show success without white page
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       const form = document.getElementById('sib-form') as HTMLFormElement;
       if (form) {
         form.addEventListener('submit', (event) => {
@@ -56,9 +68,12 @@ const Newsletter: React.FC = () => {
     }, 1000);
 
     return () => {
-      document.body.removeChild(script);
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+      clearTimeout(timer);
     };
-  }, []);
+  }, [shouldLoadScript]);
 
   return (
     <section className="container mx-auto px-4">
@@ -81,7 +96,8 @@ const Newsletter: React.FC = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true }}
+        onViewportEnter={() => setShouldLoadScript(true)}
+        viewport={{ once: true, margin: "200px" }}
         transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
         style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className="backdrop-blur-3xl rounded-[3rem] p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center gap-8 max-w-6xl mx-auto border border-white/30 ring-1 ring-white/10 relative overflow-hidden"
       >
