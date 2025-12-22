@@ -1,0 +1,19 @@
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="dust-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#E0F2FE;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#BAE6FD;stop-opacity:0.95" />
+      <stop offset="50%" style="stop-color:#7DD3FC;stop-opacity:0.7" />
+      <stop offset="75%" style="stop-color:#38BDF8;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#0EA5E9;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glow-dust">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle cx="256" cy="256" r="180" fill="url(#dust-glow)" filter="url(#glow-dust)" />
+</svg>

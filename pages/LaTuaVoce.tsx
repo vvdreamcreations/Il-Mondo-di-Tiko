@@ -60,7 +60,7 @@ const LaTuaVoce: React.FC = () => {
                         className="flex justify-center md:col-span-1"
                     >
                         <img
-                            src="/tiko-saluta.png"
+                            src="/tiko-saluta.webp"
                             alt="Tiko che saluta"
                             className="h-48 md:h-56 lg:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:scale-105 transition-transform duration-300"
                         />
@@ -119,3 +119,4 @@ const LaTuaVoce: React.FC = () => {
 };
 
 export default LaTuaVoce;
+

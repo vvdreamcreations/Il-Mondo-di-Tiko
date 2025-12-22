@@ -39,7 +39,7 @@ const HomePage: React.FC = () => {
                         "@type": "Organization",
                         "name": "VV Dream Creations",
                         "url": "https://www.vvdreamcreations.it",
-                        "logo": "https://www.vvdreamcreations.it/vv-dream-creations-logo.png",
+                        "logo": "https://www.vvdreamcreations.it/vv-dream-creations-logo.webp",
                         "sameAs": [
                             "https://www.facebook.com/vvdreamcreations",
                             "https://www.instagram.com/vvdreamcreations"
@@ -65,9 +65,6 @@ const HomePage: React.FC = () => {
                         transition={{ duration: 0.8 }}
                         className="bg-white/10 backdrop-blur-2xl rounded-[3rem] p-8 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20 relative overflow-hidden"
                     >
-                        {/* Shine effect on the glass container */}
-                        <div className="absolute -top-full -left-full w-[200%] h-[200%] bg-gradient-to-br from-transparent via-white/10 to-transparent rotate-45 pointer-events-none" />
-
                         {/* Section Title */}
                         <div className="text-center mb-16 relative z-10">
                             <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)]">
@@ -116,3 +113,5 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+
+

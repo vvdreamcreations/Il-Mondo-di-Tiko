@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
         >
           {/* Main Logo */}
           <motion.img
-            src="/il-mondo-di-tiko-logo.png"
+            src="/il-mondo-di-tiko-logo.webp"
             alt="Il Mondo di Tiko Logo"
             className="w-48 md:w-64 h-auto mb-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"
             initial={{ y: -50, opacity: 0 }}
@@ -104,3 +104,4 @@ const Hero: React.FC = () => {
 };
 
 export default Hero;
+

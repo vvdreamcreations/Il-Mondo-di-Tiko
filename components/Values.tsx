@@ -21,7 +21,7 @@ const Values: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.4 }}
-                className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-[3rem] p-6 md:p-12 shadow-[inset_0_0_40px_rgba(255,255,255,0.1)] border border-white/30 relative overflow-hidden"
+                style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className="backdrop-blur-3xl rounded-[3rem] p-6 md:p-12 shadow-[inset_0_0_40px_rgba(255,255,255,0.1)] border border-white/30 relative overflow-hidden"
             >
                 {/* Subtle sheen overlay */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
@@ -50,7 +50,7 @@ const Values: React.FC = () => {
                                     backgroundColor: "rgba(255, 255, 255, 0.15)",
                                     borderColor: "rgba(250, 204, 21, 0.6)"
                                 }}
-                                className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-[inset_0_0_20px_rgba(255,255,255,0.05)] border border-white/20 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
+                                className="bg-black/30 backdrop-blur-xl rounded-2xl p-6 shadow-[inset_0_0_20px_rgba(255,255,255,0.05)] border border-white/20 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
                             >
                                 {/* Hover Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-b from-tiko-yellow/10 to-tiko-orange/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -159,3 +159,11 @@ const Values: React.FC = () => {
 };
 
 export default Values;
+
+
+
+
+
+
+
+

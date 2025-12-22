@@ -23,7 +23,7 @@ const ChiSiamoPage: React.FC = () => {
                     </h1>
                     <div className="flex justify-center mb-8">
                         <img
-                            src="/vv-dream-creations-logo.png"
+                            src="/vv-dream-creations-logo.webp"
                             alt="VV Dream Creations Logo"
                             className="h-20 md:h-28 lg:h-32 w-auto object-contain hover:scale-105 transition-transform duration-300"
                             onError={(e) => {
@@ -76,3 +76,4 @@ const ChiSiamoPage: React.FC = () => {
 };
 
 export default ChiSiamoPage;
+

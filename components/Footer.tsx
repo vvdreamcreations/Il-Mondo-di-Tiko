@@ -5,11 +5,11 @@ const Footer: React.FC = () => {
   return (
     <footer className="relative z-10 py-8 md:py-12 text-white">
       <div className="container mx-auto px-4 text-center">
-        <div className="bg-black/30 backdrop-blur-md inline-block px-6 md:px-12 py-6 md:py-8 rounded-3xl border border-white/10 max-w-full">
+        <div style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(24px)" }} className="backdrop-blur-md inline-block px-6 md:px-12 py-6 md:py-8 rounded-3xl border border-white/10 max-w-full">
           {/* VV Dream Creations Logo */}
           <div className="mb-4 md:mb-6 flex justify-center">
             <img
-              src="/vv-dream-creations-logo.png"
+              src="/vv-dream-creations-logo.webp"
               alt="VV Dream Creations Logo"
               className="h-20 md:h-32 lg:h-36 w-auto object-contain hover:scale-105 transition-transform duration-300"
               onError={(e) => {
@@ -52,3 +52,7 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
+
+
+

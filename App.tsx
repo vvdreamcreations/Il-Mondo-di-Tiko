@@ -7,7 +7,7 @@ import { hasAnalyticsConsent, initializeAnalytics } from './utils/consent';
 
 // Lazy load non-critical components
 const MagicCursor = lazy(() => import('./components/MagicCursor'));
-const MagicBackground = lazy(() => import('./components/MagicBackground'));
+const MagicGL = lazy(() => import('./components/MagicGL'));
 
 const App: React.FC = () => {
 
@@ -36,9 +36,11 @@ const App: React.FC = () => {
           />
         </div>
 
-        {/* LAYER 2: REAL-TIME PARTICLES (Canvas) */}
+        {/* LAYER 2: REAL-TIME PARTICLES (WebGL) */}
         <Suspense fallback={null}>
-          <MagicBackground />
+          <div className="absolute inset-0 z-10 pointer-events-none">
+            <MagicGL />
+          </div>
         </Suspense>
 
         {/* LAYER 2: ATMOSPHERIC OVERLAYS */}

@@ -83,7 +83,7 @@ const Newsletter: React.FC = () => {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
-        className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-[3rem] p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center gap-8 max-w-6xl mx-auto border border-white/30 ring-1 ring-white/10 relative overflow-hidden"
+        style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className="backdrop-blur-3xl rounded-[3rem] p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center gap-8 max-w-6xl mx-auto border border-white/30 ring-1 ring-white/10 relative overflow-hidden"
       >
         {/* Glass Reflection Effect */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
@@ -231,3 +231,10 @@ const Newsletter: React.FC = () => {
 };
 
 export default Newsletter;
+
+
+
+
+
+
+

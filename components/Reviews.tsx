@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const Reviews: React.FC = () => {
     return (
         <section className="container mx-auto px-4 overflow-hidden py-4 md:py-6">
-            <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-[2rem] py-6 border border-white/30 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] ring-1 ring-white/10 relative overflow-hidden">
+            <div style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className=" backdrop-blur-3xl rounded-[2rem] py-6 border border-white/30 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] ring-1 ring-white/10 relative overflow-hidden">
                 {/* Glass Sheen */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
 
@@ -35,7 +35,7 @@ const Reviews: React.FC = () => {
                         {[...REVIEWS, ...REVIEWS].map((review, index) => (
                             <div
                                 key={`${review.id}-${index}`}
-                                className="w-[240px] md:w-[280px] bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl p-4 rounded-xl flex-shrink-0 whitespace-normal border border-white/20 shadow-lg relative transform hover:scale-105 transition-transform duration-300 hover:shadow-[0_8px_32px_rgba(31,38,135,0.15)] hover:border-white/40"
+                                className="w-64 min-h-56 backdrop-blur-xl bg-white/10 p-6 rounded-xl flex-shrink-0 flex flex-col whitespace-normal border border-white/20 shadow-lg relative transform hover:scale-105 transition-transform duration-300 hover:shadow-[0_8px_32px_rgba(31,38,135,0.15)] hover:border-white/40"
                             >
                                 <Quote className="absolute top-3 right-3 text-white/10 rotate-180" size={24} />
 
@@ -58,7 +58,7 @@ const Reviews: React.FC = () => {
                     </motion.div>
 
                     {/* Gradient fades for edges - Improved visibility */}
-                    <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black/20 to-transparent z-10 pointer-events-none" />
+                    <div style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className=" z-10 pointer-events-none" />
                     <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-gray-900/10 to-transparent z-10 pointer-events-none" />
                 </div>
             </div>
@@ -67,3 +67,6 @@ const Reviews: React.FC = () => {
 };
 
 export default Reviews;
+
+
+
