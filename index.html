@@ -15,7 +15,7 @@
 
   <!-- Security Headers -->
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://sibforms.com https://my.sendinblue.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com https://sibforms.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://sibforms.com https://my.sendinblue.com https://api.brevo.com https://api.emailjs.com https://*.google-analytics.com https://www.google-analytics.com https://analytics.google.com https://script.google.com https://script.googleusercontent.com; frame-src https://sibforms.com;">
+    content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://sibforms.com https://my.sendinblue.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://sibforms.com; img-src 'self' data: https:; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://sibforms.com https://my.sendinblue.com https://api.brevo.com https://api.emailjs.com https://*.google-analytics.com https://www.google-analytics.com https://analytics.google.com https://script.google.com https://script.googleusercontent.com; frame-src https://sibforms.com;">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -36,96 +36,25 @@
   <!-- Google Fonts: Quicksand (Headings) and Poppins (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'tiko-cream': '#FFFDD0',
-            'tiko-yellow': '#FACC15',
-            'tiko-orange': '#FDBA74',
-            'tiko-blue': '#7DD3FC',
-            'tiko-green': '#10B981',
-            'tiko-dark': '#1F2937',
-          },
-          fontFamily: {
-            sans: ['Poppins', 'sans-serif'],
-            display: ['Quicksand', 'sans-serif'],
-          },
-          animation: {
-            'gradient': 'gradient 8s linear infinite',
-            'float': 'float 6s ease-in-out infinite',
-          },
-          keyframes: {
-            gradient: {
-              '0%, 100%': {
-                'background-size': '200% 200%',
-                'background-position': 'left center'
-              },
-              '50%': {
-                'background-size': '200% 200%',
-                'background-position': 'right center'
-              },
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-20px)' },
-            }
-          },
-        },
-      },
-    }
-  </script>
-  <style>
-    /* Utility for hiding scrollbar in modal but allowing scroll */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
 
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    /* 3D Transform Utilities */
-    .perspective-1000 {
-      perspective: 1000px;
-    }
-
-    .preserve-3d {
-      transform-style: preserve-3d;
-    }
-
-    .backface-hidden {
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    .rotate-y-180 {
-      transform: rotateY(180deg);
-    }
-  </style>
 
 
   <!-- SPA Redirect Script for GitHub Pages -->
   <script>
-      // Handle redirect from 404.html via query parameter
-      (function () {
-        var query = window.location.search;
-        if (query && query.indexOf('?p=') === 0) {
-          var path = decodeURIComponent(query.slice(3).split('&')[0]);
-          if (path && path !== '/' && path !== '') {
-            window.history.replaceState(null, null, path);
-          }
+    // Handle redirect from 404.html via query parameter
+    (function () {
+      var query = window.location.search;
+      if (query && query.indexOf('?p=') === 0) {
+        var path = decodeURIComponent(query.slice(3).split('&')[0]);
+        if (path && path !== '/' && path !== '') {
+          window.history.replaceState(null, null, path);
         }
-      })();
+      }
+    })();
   </script>
 
   <script type="importmap">
