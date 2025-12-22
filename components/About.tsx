@@ -41,7 +41,11 @@ const About: React.FC = () => {
 
               <img
                 src="/tiko-mascot.webp"
+                srcSet="/tiko-mascot-mobile.webp 550w, /tiko-mascot.webp 600w"
+                sizes="(max-width: 768px) 550px, 600px"
                 alt="Tiko lo Scoiattolo - Mascotte"
+                width="600"
+                height="600"
                 className="relative z-10 w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
               />
             </div>

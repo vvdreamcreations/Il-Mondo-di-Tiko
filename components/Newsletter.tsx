@@ -97,7 +97,7 @@ const Newsletter: React.FC = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         onViewportEnter={() => setShouldLoadScript(true)}
-        viewport={{ once: true, margin: "200px" }}
+        viewport={{ once: true }} // Removed margin to be strict - load ONLY when actually visible
         transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
         style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className="backdrop-blur-3xl rounded-[3rem] p-8 md:p-16 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col items-center gap-8 max-w-6xl mx-auto border border-white/30 ring-1 ring-white/10 relative overflow-hidden"
       >

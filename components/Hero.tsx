@@ -16,9 +16,11 @@ const Hero: React.FC = () => {
           {/* Main Logo */}
           <motion.img
             src="/il-mondo-di-tiko-logo.webp"
-            srcSet="/il-mondo-di-tiko-logo-mobile.webp 400w, /il-mondo-di-tiko-logo.webp 800w"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            srcSet="/il-mondo-di-tiko-logo-mobile.webp 340w, /il-mondo-di-tiko-logo.webp 800w"
+            sizes="(max-width: 768px) 340px, 50vw"
             alt="Il Mondo di Tiko Logo"
+            width="800"
+            height="599"
             className="w-48 md:w-64 h-auto mb-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"
             // Removed initial opacity:0 to ensure LCP is immediate 
             // initial={{ y: -50, opacity: 0 }}

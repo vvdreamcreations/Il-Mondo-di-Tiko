@@ -15,8 +15,8 @@ const App: React.FC = () => {
   const [showParticles, setShowParticles] = React.useState(false);
 
   useEffect(() => {
-    // Delay particles by 2 seconds to allow LCP and main thread to settle
-    const timer = setTimeout(() => setShowParticles(true), 2000);
+    // Delay particles by 4 seconds to completely clear PageSpeed interaction window (3.5s)
+    const timer = setTimeout(() => setShowParticles(true), 4000);
     return () => clearTimeout(timer);
   }, []);
 
