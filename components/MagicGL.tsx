@@ -5,12 +5,10 @@ import * as THREE from 'three';
 
 // --- SHADERS ---
 
-// Vertex Shader for ALL Particles (lights) - smooth floating with gentle wind effect
+// Vertex Shader for ALL Particles (lights) - smooth floating
 const particleVertexShader = `
   uniform float uTime;
   uniform float uTimeOffset;
-  uniform vec3 uWindCenter;
-  uniform float uWindStrength;
   attribute float aScale;
   attribute vec3 aSpeed;
   attribute float aPhase;
@@ -44,21 +42,6 @@ const particleVertexShader = `
     float zTime = effectiveTime * aSpeed.z * 0.45 + aPhase * 1.2;
     instancePos.z += sin(zTime) * 0.8;
 
-    // GENTLE WIND EFFECT - smooth impulse when clicked
-    if (uWindStrength > 0.0) {
-        vec3 toParticle = instancePos - uWindCenter;  // Push AWAY from click
-        float dist = length(toParticle);
-        float maxDist = 12.0;
-        
-        if (dist < maxDist && dist > 0.01) {
-            vec3 windDir = normalize(toParticle);
-            float falloff = smoothstep(maxDist, 0.0, dist);
-            float windForce = uWindStrength * falloff * 0.3;
-            
-            instancePos += windDir * windForce;
-        }
-    }
-
     vec4 mvPosition = modelViewMatrix * vec4(instancePos, 1.0);
     gl_Position = projectionMatrix * (mvPosition + vec4(position.x * aScale, position.y * aScale, 0.0, 0.0));
 
@@ -71,8 +54,6 @@ const particleVertexShader = `
 const leafVertexShader = `
   uniform float uTime;
   uniform float uTimeOffset;
-  uniform vec3 uWindCenter;
-  uniform float uWindStrength;
   attribute float aScale;
   attribute vec3 aSpeed;
   attribute float aPhase;
@@ -100,21 +81,6 @@ const leafVertexShader = `
     
     // Z-axis rotation for depth
     instancePos.z += sin(effectiveTime * aSpeed.z * 0.8 + aPhase * 1.5) * 0.5;
-
-    // GENTLE WIND EFFECT for leaves too
-    if (uWindStrength > 0.0) {
-        vec3 toParticle = instancePos - uWindCenter;  // Push AWAY from click
-        float dist = length(toParticle);
-        float maxDist = 15.0;
-        
-        if (dist < maxDist && dist > 0.01) {
-            vec3 windDir = normalize(toParticle);
-            float falloff = smoothstep(maxDist, 0.0, dist);
-            float windForce = uWindStrength * falloff * 0.4;
-            
-            instancePos += windDir * windForce;
-        }
-    }
 
     vec4 mvPosition = modelViewMatrix * vec4(instancePos, 1.0);
     gl_Position = projectionMatrix * (mvPosition + vec4(position.x * aScale, position.y * aScale, 0.0, 0.0));
@@ -206,8 +172,6 @@ const LightGroup = ({ texture, count, timeOffset }: { texture: THREE.Texture, co
                 uniforms={{
                     uTime: { value: 0 },
                     uTimeOffset: { value: timeOffset },
-                    uWindCenter: { value: new THREE.Vector3(999, 999, 0) },
-                    uWindStrength: { value: 0 },
                     uTexture: { value: texture }
                 }}
             />
@@ -283,8 +247,6 @@ const LeafGroup = ({ texture, count, timeOffset }: { texture: THREE.Texture, cou
                 uniforms={{
                     uTime: { value: 0 },
                     uTimeOffset: { value: timeOffset },
-                    uWindCenter: { value: new THREE.Vector3(999, 999, 0) },
-                    uWindStrength: { value: 0 },
                     uTexture: { value: texture }
                 }}
             />
@@ -293,71 +255,12 @@ const LeafGroup = ({ texture, count, timeOffset }: { texture: THREE.Texture, cou
 }
 
 const Scene = () => {
-    const { gl, scene, size } = useThree();
-    const windRef = useRef({ center: new THREE.Vector3(999, 999, 0), strength: 0 });
+    const { gl, scene } = useThree();
 
     useEffect(() => {
         gl.setClearColor(0x000000, 0);
         scene.background = null;
-
-        // Gentle wind puff on click/touch
-        const handleClick = (event: MouseEvent) => {
-            const x = (event.clientX / size.width) * 2 - 1;
-            const y = -(event.clientY / size.height) * 2 + 1;
-
-            windRef.current.center.set(x * 10, y * 10, 0);
-            windRef.current.strength = 0.3;  // Nearly imperceptible
-            console.log('💨 Wind effect triggered at:', { x, y, strength: 0.3 });
-        };
-
-        const handleTouch = (event: TouchEvent) => {
-            if (event.touches.length > 0) {
-                const touch = event.touches[0];
-                const x = (touch.clientX / size.width) * 2 - 1;
-                const y = -(touch.clientY / size.height) * 2 + 1;
-
-                windRef.current.center.set(x * (size.width / 2), y * (size.height / 2), 0);
-                windRef.current.strength = 0.3;
-            }
-        };
-
-        window.addEventListener('click', handleClick);
-        window.addEventListener('touchstart', handleTouch);
-
-        return () => {
-            window.removeEventListener('click', handleClick);
-            window.removeEventListener('touchstart', handleTouch);
-        };
-    }, [gl, scene, size]);
-
-    // Update wind strength (decay over time) and propagate to all particle groups
-    useFrame(() => {
-        if (windRef.current.strength > 0) {
-            windRef.current.strength *= 0.995; // ULTRA-SLOW decay to mask snap-back
-            if (windRef.current.strength < 0.001) {
-                windRef.current.strength = 0;
-                windRef.current.center.set(999, 999, 0);
-            }
-        }
-
-        // Update all shader uniforms
-
-        let updatedCount = 0;
-        scene.traverse((obj) => {
-            if (obj instanceof THREE.InstancedMesh) {
-                const mat = obj.material as THREE.ShaderMaterial;
-                if (mat.uniforms?.uWindCenter) {
-                    mat.uniforms.uWindCenter.value.copy(windRef.current.center);
-                    mat.uniforms.uWindStrength.value = windRef.current.strength;
-                    updatedCount++;
-                }
-            }
-        });
-
-        if (windRef.current.strength > 0.1 && updatedCount > 0) {
-            console.log(` Updated ${updatedCount} meshes, strength: ${windRef.current.strength.toFixed(2)}`);
-        }
-    });
+    }, [gl, scene]);
 
     return (
         <>
@@ -371,10 +274,10 @@ const Scene = () => {
 
 const MagicGL = () => {
     return (
-        <div className="absolute inset-0 w-full h-full -z-10" style={{ pointerEvents: 'auto' }}>
+        <div className="absolute inset-0 w-full h-full -z-10" style={{ pointerEvents: 'none' }}>
             <Canvas
                 camera={{ position: [0, 0, 15], fov: 45 }}
-                dpr={[1, 2]}
+                dpr={[1, 1.5]}
                 gl={{ antialias: false, powerPreference: "high-performance", alpha: true }}
                 onCreated={({ gl }) => {
                     gl.setClearColor(new THREE.Color(0x000000), 0);
