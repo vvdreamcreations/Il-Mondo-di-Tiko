@@ -21,6 +21,9 @@ const Hero: React.FC = () => {
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, duration: 1 }}
+            // @ts-ignore - React 19/TS might not have fetchpriority type definition yet
+            fetchpriority="high"
+            loading="eager"
             onError={(e) => {
               // If local logo is missing, hide image and use text (fallback)
               e.currentTarget.style.display = 'none';
