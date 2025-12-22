@@ -18,9 +18,10 @@ const Hero: React.FC = () => {
             src="/il-mondo-di-tiko-logo.webp"
             alt="Il Mondo di Tiko Logo"
             className="w-48 md:w-64 h-auto mb-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 1 }}
+            // Removed initial opacity:0 to ensure LCP is immediate 
+            // initial={{ y: -50, opacity: 0 }}
+            // animate={{ y: 0, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 100 }}
             // @ts-ignore - React 19/TS might not have fetchpriority type definition yet
             fetchpriority="high"
             loading="eager"

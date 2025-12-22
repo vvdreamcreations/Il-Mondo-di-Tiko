@@ -11,6 +11,15 @@ const MagicGL = lazy(() => import('./components/MagicGL'));
 
 const App: React.FC = () => {
 
+  // Lazy load particles to unblock initial render
+  const [showParticles, setShowParticles] = React.useState(false);
+
+  useEffect(() => {
+    // Delay particles by 2 seconds to allow LCP and main thread to settle
+    const timer = setTimeout(() => setShowParticles(true), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Check for existing analytics consent and initialize if approved
   useEffect(() => {
     if (hasAnalyticsConsent()) {
@@ -37,11 +46,13 @@ const App: React.FC = () => {
         </div>
 
         {/* LAYER 2: REAL-TIME PARTICLES (WebGL) */}
-        <Suspense fallback={null}>
-          <div className="absolute inset-0 z-10 pointer-events-none">
-            <MagicGL />
-          </div>
-        </Suspense>
+        {showParticles && (
+          <Suspense fallback={null}>
+            <div className="absolute inset-0 z-10 pointer-events-none">
+              <MagicGL />
+            </div>
+          </Suspense>
+        )}
 
         {/* LAYER 2: ATMOSPHERIC OVERLAYS */}
         <div className="absolute inset-0 w-full h-full pointer-events-none">
