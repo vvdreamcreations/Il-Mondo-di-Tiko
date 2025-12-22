@@ -67,6 +67,8 @@ const About: React.FC = () => {
                 <img
                   src="/vv-dream-creations-logo.webp"
                   alt="VV Dream Creations"
+                  width="300"
+                  height="100"
                   className="h-16 md:h-20 w-auto object-contain"
                   loading="lazy"
                 />

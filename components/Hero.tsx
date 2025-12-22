@@ -16,8 +16,8 @@ const Hero: React.FC = () => {
           {/* Main Logo */}
           <motion.img
             src="/il-mondo-di-tiko-logo.webp"
-            srcSet="/il-mondo-di-tiko-logo-mobile.webp 340w, /il-mondo-di-tiko-logo-medium.webp 600w, /il-mondo-di-tiko-logo.webp 800w"
-            sizes="(max-width: 640px) 200px, (max-width: 768px) 340px, 800px"
+            srcSet="/il-mondo-di-tiko-logo-mobile.webp 340w, /il-mondo-di-tiko-logo-medium.webp 450w, /il-mondo-di-tiko-logo.webp 800w"
+            sizes="(max-width: 480px) 150px, (max-width: 768px) 340px, 800px"
             alt="Il Mondo di Tiko Logo"
             width="800"
             height="599"

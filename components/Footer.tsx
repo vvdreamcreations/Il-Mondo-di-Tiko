@@ -11,6 +11,8 @@ const Footer: React.FC = () => {
             <img
               src="/vv-dream-creations-logo.webp"
               alt="VV Dream Creations Logo"
+              width="300"
+              height="100"
               className="h-20 md:h-32 lg:h-36 w-auto object-contain hover:scale-105 transition-transform duration-300"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
