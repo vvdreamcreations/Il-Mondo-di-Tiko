@@ -51,9 +51,14 @@ const App: React.FC = () => {
         {/* LAYER 2: REAL-TIME PARTICLES (WebGL) */}
         {showParticles && (
           <Suspense fallback={null}>
-            <div className="absolute inset-0 z-10 pointer-events-none">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, ease: "easeInOut" }}
+              className="absolute inset-0 z-10 pointer-events-none"
+            >
               <MagicGL />
-            </div>
+            </motion.div>
           </Suspense>
         )}
 
