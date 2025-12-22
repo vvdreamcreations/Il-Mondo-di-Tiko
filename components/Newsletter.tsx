@@ -4,14 +4,6 @@ import { motion } from 'framer-motion';
 import { trackNewsletterSignup } from '../utils/analytics';
 
 const Newsletter: React.FC = () => {
-  const containerRef = React.useRef(null);
-  const isInView = (motion as any).useInView ? (motion as any).useInView(containerRef, { once: true, margin: "200px" }) : true; // Fallback safely if version mismatch
-  // Note: framer-motion useInView hook might need import. Let's use standard framer-motion approach or a simple state.
-  // Actually, standard functional component with framer-motion/react imports:
-  // Let's rely on a simpler 'hasInteracted' or just ref check inside effect 
-  // But wait, the component is *already* using motion.div with whileInView.
-  // We can hook into onViewportEnter from motion.div!
-
   const [shouldLoadScript, setShouldLoadScript] = React.useState(false);
 
   useEffect(() => {
