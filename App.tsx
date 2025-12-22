@@ -15,8 +15,8 @@ const App: React.FC = () => {
   const [showParticles, setShowParticles] = React.useState(false);
 
   useEffect(() => {
-    // Delay particles by 4 seconds to completely clear PageSpeed interaction window (3.5s)
-    const timer = setTimeout(() => setShowParticles(true), 4000);
+    // Delay particles by 3 seconds (compromise between scoring and UX)
+    const timer = setTimeout(() => setShowParticles(true), 3000);
     return () => clearTimeout(timer);
   }, []);
 
