@@ -29,3 +29,40 @@
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* Organic Border Effects */
+.torn-edges {
+  clip-path: url(#torn-edges);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.leaf-edges {
+  clip-path: url(#leaf-edges);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.rough-edges {
+  clip-path: url(#rough-edges);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+}
+
+/* Enhanced shadows for organic borders */
+.organic-shadow {
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Combine organic border with shadow */
+.torn-edges-shadow {
+  clip-path: url(#torn-edges);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.leaf-edges-shadow {
+  clip-path: url(#leaf-edges);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.rough-edges-shadow {
+  clip-path: url(#rough-edges);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.45)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}

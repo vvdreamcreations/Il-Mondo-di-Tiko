@@ -62,7 +62,7 @@ const LibriPage: React.FC = () => {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-                            className="bg-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20 hover:border-tiko-yellow/50 transition-all duration-300"
+                            className="bg-white/10 backdrop-blur-2xl rough-edges-shadow p-8 md:p-12 border border-white/20 hover:border-tiko-yellow/50 transition-all duration-300"
                         >
                             <div className="flex flex-col md:flex-row gap-8 items-start">
                                 {/* Book Cover */}
@@ -72,7 +72,7 @@ const LibriPage: React.FC = () => {
                                         <img
                                             src={book.coverImage}
                                             alt={book.title}
-                                            className="relative w-full rounded-2xl shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
+                                            className="relative w-full torn-edges shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
                                         />
                                     </div>
                                 </div>

@@ -1,0 +1,27 @@
+# Directories and files to exclude from Gemini Code Assist indexing
+# Heavy directories
+node_modules/
+dist/
+dist-ssr/
+.git/
+
+# Large media files
+public/**/*.mp4
+public/**/*.webp
+public/**/*.png
+public/**/*.jpg
+public/**/*.jpeg
+*.mp4
+*.webp
+*.png
+*.jpg
+*.jpeg
+
+# Build artifacts and logs
+*.log
+.env
+package-lock.json
+
+# Optimization
+.vite/
+.turbo/

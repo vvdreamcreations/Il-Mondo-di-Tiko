@@ -35,7 +35,7 @@ const NewsletterPage: React.FC = () => {
                     transition={{ delay: 0.3, duration: 0.8 }}
                     className="max-w-2xl mx-auto mb-12"
                 >
-                    <div className="bg-gradient-to-r from-tiko-yellow/20 to-tiko-orange/20 backdrop-blur-xl rounded-2xl p-6 border-2 border-tiko-yellow/50 shadow-[0_0_40px_rgba(250,204,21,0.3)]">
+                    <div className="bg-gradient-to-r from-tiko-yellow/20 to-tiko-orange/20 backdrop-blur-xl torn-edges-shadow p-6 border-2 border-tiko-yellow/50">
                         <div className="flex items-center justify-center gap-3 text-white">
                             <span className="text-4xl">🎁</span>
                             <p className="font-display text-xl md:text-2xl font-semibold drop-shadow-md">

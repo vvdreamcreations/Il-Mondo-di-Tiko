@@ -41,7 +41,7 @@ const CookiePolicy: React.FC = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-white/10 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-white/20 max-w-4xl mx-auto space-y-8"
+                    className="bg-white/10 backdrop-blur-xl rough-edges-shadow p-8 md:p-12 border border-white/20 max-w-4xl mx-auto space-y-8"
                 >
 
                     {/* 1. Cosa sono i cookie */}

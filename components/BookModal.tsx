@@ -31,7 +31,7 @@ const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 50 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900/98 to-gray-800/98 backdrop-blur-xl rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.8)] overflow-hidden max-h-[80vh] md:max-h-[85vh] overflow-y-auto flex flex-col md:flex-row border border-white/10"
+            className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900/98 to-gray-800/98 backdrop-blur-xl rough-edges-shadow overflow-hidden max-h-[80vh] md:max-h-[85vh] overflow-y-auto flex flex-col md:flex-row border border-white/10"
           >
             <button
               onClick={(e) => {
@@ -45,7 +45,7 @@ const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
 
             {/* Left Column: Visual & CTA */}
             <div className="w-full md:w-2/5 p-6 flex flex-col items-center justify-center bg-gradient-to-br from-tiko-yellow/10 to-tiko-orange/10 backdrop-blur-sm">
-              <div className="relative shadow-2xl rounded-lg overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-500 max-w-[220px]">
+              <div className="relative shadow-2xl torn-edges overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-500 max-w-[220px]">
                 <img src={book.coverImage} alt={book.title} className="w-full h-auto object-cover" />
               </div>
               <a

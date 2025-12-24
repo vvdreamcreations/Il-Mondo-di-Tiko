@@ -9,7 +9,7 @@ const About: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.4 }}
-        className="bg-white/20 backdrop-blur-2xl rounded-[3rem] p-8 md:p-16 shadow-2xl border border-white/50 overflow-hidden relative"
+        className="bg-white/20 backdrop-blur-2xl leaf-edges-shadow p-8 md:p-16 border border-white/50 overflow-hidden relative"
       >
         {/* Liquid Glass Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
@@ -30,7 +30,7 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white p-6 rounded-2xl shadow-xl max-w-md border border-tiko-orange/20 rotate-1"
+              className="bg-white p-6 torn-edges-shadow max-w-md border border-tiko-orange/20 rotate-1"
             >
               <p className="font-handwriting text-tiko-dark font-bold text-lg italic text-center">"Ogni storia è un piccolo seme di meraviglia."</p>
             </motion.div>
@@ -60,7 +60,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.4, delay: 0.4 }}
           >
             {/* Opaque container for text readability */}
-            <div className="bg-gradient-to-br from-amber-50/95 to-orange-50/95 backdrop-blur-sm rounded-2xl p-8 shadow-lg relative z-10 border-2 border-tiko-yellow/30">
+            <div className="bg-gradient-to-br from-amber-50/95 to-orange-50/95 backdrop-blur-sm leaf-edges-shadow p-8 relative z-10 border-2 border-tiko-yellow/30">
               <span className="text-tiko-orange font-bold uppercase tracking-widest text-sm mb-2 block">Chi Siamo</span>
               {/* VV Dream Creations Logo */}
               <div className="mb-6">

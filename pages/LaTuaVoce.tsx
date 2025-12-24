@@ -39,7 +39,7 @@ const LaTuaVoce: React.FC = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-tiko-blue/30"
+                        className="bg-white/10 backdrop-blur-xl leaf-edges p-6 border border-tiko-blue/30"
                     >
                         <div className="flex items-center gap-3 mb-3">
                             <div className="p-2 rounded-full bg-tiko-blue/20">
@@ -70,7 +70,7 @@ const LaTuaVoce: React.FC = () => {
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-tiko-orange/30"
+                        className="bg-white/10 backdrop-blur-xl leaf-edges p-6 border border-tiko-orange/30"
                     >
                         <div className="flex items-center gap-3 mb-3">
                             <div className="p-2 rounded-full bg-tiko-orange/20">
@@ -101,7 +101,7 @@ const LaTuaVoce: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center bg-gradient-to-r from-tiko-yellow/20 to-tiko-orange/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-tiko-yellow/30"
+                    className="text-center bg-gradient-to-r from-tiko-yellow/20 to-tiko-orange/20 backdrop-blur-xl rough-edges-shadow p-8 md:p-12 border border-tiko-yellow/30"
                 >
                     <Sparkles className="w-12 h-12 text-tiko-yellow mx-auto mb-4" />
                     <h2 className="font-display text-2xl md:text-4xl font-bold text-white mb-4">

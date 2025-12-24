@@ -21,10 +21,10 @@ const Values: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.4 }}
-                style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className="backdrop-blur-3xl rounded-[3rem] p-6 md:p-12 shadow-[inset_0_0_40px_rgba(255,255,255,0.1)] border border-white/30 relative overflow-hidden"
+                style={{ backgroundColor: "rgba(0, 0, 0, 0.05)", backdropFilter: "blur(20px)" }} className="backdrop-blur-3xl rough-edges p-6 md:p-12 shadow-[inset_0_0_40px_rgba(255,255,255,0.05)] border border-white/10 relative overflow-hidden"
             >
                 {/* Subtle sheen overlay */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-white/5 to-transparent pointer-events-none" />
 
                 <div className="text-center mb-12 relative z-10">
                     <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
@@ -47,10 +47,10 @@ const Values: React.FC = () => {
                                 whileHover={{
                                     y: -8,
                                     scale: 1.02,
-                                    backgroundColor: "rgba(255, 255, 255, 0.15)",
-                                    borderColor: "rgba(250, 204, 21, 0.6)"
+                                    backgroundColor: "rgba(253, 186, 116, 0.25)", // tiko-orange slightly stronger on hover
+                                    borderColor: "rgba(253, 186, 116, 0.6)"
                                 }}
-                                className="bg-black/30 backdrop-blur-xl rounded-2xl p-6 shadow-[inset_0_0_20px_rgba(255,255,255,0.05)] border border-white/20 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
+                                className="bg-tiko-orange/15 backdrop-blur-md leaf-edges p-6 shadow-lg border border-tiko-orange/20 flex flex-col items-center text-center transition-colors duration-300 relative overflow-hidden group cursor-pointer"
                             >
                                 {/* Hover Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-b from-tiko-yellow/10 to-tiko-orange/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -58,20 +58,20 @@ const Values: React.FC = () => {
                                 {/* Top Accent Line */}
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-tiko-yellow to-tiko-orange transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center shadow-[0_0_10px_rgba(250,204,21,0.6)]" />
 
-                                <div className="relative z-10 w-16 h-16 rounded-2xl bg-tiko-yellow/20 backdrop-blur-sm flex items-center justify-center text-tiko-yellow mb-4 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-colors duration-300 shadow-[0_4px_15px_rgba(250,204,21,0.2)] group-hover:shadow-[0_10px_30px_rgba(250,204,21,0.5)]">
+                                <div className="relative z-10 w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-sm flex items-center justify-center text-tiko-yellow mb-4 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-colors duration-300 shadow-[0_4px_15px_rgba(0,0,0,0.3)] group-hover:shadow-[0_10px_30px_rgba(250,204,21,0.5)]">
                                     <Icon size={32} strokeWidth={2} className="transform group-hover:scale-110 transition-transform duration-300" />
                                 </div>
 
-                                <h3 className="relative z-10 font-display text-lg font-bold text-white mb-2 group-hover:text-tiko-yellow transition-colors drop-shadow-lg">
+                                <h3 className="relative z-10 font-display text-lg font-bold text-white mb-2 group-hover:text-tiko-yellow transition-colors drop-shadow-md">
                                     {value.title}
                                 </h3>
 
-                                <p className="relative z-10 text-white/80 text-sm leading-relaxed mb-4 flex-grow font-medium drop-shadow-md">
+                                <p className="relative z-10 text-white/70 text-sm leading-relaxed mb-4 flex-grow font-medium drop-shadow-sm">
                                     {value.description}
                                 </p>
 
                                 <div
-                                    className="relative z-10 mt-auto px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold text-xs flex items-center gap-2 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-all duration-300 border border-white/20 group-hover:border-tiko-yellow shadow-lg w-full justify-center"
+                                    className="relative z-10 mt-auto px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm text-white/90 font-bold text-xs flex items-center gap-2 group-hover:bg-tiko-yellow group-hover:text-tiko-dark transition-all duration-300 border border-white/10 group-hover:border-tiko-yellow shadow-lg w-full justify-center"
                                 >
                                     <Plus size={14} />
                                     <span>Scopri di più</span>
@@ -99,7 +99,7 @@ const Values: React.FC = () => {
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 30 }}
                             transition={{ type: "spring", duration: 0.6, bounce: 0.3 }}
-                            className="bg-white/95 backdrop-blur-2xl rounded-[2rem] shadow-2xl w-[95vw] md:w-[90vw] max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[80vh] md:max-h-[85vh]"
+                            className="bg-white/95 backdrop-blur-md rough-edges-shadow w-[95vw] md:w-[90vw] max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[80vh] md:max-h-[85vh]"
                         >
                             <button
                                 onClick={() => setSelectedValue(null)}

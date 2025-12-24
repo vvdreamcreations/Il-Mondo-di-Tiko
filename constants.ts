@@ -104,7 +104,7 @@ export const VALUES: ValueItem[] = [
     title: "Stimola la Fantasia",
     description: "Le avventure di Tiko incoraggiano i bambini a immaginare mondi nuovi.",
     fullDescription: "In un mondo dominato dagli schermi, i libri di Tiko aprono le porte a universi infiniti. Ogni storia è un trampolino di lancio che invita il bambino a chiudere gli occhi e sognare, inventando finali alternativi e nuovi amici immaginari. La fantasia è il muscolo più importante per il problem-solving futuro!",
-    image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=600&auto=format&fit=crop",
     iconName: 'Rocket'
   },
   {
@@ -112,7 +112,7 @@ export const VALUES: ValueItem[] = [
     title: "Educano con Dolcezza",
     description: "Ogni storia aiuta i piccoli lettori a riconoscere emozioni e coltivare la gentilezza.",
     fullDescription: "Non ci sono lezioni noiose qui, solo esempi gentili. Attraverso le azioni di Tiko, i bambini imparano che essere gentili non è solo 'buona educazione', ma un superpotere che rende il mondo più bello. Le storie affrontano temi complessi come la condivisione e il perdono con una semplicità disarmante.",
-    image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=600&auto=format&fit=crop",
     iconName: 'Heart'
   },
   {
@@ -120,7 +120,7 @@ export const VALUES: ValueItem[] = [
     title: "Crescita Emotiva",
     description: "Storie pensate per aiutare i bambini a esprimere sentimenti e capire sé stessi.",
     fullDescription: "La rabbia, la paura del buio, la timidezza: Tiko prova tutto quello che provano i bambini. Vedere un piccolo scoiattolo affrontare e superare queste emozioni aiuta i piccoli lettori a dare un nome a ciò che sentono e a capire che non c'è nulla di sbagliato nell'essere vulnerabili.",
-    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=600&auto=format&fit=crop",
     iconName: 'Sprout'
   },
   {
@@ -128,7 +128,7 @@ export const VALUES: ValueItem[] = [
     title: "Illustrazioni Magiche",
     description: "Disegni delicati accompagnano le narrazioni, rendendo la lettura un’esperienza visiva.",
     fullDescription: "Ogni pagina è un'opera d'arte. I colori pastello, le linee morbide e i dettagli nascosti nel bosco catturano l'attenzione anche dei più piccoli che non sanno ancora leggere. È un'educazione al bello che inizia fin dalla prima infanzia.",
-    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=600&auto=format&fit=crop",
     iconName: 'Palette'
   }
 ];

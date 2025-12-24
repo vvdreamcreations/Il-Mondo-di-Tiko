@@ -41,7 +41,7 @@ const ChiSiamoPage: React.FC = () => {
                     transition={{ delay: 0.3, duration: 0.8 }}
                     className="max-w-4xl mx-auto"
                 >
-                    <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20">
+                    <div className="bg-white/10 backdrop-blur-2xl leaf-edges-shadow p-8 md:p-16 border border-white/20">
                         <div className="space-y-6 text-white/90 text-lg leading-relaxed">
                             <p className="drop-shadow-md">
                                 <strong className="text-white font-semibold">VV Dream Creations</strong> è un progetto editoriale nato dal desiderio di dare voce alle emozioni e alla fantasia dei bambini, attraverso storie che uniscono valore educativo e incanto narrativo. Ogni libro nasce con l'intento di accompagnare i più piccoli nella scoperta di sé e del mondo, offrendo strumenti delicati per riconoscere, esprimere e comprendere le proprie emozioni.

@@ -23,9 +23,9 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 py-4">
       <div className="container mx-auto">
-        <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rounded-2xl px-6 py-3 shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] border border-white/30 ring-1 ring-white/20 hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] transition-all duration-500">
+        <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-3xl rough-edges-shadow px-6 py-3 shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] border border-white/30 ring-1 ring-white/20 hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] transition-all duration-500">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <NavLink
@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
                         />
                       )}
                       {/* Hover bg for better hit area visualization (optional) */}
-                      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-xl transition-colors duration-200" />
+                      <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 leaf-edges transition-colors duration-200" />
                     </>
                   )}
                 </NavLink>
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                         setIsMenuOpen(false);
                       }}
                       className={({ isActive }) =>
-                        `block px-4 py-2 rounded-lg font-medium transition-colors ${isActive
+                        `block px-4 py-2 leaf-edges font-medium transition-colors ${isActive
                           ? 'bg-tiko-yellow/20 text-tiko-yellow'
                           : 'text-white hover:bg-white/10 hover:text-tiko-yellow'
                         }`

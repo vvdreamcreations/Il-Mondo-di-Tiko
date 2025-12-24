@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const Reviews: React.FC = () => {
     return (
         <section className="container mx-auto px-4 overflow-hidden py-4 md:py-6">
-            <div style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className=" backdrop-blur-3xl rounded-[2rem] py-6 border border-white/30 shadow-[inset_0_0_30px_rgba(255,255,255,0.1)] ring-1 ring-white/10 relative overflow-hidden">
+            <div style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className=" backdrop-blur-3xl rough-edges-shadow py-6 border border-white/30 ring-1 ring-white/10 relative overflow-hidden">
                 {/* Glass Sheen */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
 
@@ -35,7 +35,7 @@ const Reviews: React.FC = () => {
                         {[...REVIEWS, ...REVIEWS].map((review, index) => (
                             <div
                                 key={`${review.id}-${index}`}
-                                className="w-64 min-h-56 backdrop-blur-xl bg-white/10 p-6 rounded-xl flex-shrink-0 flex flex-col whitespace-normal border border-white/20 shadow-lg relative transform hover:scale-105 transition-transform duration-300 hover:shadow-[0_8px_32px_rgba(31,38,135,0.15)] hover:border-white/40"
+                                className="w-64 min-h-56 backdrop-blur-xl bg-white/10 p-6 torn-edges-shadow flex-shrink-0 flex flex-col whitespace-normal border border-white/20 relative transform hover:scale-105 transition-transform duration-300 hover:shadow-[0_12px_40px_rgba(31,38,135,0.2)] hover:border-white/40"
                             >
                                 <Quote className="absolute top-3 right-3 text-white/10 rotate-180" size={24} />
 

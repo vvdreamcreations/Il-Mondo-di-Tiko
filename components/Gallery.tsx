@@ -106,7 +106,7 @@ const Gallery: React.FC = () => {
                                 className="relative group flex-shrink-0"
                             >
                                 <div
-                                    className="relative w-72 h-72 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer transform-gpu"
+                                    className="relative w-72 h-72 md:w-80 md:h-80 torn-edges overflow-hidden shadow-lg cursor-pointer transform-gpu"
                                     onClick={() => setSelectedImage(image.full)}
                                 >
                                     {/* Glow effect */}
@@ -123,7 +123,7 @@ const Gallery: React.FC = () => {
                                     />
 
                                     {/* Border on hover */}
-                                    <div className="absolute inset-0 border-4 border-tiko-yellow/0 group-hover:border-tiko-yellow/80 rounded-2xl transition-all duration-500" />
+                                    <div className="absolute inset-0 border-4 border-tiko-yellow/0 group-hover:border-tiko-yellow/80 torn-edges transition-all duration-500" />
 
                                     {/* Click hint on hover (desktop only) */}
                                     <div className="hidden md:flex absolute inset-0 items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">

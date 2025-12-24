@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8 }}
-                        className="bg-white/10 backdrop-blur-2xl rounded-[3rem] p-8 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20 relative overflow-hidden"
+                        className="bg-white/10 backdrop-blur-2xl leaf-edges-shadow p-8 md:p-16 border border-white/20 relative overflow-hidden"
                     >
                         {/* Section Title */}
                         <div className="text-center mb-16 relative z-10">

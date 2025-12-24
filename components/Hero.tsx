@@ -107,6 +107,7 @@ const Hero: React.FC = () => {
       >
         <ArrowDown size={32} />
       </motion.div>
+
     </section>
   );
 };

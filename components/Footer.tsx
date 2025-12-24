@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="relative z-10 py-8 md:py-12 text-white">
       <div className="container mx-auto px-4 text-center">
-        <div style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(24px)" }} className="backdrop-blur-md inline-block px-6 md:px-12 py-6 md:py-8 rounded-3xl border border-white/10 max-w-full">
+        <div style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(24px)" }} className="backdrop-blur-md inline-block px-6 md:px-12 py-6 md:py-8 leaf-edges-shadow border border-white/10 max-w-full">
           {/* VV Dream Creations Logo */}
           <div className="mb-4 md:mb-6 flex justify-center">
             <img

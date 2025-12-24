@@ -31,7 +31,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
         transition={{ duration: 0.2, type: 'spring', stiffness: 350, damping: 28 }}
       >
         {/* FRONT FACE */}
-        <div className="absolute inset-0 h-full w-full backface-hidden rounded-[2rem] bg-white shadow-xl overflow-hidden border border-white/20 transition-all duration-300 group-hover:shadow-[0_15px_40px_rgba(251,191,36,0.2)] group-hover:scale-[1.02] group-hover:border-tiko-yellow/50">
+        <div className="absolute inset-0 h-full w-full backface-hidden torn-edges-shadow bg-white overflow-hidden border border-white/20 transition-all duration-300 group-hover:shadow-[0_20px_50px_rgba(251,191,36,0.3)] group-hover:scale-[1.02] group-hover:border-tiko-yellow/50">
 
           {/* REMOVED the white gradient overlay that was washing out the image */}
 
@@ -76,7 +76,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
 
         {/* BACK FACE */}
         <div
-          className="absolute inset-0 h-full w-full backface-hidden rotate-y-180 rounded-[2rem] shadow-xl px-6 pt-8 pb-12 flex flex-col justify-between items-center text-center bg-gray-900/80 backdrop-blur-[20px] border-4 border-tiko-yellow/30"
+          className="absolute inset-0 h-full w-full backface-hidden rotate-y-180 leaf-edges-shadow px-6 pt-8 pb-12 flex flex-col justify-between items-center text-center bg-gray-900/80 backdrop-blur-[20px] border-4 border-tiko-yellow/30"
         >
           <div className="w-full flex-grow flex flex-col justify-center items-center px-4">
             <div className="mb-4">

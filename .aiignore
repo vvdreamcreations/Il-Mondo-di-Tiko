@@ -1,0 +1,10 @@
+# Directories to ignore for Gemini Language Server
+node_modules/
+dist/
+dist-ssr/
+.git/
+public/*.mp4
+public/*.webp
+public/*.png
+*.log
+.env
