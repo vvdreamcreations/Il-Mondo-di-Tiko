@@ -36,7 +36,7 @@ const Reviews: React.FC = () => {
                         {[...REVIEWS, ...REVIEWS].map((review, index) => (
                             <div
                                 key={`${review.id}-${index}`}
-                                className="w-64 min-h-56 backdrop-blur-sm bg-white/10 p-6 torn-edges flex-shrink-0 flex flex-col whitespace-normal border border-white/20 relative transform hover:scale-105 transition-transform duration-300 hover:shadow-xl hover:border-white/40"
+                                className="w-64 min-h-56 backdrop-blur-sm bg-white/10 p-6 torn-edges flex-shrink-0 flex flex-col whitespace-normal border border-white/20 relative transition-colors duration-300"
                             >
                                 <Quote className="absolute top-3 right-3 text-white/10 rotate-180" size={24} />
 
