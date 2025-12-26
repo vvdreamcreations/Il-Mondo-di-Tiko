@@ -25,10 +25,11 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
   return (
     <div className={`group ${compact ? 'h-[420px]' : 'h-[520px]'} w-full perspective-1000 cursor-pointer`} onClick={handleFlip}>
       <motion.div
-        className="relative h-full w-full transition-all duration-500 preserve-3d"
+        className="relative h-full w-full transition-transform duration-500 preserve-3d"
         initial={false}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.2, type: 'spring', stiffness: 350, damping: 28 }}
+        transition={{ duration: 0.2, type: 'spring', stiffness: 250, damping: 25 }}
+        style={{ willChange: 'transform' }}
       >
         {/* FRONT FACE */}
         <div className="absolute inset-0 h-full w-full backface-hidden torn-edges-shadow bg-white overflow-hidden border border-white/20 transition-all duration-300 group-hover:shadow-[0_20px_50px_rgba(251,191,36,0.3)] group-hover:scale-[1.02] group-hover:border-tiko-yellow/50">

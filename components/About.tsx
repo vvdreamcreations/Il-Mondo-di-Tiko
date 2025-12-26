@@ -10,6 +10,7 @@ const About: React.FC = () => {
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-white/20 backdrop-blur-2xl leaf-edges-shadow p-8 md:p-16 border border-white/50 overflow-hidden relative"
+        style={{ willChange: "transform, opacity" }}
       >
         {/* Liquid Glass Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5 pointer-events-none" />
