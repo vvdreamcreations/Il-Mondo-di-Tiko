@@ -37,7 +37,7 @@ const App: React.FC = () => {
         {/* LAYER 1: DEEP VISUALS (Static Image) */}
         <div className="absolute inset-0 w-full h-full">
           <picture>
-            <source media="(max-width: 768px)" srcSet="/sfondo-mobile.webp" />
+            <source media="(max-width: 768px)" srcSet="/bg-mobile.webp" />
             <img
               src="/sfondo-bosco-statico.webp"
               alt="Sfondo Bosco Magico"

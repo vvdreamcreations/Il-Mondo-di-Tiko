@@ -31,11 +31,11 @@ dist-ssr
 .env
 
 # Media files (riducono carico language server)
-public/**/*.webp
-public/**/*.png
-public/**/*.jpg
-public/**/*.jpeg
-public/**/*.mp4public/**/*.svg
+# public/**/*.webp
+# public/**/*.png
+# public/**/*.jpg
+# public/**/*.jpeg
+# public/**/*.mp4public/**/*.svg
 
 # Temporary files
 *.tmp
