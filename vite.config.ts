@@ -38,6 +38,11 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom', 'react-router-dom', 'framer-motion', 'react-helmet-async'],
+            ui: ['lucide-react'],
+            shared: ['/constants', '/utils/analytics', '/utils/consent']
+          },
           // Content-hashed filenames for optimal caching
           assetFileNames: 'assets/[name].[hash][extname]',
           chunkFileNames: 'assets/[name].[hash].js',
