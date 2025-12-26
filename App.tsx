@@ -15,8 +15,8 @@ const App: React.FC = () => {
   const [showParticles, setShowParticles] = React.useState(false);
 
   useEffect(() => {
-    // Delay particles by 1 second (faster start as requested)
-    const timer = setTimeout(() => setShowParticles(true), 1000);
+    // Delay particles by 2.5 seconds to prioritize LCP and main thread
+    const timer = setTimeout(() => setShowParticles(true), 2500);
     return () => clearTimeout(timer);
   }, []);
 

@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
           <h1 className="font-display text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
             Dove i sogni <br />
             <span className="relative inline-block mt-2">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] bg-300% animate-gradient filter drop-shadow-[0_0_20px_rgba(255,165,0,0.5)]">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] bg-300% md:animate-gradient filter drop-shadow-[0_0_20px_rgba(255,165,0,0.5)]">
                 prendono vita
               </span>
               {/* Glow behind text */}
@@ -74,7 +74,7 @@ const Hero: React.FC = () => {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+          transition={{ duration: 1, delay: 0, ease: "easeOut" }}
           className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 font-medium drop-shadow-lg leading-relaxed tracking-wide"
         >
           Un piccolo scoiattolo curioso, gentile e pieno di sogni. <br className="hidden md:block" />
