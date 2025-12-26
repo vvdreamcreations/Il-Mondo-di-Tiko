@@ -5,10 +5,10 @@ const About: React.FC = () => {
   return (
     <section className="container mx-auto px-4">
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="bg-white/20 backdrop-blur-2xl leaf-edges-shadow p-8 md:p-16 border border-white/50 overflow-hidden relative"
       >
         {/* Liquid Glass Gradient Overlay */}
@@ -17,23 +17,11 @@ const About: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
 
           {/* Image Side - Tiko Character */}
-          <motion.div
-            className="w-full md:w-1/2 flex flex-col items-center gap-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-          >
+          <div className="w-full md:w-1/2 flex flex-col items-center gap-6">
             {/* Quote Banner - Above Tiko */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white p-6 torn-edges-shadow max-w-md border border-tiko-orange/20 rotate-1"
-            >
+            <div className="bg-white p-6 torn-edges-shadow max-w-md border border-tiko-orange/20 rotate-1">
               <p className="font-handwriting text-tiko-dark font-bold text-lg italic text-center">"Ogni storia è un piccolo seme di meraviglia."</p>
-            </motion.div>
+            </div>
 
             <div className="relative group w-full max-w-md">
               {/* Soft glow background for the character */}
@@ -46,19 +34,13 @@ const About: React.FC = () => {
                 alt="Tiko lo Scoiattolo - Mascotte"
                 width="600"
                 height="600"
-                className="relative z-10 w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
               />
             </div>
-          </motion.div>
+          </div>
 
           {/* Text Side with Opaque Background */}
-          <motion.div
-            className="w-full md:w-1/2"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-          >
+          <div className="w-full md:w-1/2">
             {/* Opaque container for text readability */}
             <div className="bg-gradient-to-br from-amber-50/95 to-orange-50/95 backdrop-blur-sm leaf-edges-shadow p-8 relative z-10 border-2 border-tiko-yellow/30">
               <span className="text-tiko-orange font-bold uppercase tracking-widest text-sm mb-2 block">Chi Siamo</span>
@@ -93,7 +75,7 @@ const About: React.FC = () => {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </motion.div>

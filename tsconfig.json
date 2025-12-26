@@ -25,5 +25,15 @@
     },
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "dist-ssr",
+    "public/**/*.webp",
+    "public/**/*.png",
+    "public/**/*.jpg",
+    "public/**/*.mp4",
+    "*.md"
+  ]
 }

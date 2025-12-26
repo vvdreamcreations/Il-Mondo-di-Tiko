@@ -12,9 +12,15 @@ dist
 dist-ssr
 *.local
 
+# Cache directories
+.vite/
+.turbo/
+.cache/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -23,3 +29,15 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Media files (riducono carico language server)
+public/**/*.webp
+public/**/*.png
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.mp4public/**/*.svg
+
+# Temporary files
+*.tmp
+*.temp
+Thumbs.db

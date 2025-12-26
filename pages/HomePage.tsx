@@ -5,7 +5,7 @@ import Values from '../components/Values';
 import About from '../components/About';
 import MagicCard from '../components/MagicCard';
 import BookModal from '../components/BookModal';
-import Gallery from '../components/Gallery';
+
 import Reviews from '../components/Reviews';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
@@ -94,7 +94,7 @@ const HomePage: React.FC = () => {
                     </motion.div>
                 </section>
 
-                <Gallery />
+
 
                 <Reviews />
 

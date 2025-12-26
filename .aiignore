@@ -3,8 +3,32 @@ node_modules/
 dist/
 dist-ssr/
 .git/
+.vite/
+.turbo/
+
+# Large media directories
+public/Carosello/
+public/Foglie/
+public/Effetti-Luce/
+public/fonts/
+
+# Media files
 public/*.mp4
 public/*.webp
 public/*.png
+public/*.jpg
+public/*.jpeg
+*.mp4
+*.webp
+*.png (except thumbnails)
+*.jpg
+*.jpeg
+
+# Build and config
 *.log
 .env
+package-lock.json
+
+# Documentation files
+*.md
+!README.md

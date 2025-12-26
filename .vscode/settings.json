@@ -1,0 +1,27 @@
+﻿{
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/public/Carosello/**": true,
+    "**/public/Foglie/**": true,
+    "**/public/Effetti-Luce/**": true,
+    "**/*.webp": true,
+    "**/*.png": true,
+    "**/*.jpg": true,
+    "**/*.mp4": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/public/**/*.webp": true,
+    "**/public/**/*.png": true,
+    "**/public/**/*.jpg": true,
+    "**/public/**/*.mp4": true
+  },
+  "typescript.tsserver.maxTsServerMemory": 2048,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.vite": true,
+    "**/dist": true
+  }
+}
