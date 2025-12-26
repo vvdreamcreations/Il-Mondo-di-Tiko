@@ -91,7 +91,8 @@ const Newsletter: React.FC = () => {
         onViewportEnter={() => setShouldLoadScript(true)}
         viewport={{ once: true }} // Removed margin to be strict - load ONLY when actually visible
         transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
-        style={{ backgroundColor: "rgba(0,0,0,0.1)", backdropFilter: "blur(48px)" }} className="backdrop-blur-3xl rough-edges-shadow p-8 md:p-16 flex flex-col items-center gap-8 max-w-6xl mx-auto border border-white/30 ring-1 ring-white/10 relative overflow-hidden"
+        style={{ backgroundColor: "rgba(0,0,0,0.1)" }}
+        className="backdrop-blur-md md:backdrop-blur-3xl rough-edges-shadow p-8 md:p-16 flex flex-col items-center gap-8 max-w-6xl mx-auto border border-white/30 ring-1 ring-white/10 relative overflow-hidden"
       >
         {/* Glass Reflection Effect */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none" />

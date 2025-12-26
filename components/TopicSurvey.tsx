@@ -317,9 +317,10 @@ const TopicSurvey: React.FC = () => {
                     </div>
                     <div className="h-6 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm border border-white/20">
                       <motion.div
-                        initial={{ width: 0 }}
-                        animate={{ width: `${topic.percentage}%` }}
-                        transition={{ duration: 1, ease: 'easeOut', delay: index * 0.1 }}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: topic.percentage / 100 }}
+                        style={{ originX: 0, width: '100%' }}
+                        transition={{ duration: 0.8, type: "spring", stiffness: 400, damping: 30, delay: index * 0.1 }}
                         className={`h-full flex items-center justify-end pr-2 ${index === 0
                           ? 'bg-gradient-to-r from-tiko-yellow to-tiko-orange'
                           : index === 1
