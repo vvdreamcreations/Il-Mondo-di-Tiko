@@ -32,7 +32,7 @@ const App: React.FC = () => {
     <div className="min-h-screen flex flex-col relative font-sans overflow-x-hidden">
 
       {/* GLOBAL BACKGROUND SYSTEM - FIXED & STATIC */}
-      <div className="fixed inset-0 w-full h-full z-0 overflow-hidden bg-gray-900">
+      <div className="fixed inset-0 w-full h-[100lvh] z-0 overflow-hidden bg-gray-900">
 
         {/* LAYER 1: DEEP VISUALS (Static Image) */}
         <div className="absolute inset-0 w-full h-full">
