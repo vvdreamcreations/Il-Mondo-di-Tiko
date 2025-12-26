@@ -15,8 +15,8 @@ const App: React.FC = () => {
   const [showParticles, setShowParticles] = React.useState(false);
 
   useEffect(() => {
-    // Delay particles by 3 seconds (compromise between scoring and UX)
-    const timer = setTimeout(() => setShowParticles(true), 3000);
+    // Delay particles by 1 second (faster start as requested)
+    const timer = setTimeout(() => setShowParticles(true), 1000);
     return () => clearTimeout(timer);
   }, []);
 

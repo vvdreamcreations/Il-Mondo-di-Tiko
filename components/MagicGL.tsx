@@ -229,10 +229,10 @@ const useCombinedParticlePhysics = (
             const dx = p.x - origin.x;
             const dy = p.y - origin.y;
             const dist = Math.sqrt(dx * dx + dy * dy + 0.1);
-            if (dist < 4.0) {
+            if (dist < 2.0) {
                 const isDust = p.type > 0.5;
-                const force = isDust ? 0.1 : 0.5;
-                const cap = isDust ? 0.3 : 0.8;
+                const force = isDust ? 0.02 : 0.08; // Very gentle nudge
+                const cap = isDust ? 0.1 : 0.3;     // Low cap
                 const f = Math.min((1.0 / dist * dist) * force, cap);
 
                 p.vx += (dx / dist) * f * (1.0 / p.mass) * 0.2;
@@ -351,9 +351,9 @@ const useLeafPhysics = (
             const dx = l.x - origin.x;
             const dy = l.y - origin.y;
             const dist = Math.sqrt(dx * dx + dy * dy + 0.1);
-            if (dist < 5.0) { // Larger radius for leaves
-                const force = 0.8; // Strong wind
-                const f = Math.min((1.0 / dist * dist) * force, 1.5);
+            if (dist < 2.5) { // Reduced radius
+                const force = 0.15; // Very gentle wind
+                const f = Math.min((1.0 / dist * dist) * force, 0.5);
 
                 l.vx += (dx / dist) * f * 0.5;
                 l.vy += (dy / dist) * f * 0.5 + 0.02; // Lift them up!
@@ -426,7 +426,7 @@ const Particles = () => {
 }
 
 const Leaves = () => {
-    const texture = useTexture('/Effetti-Luce/leaf-light.svg');
+    const texture = useTexture('/Foglie/Foglia-1.svg');
     const { viewport } = useThree();
 
     // 20 Falling Leaves
@@ -486,7 +486,12 @@ const Scene = () => {
 
     // Interaction Raycaster
     useEffect(() => {
+        let lastCall = 0;
         const handleInteraction = (e: MouseEvent | TouchEvent) => {
+            const now = Date.now();
+            if (now - lastCall < 30) return; // Throttle to ~30fps
+            lastCall = now;
+
             let cx, cy;
             if (e.type === 'touchstart') {
                 cx = (e as TouchEvent).touches[0].clientX;
