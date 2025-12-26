@@ -7,41 +7,37 @@ const Hero: React.FC = () => {
     <section className="relative min-h-screen w-full flex items-start justify-center overflow-hidden perspective-1000 pt-28">
 
       <div className="container mx-auto px-4 z-10 text-center relative flex flex-col items-center">
+        {/* Main Logo - RENDERED IMMEDIATELY (No Fade-in) for LCP */}
+        <img
+          src="/il-mondo-di-tiko-logo.webp"
+          srcSet="/il-mondo-di-tiko-logo-mobile.webp 340w, /il-mondo-di-tiko-logo-medium.webp 450w, /il-mondo-di-tiko-logo.webp 800w"
+          sizes="(max-width: 480px) 150px, (max-width: 768px) 340px, 800px"
+          alt="Il Mondo di Tiko Logo"
+          width="800"
+          height="599"
+          className="w-48 md:w-64 h-auto mb-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"
+          // @ts-ignore
+          fetchpriority="high"
+          loading="eager"
+          onError={(e) => {
+            e.currentTarget.style.display = 'none';
+            const parent = e.currentTarget.parentElement;
+            if (parent) {
+              const fallback = document.createElement('h2');
+              fallback.innerText = "Il Mondo di Tiko";
+              fallback.className = "font-display font-bold text-5xl text-tiko-yellow mb-8 drop-shadow-md";
+              parent.insertBefore(fallback, e.currentTarget);
+            }
+          }}
+        />
+
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 50 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center"
         >
-          {/* Main Logo */}
-          <motion.img
-            src="/il-mondo-di-tiko-logo.webp"
-            srcSet="/il-mondo-di-tiko-logo-mobile.webp 340w, /il-mondo-di-tiko-logo-medium.webp 450w, /il-mondo-di-tiko-logo.webp 800w"
-            sizes="(max-width: 480px) 150px, (max-width: 768px) 340px, 800px"
-            alt="Il Mondo di Tiko Logo"
-            width="800"
-            height="599"
-            className="w-48 md:w-64 h-auto mb-8 drop-shadow-[0_0_25px_rgba(255,255,255,0.4)]"
-            // Removed initial opacity:0 to ensure LCP is immediate 
-            // initial={{ y: -50, opacity: 0 }}
-            // animate={{ y: 0, opacity: 1 }}
-            transition={{ type: "spring", stiffness: 100 }}
-            // @ts-ignore - React 19/TS might not have fetchpriority type definition yet
-            fetchpriority="high"
-            loading="eager"
-            onError={(e) => {
-              // If local logo is missing, hide image and use text (fallback)
-              e.currentTarget.style.display = 'none';
-              const parent = e.currentTarget.parentElement;
-              if (parent) {
-                const fallback = document.createElement('h2');
-                fallback.innerText = "Il Mondo di Tiko";
-                fallback.className = "font-display font-bold text-5xl text-tiko-yellow mb-8 drop-shadow-md";
-                parent.insertBefore(fallback, e.currentTarget);
-              }
-            }}
-          />
-
+          {/* Sparkles Badge */}
           <motion.div
             className="inline-flex items-center gap-3 py-2 px-6 rounded-full bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-[20px] border border-white/30 text-white font-bold text-sm md:text-base mb-6 shadow-[0_0_20px_rgba(255,255,255,0.1)] ring-1 ring-white/10"
             animate={{
@@ -108,7 +104,7 @@ const Hero: React.FC = () => {
         <ArrowDown size={32} />
       </motion.div>
 
-    </section>
+    </section >
   );
 };
 
