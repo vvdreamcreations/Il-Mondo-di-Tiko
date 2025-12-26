@@ -128,34 +128,35 @@ type ParticleData = {
 
 const useCombinedParticlePhysics = (
     fireflyCount: number,
-    dustCount: number,
-    viewport: { width: number, height: number }
+    dustCount: number
 ) => {
+    // 1. Stable Particle Data (Mutable Ref)
+    // We do NOT want to recreate this on viewport resize
+    const particlesRef = useRef<ParticleData[]>([]);
 
-    const particles = useMemo<ParticleData[]>(() => {
+    // Initialize ONCE
+    const initialized = useRef(false);
+
+    if (!initialized.current) {
         const arr = [];
         const total = fireflyCount + dustCount;
 
+        // Initial viewport guess (will check bounds dynamically later)
+        const width = 20;
+        const height = 10;
+
         for (let i = 0; i < total; i++) {
             const isDust = i >= fireflyCount;
-
-            // CONFIGURATION
             const type = isDust ? 1.0 : 0.0;
-
-            // Colors
             const baseColor: [number, number, number] = isDust ? [0.1, 0.5, 0.2] : [1.0, 0.95, 0.6];
             const mass = isDust ? 0.2 : 1.0;
             const drag = isDust ? 0.95 : 0.94;
-
-            // Scale: Dust = ~2/3 of Firefly (0.15-0.30), Firefly = (0.20-0.45)
-            // UPDATED: User asked for same size approx
             const scale = (Math.random() * 0.25 + 0.20);
-
             const z = Math.random() * 2 - 1;
 
             arr.push({
-                x: (Math.random() - 0.5) * viewport.width * 1.5,
-                y: (Math.random() - 0.5) * viewport.height * 1.5,
+                x: (Math.random() - 0.5) * width * 1.5,
+                y: (Math.random() - 0.5) * height * 1.5,
                 z: z,
                 baseX: 0, baseY: 0, baseZ: 0,
                 vx: 0, vy: 0, vz: 0,
@@ -171,8 +172,9 @@ const useCombinedParticlePhysics = (
                 targetColor: [...baseColor]
             });
         }
-        return arr;
-    }, [fireflyCount, dustCount, viewport]);
+        particlesRef.current = arr;
+        initialized.current = true;
+    }
 
     const meshRef = useRef<THREE.InstancedMesh>(null);
     const positionAttr = useRef<THREE.InstancedBufferAttribute>(null);
@@ -181,10 +183,16 @@ const useCombinedParticlePhysics = (
     useFrame((state) => {
         if (!meshRef.current) return;
         const time = state.clock.elapsedTime;
+        const { width, height } = state.viewport; // Dynamic access
+
         let needsUpdate = false;
         let colorUpdate = false;
 
-        particles.forEach((p, i) => {
+        const particles = particlesRef.current;
+
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+
             // Physics
             p.x += p.vx; p.y += p.vy; p.z += p.vz;
             p.vx *= p.drag; p.vy *= p.drag; p.vz *= p.drag;
@@ -195,17 +203,16 @@ const useCombinedParticlePhysics = (
                 p.vy += (Math.random() - 0.5) * 0.001;
                 p.vz += (Math.random() - 0.5) * 0.001;
 
-                // Color Return
                 p.color[0] += (p.targetColor[0] - p.color[0]) * 0.05;
                 p.color[1] += (p.targetColor[1] - p.color[1]) * 0.05;
                 p.color[2] += (p.targetColor[2] - p.color[2]) * 0.05;
             }
 
             // Boundary Wrap
-            if (p.x > viewport.width) p.x = -viewport.width;
-            if (p.x < -viewport.width) p.x = viewport.width;
-            if (p.y > viewport.height) p.y = -viewport.height;
-            if (p.y < -viewport.height) p.y = viewport.height;
+            if (p.x > width) p.x = -width;
+            if (p.x < -width) p.x = width;
+            if (p.y > height) p.y = -height;
+            if (p.y < -height) p.y = height;
 
             if (positionAttr.current) {
                 positionAttr.current.setXYZ(i, p.x, p.y, p.z);
@@ -215,7 +222,7 @@ const useCombinedParticlePhysics = (
                 colorAttr.current.setXYZ(i, p.color[0], p.color[1], p.color[2]);
                 colorUpdate = true;
             }
-        });
+        }
 
         if (needsUpdate && positionAttr.current) positionAttr.current.needsUpdate = true;
         if (colorUpdate && colorAttr.current) colorAttr.current.needsUpdate = true;
@@ -225,28 +232,28 @@ const useCombinedParticlePhysics = (
     });
 
     const applyForce = useCallback((origin: THREE.Vector3) => {
+        const particles = particlesRef.current;
         particles.forEach(p => {
             const dx = p.x - origin.x;
             const dy = p.y - origin.y;
             const dist = Math.sqrt(dx * dx + dy * dy + 0.1);
             if (dist < 2.0) {
                 const isDust = p.type > 0.5;
-                const force = isDust ? 0.02 : 0.08; // Very gentle nudge
-                const cap = isDust ? 0.1 : 0.3;     // Low cap
+                const force = isDust ? 0.02 : 0.08;
+                const cap = isDust ? 0.1 : 0.3;
                 const f = Math.min((1.0 / dist * dist) * force, cap);
 
                 p.vx += (dx / dist) * f * (1.0 / p.mass) * 0.2;
                 p.vy += (dy / dist) * f * (1.0 / p.mass) * 0.2;
 
                 if (isDust) {
-                    // FLASH: Bright Lime
                     p.color[0] = 0.6; p.color[1] = 1.0; p.color[2] = 0.5;
                 }
             }
         });
-    }, [particles]);
+    }, []);
 
-    return { meshRef, positionAttr, colorAttr, particles, applyForce };
+    return { meshRef, positionAttr, colorAttr, particles: particlesRef.current, applyForce };
 };
 
 // --- LEAF PHYSICS ---
@@ -263,36 +270,43 @@ type LeafData = {
 };
 
 const useLeafPhysics = (
-    count: number,
-    viewport: { width: number, height: number }
+    count: number
 ) => {
-    const leaves = useMemo<LeafData[]>(() => {
+    // Stable Leaf Data
+    const leavesRef = useRef<LeafData[]>([]);
+    const initialized = useRef(false);
+
+    if (!initialized.current) {
         const arr = [];
-        // Autumn Palette
         const colors = [
-            [1.0, 0.5, 0.0], // Orange
-            [0.8, 0.2, 0.1], // Red-Brown
-            [1.0, 0.8, 0.0], // Gold/Yellow
-            [0.6, 0.7, 0.2], // Olive Green
+            [1.0, 0.5, 0.0],
+            [0.8, 0.2, 0.1],
+            [1.0, 0.8, 0.0],
+            [0.6, 0.7, 0.2],
         ];
+
+        // Init guess
+        const width = 20;
+        const height = 10;
 
         for (let i = 0; i < count; i++) {
             const col = colors[Math.floor(Math.random() * colors.length)];
             arr.push({
-                x: (Math.random() - 0.5) * viewport.width * 1.5,
-                y: (Math.random() - 0.5) * viewport.height * 1.5,
+                x: (Math.random() - 0.5) * width * 1.5,
+                y: (Math.random() - 0.5) * height * 1.5,
                 z: Math.random() * 2 - 0.5,
                 vx: 0, vy: 0, vz: 0,
                 rotation: Math.random() * Math.PI * 2,
                 rotSpeed: (Math.random() - 0.5) * 0.05,
-                scale: Math.random() * 0.4 + 0.3, // Larger than particles
+                scale: Math.random() * 0.4 + 0.3,
                 swaySpeed: Math.random() * 1.0 + 0.5,
                 phase: Math.random() * Math.PI * 2,
                 color: [col[0], col[1], col[2]]
             });
         }
-        return arr;
-    }, [count, viewport]);
+        leavesRef.current = arr;
+        initialized.current = true;
+    }
 
     const meshRef = useRef<THREE.InstancedMesh>(null);
     const positionAttr = useRef<THREE.InstancedBufferAttribute>(null);
@@ -301,32 +315,34 @@ const useLeafPhysics = (
     useFrame((state) => {
         if (!meshRef.current) return;
         const time = state.clock.elapsedTime;
+        const { width, height } = state.viewport;
+
         let needsUpdate = false;
         let rotUpdate = false;
 
-        leaves.forEach((l, i) => {
-            // Gravity (Falling)
-            // Constant terminal velocity-ish
-            if (l.vy > -0.02) l.vy -= 0.0005; // Gravity acc
+        const leaves = leavesRef.current;
 
-            // Apply Velocity
+        for (let i = 0; i < leaves.length; i++) {
+            const l = leaves[i];
+
+            // Gravity
+            if (l.vy > -0.02) l.vy -= 0.0005;
+
             l.x += l.vx;
             l.y += l.vy;
             l.z += l.vz;
 
-            // Drag
             l.vx *= 0.95;
-            l.vy *= 0.98; // Air resistance vertical
+            l.vy *= 0.98;
             l.vz *= 0.95;
 
-            // Rotation
             l.rotation += l.rotSpeed;
 
-            // Wrap Around (Top to Bottom)
-            if (l.y < -viewport.height / 2 - 2) {
-                l.y = viewport.height / 2 + 2;
-                l.x = (Math.random() - 0.5) * viewport.width;
-                l.vy = 0; // Reset fall speed
+            // Updated Wrap Logic using dynamic viewport
+            if (l.y < -height / 2 - 2) {
+                l.y = height / 2 + 2;
+                l.x = (Math.random() - 0.5) * width; // Randomize X on respawn
+                l.vy = 0;
             }
 
             if (positionAttr.current) {
@@ -337,7 +353,7 @@ const useLeafPhysics = (
                 rotationAttr.current.setX(i, l.rotation);
                 rotUpdate = true;
             }
-        });
+        }
 
         if (needsUpdate && positionAttr.current) positionAttr.current.needsUpdate = true;
         if (rotUpdate && rotationAttr.current) rotationAttr.current.needsUpdate = true;
@@ -347,32 +363,33 @@ const useLeafPhysics = (
     });
 
     const applyForce = useCallback((origin: THREE.Vector3) => {
+        const leaves = leavesRef.current;
         leaves.forEach(l => {
             const dx = l.x - origin.x;
             const dy = l.y - origin.y;
             const dist = Math.sqrt(dx * dx + dy * dy + 0.1);
-            if (dist < 2.5) { // Reduced radius
-                const force = 0.15; // Very gentle wind
+            if (dist < 2.5) {
+                const force = 0.15;
                 const f = Math.min((1.0 / dist * dist) * force, 0.5);
 
                 l.vx += (dx / dist) * f * 0.5;
-                l.vy += (dy / dist) * f * 0.5 + 0.02; // Lift them up!
-                l.rotSpeed += (Math.random() - 0.5) * 0.2; // Spin them!
+                l.vy += (dy / dist) * f * 0.5 + 0.02;
+                l.rotSpeed += (Math.random() - 0.5) * 0.2;
             }
         });
-    }, [leaves]);
+    }, []);
 
-    return { meshRef, positionAttr, rotationAttr, leaves, applyForce };
+    return { meshRef, positionAttr, rotationAttr, leaves: leavesRef.current, applyForce };
 };
 
 // --- COMPONENTS ---
 
 const Particles = () => {
     const texture = useTexture('/Effetti-Luce/firefly-light.svg');
-    const { viewport } = useThree();
+    // viewport unused in init
 
     // 30 Fireflies, 100 Dust Particles
-    const { meshRef, positionAttr, colorAttr, particles, applyForce } = useCombinedParticlePhysics(30, 100, viewport);
+    const { meshRef, positionAttr, colorAttr, particles, applyForce } = useCombinedParticlePhysics(30, 100);
 
     useEffect(() => {
         const handler = (e: CustomEvent) => applyForce(e.detail.position);
@@ -427,10 +444,9 @@ const Particles = () => {
 
 const Leaves = () => {
     const texture = useTexture('/Foglie/Foglia-1.svg');
-    const { viewport } = useThree();
 
     // 20 Falling Leaves
-    const { meshRef, positionAttr, rotationAttr, leaves, applyForce } = useLeafPhysics(20, viewport);
+    const { meshRef, positionAttr, rotationAttr, leaves, applyForce } = useLeafPhysics(20);
 
     useEffect(() => {
         const handler = (e: CustomEvent) => applyForce(e.detail.position);
