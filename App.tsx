@@ -8,6 +8,7 @@ import { hasAnalyticsConsent, initializeAnalytics } from './utils/consent';
 // Lazy load non-critical components
 const MagicCursor = lazy(() => import('./components/MagicCursor'));
 const MagicGL = lazy(() => import('./components/MagicGL'));
+const TikoMascot = lazy(() => import('./components/TikoMascot'));
 
 const App: React.FC = () => {
 
@@ -85,6 +86,11 @@ const App: React.FC = () => {
       {/* <Suspense fallback={null}>
         <MagicCursor />
       </Suspense> */}
+
+      {/* Interactive Mascot */}
+      <Suspense fallback={null}>
+        <TikoMascot />
+      </Suspense>
 
       {/* Cookie Consent Banner */}
       <CookieConsent />
