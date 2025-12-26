@@ -133,7 +133,7 @@ const TopicSurvey: React.FC = () => {
   const calculateRankings = () => {
     if (!surveyData) return [];
 
-    const allTopics = Object.values(surveyData.topics).map(topic => ({
+    const allTopics = Object.values(surveyData.topics).map((topic: any) => ({
       id: topic.id,
       name: `${topic.emoji} ${topic.name}`,
       votes: topic.votes
@@ -239,7 +239,7 @@ const TopicSurvey: React.FC = () => {
             </AnimatePresence>
 
             <form onSubmit={handleSubmit} className="space-y-3 bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/10">
-              {surveyData && Object.entries(surveyData.topics).map(([id, topic]) => (
+              {surveyData && Object.entries(surveyData.topics).map(([id, topic]: [string, any]) => (
                 <label
                   key={id}
                   className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all ${selectedTopic === id
