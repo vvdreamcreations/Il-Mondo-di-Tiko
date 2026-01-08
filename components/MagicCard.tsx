@@ -29,7 +29,7 @@ const MagicCard: React.FC<MagicCardProps> = ({ book, onOpenDetails, compact = fa
         initial={false}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
         transition={{ duration: 0.2, type: 'spring', stiffness: 250, damping: 25 }}
-        style={{ willChange: 'transform' }}
+        style={{ willChange: 'transform' }} // Ensure GPU layer promotion
       >
         {/* FRONT FACE */}
         <div className="absolute inset-0 h-full w-full backface-hidden torn-edges-shadow bg-white overflow-hidden border border-white/20 transition-all duration-300 group-hover:shadow-[0_20px_50px_rgba(251,191,36,0.3)] group-hover:scale-[1.02] group-hover:border-tiko-yellow/50">

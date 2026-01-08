@@ -173,10 +173,9 @@ const Gallery: React.FC = () => {
                     {selectedImage && (
                         <motion.div
                             key="gallery-modal"
-                            initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-xl"
+                            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 md:p-8 bg-black/95 backdrop-blur-md md:backdrop-blur-xl"
                             onClick={() => setSelectedImage(null)}
                         >
                             {/* Close Button - Fixed position to ensure visibility */}

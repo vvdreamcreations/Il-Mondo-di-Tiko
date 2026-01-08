@@ -384,12 +384,15 @@ const useLeafPhysics = (
 
 // --- COMPONENTS ---
 
-const Particles = () => {
+const Particles = ({ isMobile }: { isMobile: boolean }) => {
     const texture = useTexture('/Effetti-Luce/firefly-light.svg');
     // viewport unused in init
 
-    // 30 Fireflies, 100 Dust Particles
-    const { meshRef, positionAttr, colorAttr, particles, applyForce } = useCombinedParticlePhysics(30, 100);
+    // Desktop: 30 Fireflies, 100 Dust. Mobile: 10 Fireflies, 35 Dust.
+    const fireflyCount = isMobile ? 10 : 30;
+    const dustCount = isMobile ? 35 : 100;
+
+    const { meshRef, positionAttr, colorAttr, particles, applyForce } = useCombinedParticlePhysics(fireflyCount, dustCount);
 
     useEffect(() => {
         const handler = (e: CustomEvent) => applyForce(e.detail.position);
@@ -442,11 +445,12 @@ const Particles = () => {
     )
 }
 
-const Leaves = () => {
+const Leaves = ({ isMobile }: { isMobile: boolean }) => {
     const texture = useTexture('/Foglie/Foglia-1.svg');
 
-    // 20 Falling Leaves
-    const { meshRef, positionAttr, rotationAttr, leaves, applyForce } = useLeafPhysics(20);
+    // Desktop: 20 Leaves, Mobile: 8 Leaves
+    const count = isMobile ? 8 : 20;
+    const { meshRef, positionAttr, rotationAttr, leaves, applyForce } = useLeafPhysics(count);
 
     useEffect(() => {
         const handler = (e: CustomEvent) => applyForce(e.detail.position);
@@ -500,12 +504,18 @@ const Leaves = () => {
 const Scene = () => {
     const { gl, scene, viewport } = useThree();
 
+    // Detect Mobile for Optimization
+    // We use a simple check based on viewport width from Three.js or window.innerWidth
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
     // Interaction Raycaster
     useEffect(() => {
         let lastCall = 0;
         const handleInteraction = (e: MouseEvent | TouchEvent) => {
             const now = Date.now();
-            if (now - lastCall < 30) return; // Throttle to ~30fps
+            // Throttle more on mobile (60fps vs 30fps check is roughly 16ms vs 33ms)
+            // But here we throttle to ~30fps for everyone, maybe 15fps for mobile touch if really needed
+            if (now - lastCall < (isMobile ? 50 : 30)) return;
             lastCall = now;
 
             let cx, cy;
@@ -524,12 +534,12 @@ const Scene = () => {
             window.dispatchEvent(new CustomEvent('magic-interaction', { detail: { position } }));
         };
         window.addEventListener('mousedown', handleInteraction);
-        window.addEventListener('touchstart', handleInteraction);
+        window.addEventListener('touchstart', handleInteraction, { passive: true }); // Passive for better scroll performance
         return () => {
             window.removeEventListener('mousedown', handleInteraction);
             window.removeEventListener('touchstart', handleInteraction);
         };
-    }, [viewport]);
+    }, [viewport, isMobile]);
 
     useEffect(() => {
         gl.setClearColor(0x000000, 0);
@@ -538,8 +548,9 @@ const Scene = () => {
 
     return (
         <React.Suspense fallback={null}>
-            <Particles />
-            <Leaves />
+            {/* Reduce counts significantly on mobile to free up GPU for UI/CSS */}
+            <Particles isMobile={isMobile} />
+            <Leaves isMobile={isMobile} />
         </React.Suspense>
     )
 }

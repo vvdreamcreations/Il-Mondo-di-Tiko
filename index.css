@@ -33,38 +33,76 @@
 /* Organic Border Effects */
 .torn-edges {
   clip-path: url(#torn-edges);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  /* Remove heavy filter on mobile, keep clip-path */
 }
 
 .leaf-edges {
   clip-path: url(#leaf-edges);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
 }
 
 .rough-edges {
   clip-path: url(#rough-edges);
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
 }
 
-/* Enhanced shadows for organic borders - SIMPLIFIED FOR PERFORMANCE */
-.organic-shadow {
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+/* Heavy shadows only on Desktop to fix mobile scroll stuttering */
+@media (min-width: 768px) {
+  .torn-edges {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+
+  .leaf-edges {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+  }
+
+  .rough-edges {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.35));
+  }
+
+  /* Enhanced shadows */
+  .organic-shadow {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  }
+
+  .torn-edges-shadow {
+    clip-path: url(#torn-edges);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  }
+
+  .leaf-edges-shadow {
+    clip-path: url(#leaf-edges);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+  }
+
+  .rough-edges-shadow {
+    clip-path: url(#rough-edges);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+  }
 }
 
-/* Combine organic border with shadow */
-.torn-edges-shadow {
-  clip-path: url(#torn-edges);
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+/* Mobile Fallbacks - Lighter or no shadow */
+@media (max-width: 767px) {
+  .torn-edges-shadow {
+    clip-path: url(#torn-edges);
+    /* No drop-shadow filter on mobile for performance */
+  }
+
+  .leaf-edges-shadow {
+    clip-path: url(#leaf-edges);
+  }
+
+  .rough-edges-shadow {
+    clip-path: url(#rough-edges);
+  }
+
+  /* Optional: Simple box shadow if clip-path allows, but usually they conflict visually. 
+     For now, prioritizing smoothness implies removing the heavy calculation. */
 }
 
-.leaf-edges-shadow {
-  clip-path: url(#leaf-edges);
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
-}
-
-.rough-edges-shadow {
-  clip-path: url(#rough-edges);
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+/* GPU Acceleration Utility */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Performance Utilities */

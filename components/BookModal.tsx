@@ -22,16 +22,14 @@ const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/40 backdrop-blur-md"
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
           />
 
           {/* Modal Content */}
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 50 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 50 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900/98 to-gray-800/98 backdrop-blur-xl rough-edges-shadow overflow-hidden max-h-[80vh] md:max-h-[85vh] overflow-y-auto flex flex-col md:flex-row border border-white/10"
+            className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900/98 to-gray-800/98 backdrop-blur-sm md:backdrop-blur-xl rough-edges-shadow overflow-hidden max-h-[80vh] md:max-h-[85vh] overflow-y-auto flex flex-col md:flex-row border border-white/10"
           >
             <button
               onClick={(e) => {
