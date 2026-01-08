@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Book } from '../types';
 import { X, CheckCircle, ShoppingBag } from 'lucide-react';
 
+import useScrollLock from '../hooks/useScrollLock';
+
 interface BookModalProps {
   book: Book | null;
   isOpen: boolean;
@@ -10,6 +12,9 @@ interface BookModalProps {
 }
 
 const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
+  // Lock body scroll when open
+  useScrollLock(isOpen);
+
   if (!book) return null;
 
   return (

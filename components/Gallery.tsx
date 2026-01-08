@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import useScrollLock from '../hooks/useScrollLock';
 
 const Gallery: React.FC = () => {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -16,6 +17,9 @@ const Gallery: React.FC = () => {
             }
         }
     }, [selectedImage]);
+
+    // Lock scroll when modal is open
+    useScrollLock(!!selectedImage);
 
     // Optimized images: lightweight thumbnails for carousel, full-size for modal (all WebP for memory efficiency)
     const images = [

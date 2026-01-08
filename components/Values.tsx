@@ -4,6 +4,8 @@ import { VALUES } from '../constants';
 import { ValueItem } from '../types';
 import { Rocket, Heart, Sprout, Palette, Plus, X, Sparkles } from 'lucide-react';
 
+import useScrollLock from '../hooks/useScrollLock';
+
 const iconMap = {
     Rocket: Rocket,
     Heart: Heart,
@@ -13,6 +15,10 @@ const iconMap = {
 
 const Values: React.FC = () => {
     const [selectedValue, setSelectedValue] = useState<ValueItem | null>(null);
+
+    // Lock scroll when modal is open
+    useScrollLock(!!selectedValue);
+
 
     return (
         <section className="container mx-auto px-4">
@@ -95,10 +101,11 @@ const Values: React.FC = () => {
                         />
 
                         <motion.div
-                            initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                            initial={{ scale: 0.95, opacity: 0, y: 20 }}
                             animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.95, opacity: 0, y: 30 }}
-                            transition={{ type: "spring", duration: 0.6, bounce: 0.3 }}
+                            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+                            transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}
+                            style={{ willChange: 'transform, opacity' }}
                             className="bg-white/95 backdrop-blur-sm md:backdrop-blur-md rough-edges-shadow w-[95vw] md:w-[90vw] max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[80vh] md:max-h-[85vh]"
                         >
                             <button
