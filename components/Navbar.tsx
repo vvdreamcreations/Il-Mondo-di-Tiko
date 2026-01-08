@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 py-4">
       <div className="container mx-auto">
-        <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm md:backdrop-blur-md rough-edges-shadow px-6 py-3 shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] border border-white/30 ring-1 ring-white/20 hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] transition-all duration-500">
+        <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-sm md:backdrop-blur-md rounded-2xl px-6 py-3 shadow-[inset_0_0_20px_rgba(255,255,255,0.1)] border border-white/30 ring-1 ring-white/20 hover:shadow-[0_8px_32px_rgba(255,255,255,0.1)] transition-all duration-500">
           <div className="flex items-center justify-between">
             {/* Logo/Brand */}
             <NavLink

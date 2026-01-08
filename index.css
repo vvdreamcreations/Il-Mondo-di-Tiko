@@ -48,35 +48,42 @@
 /* Heavy shadows only on Desktop to fix mobile scroll stuttering */
 @media (min-width: 768px) {
   .torn-edges {
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    /* filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25)); RE MOVED FOR PERF */
+    filter: none;
   }
 
   .leaf-edges {
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    /* filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); REMOVED FOR PERF */
+    filter: none;
   }
 
   .rough-edges {
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    /* filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); REMOVED FOR PERF */
+    filter: none;
   }
 
   /* Enhanced shadows - Reduced for performance */
   .organic-shadow {
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25)); REMOVED FOR PERF */
+    filter: none;
   }
 
   .torn-edges-shadow {
     clip-path: url(#torn-edges);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25)); REMOVED FOR PERF */
+    filter: none;
   }
 
   .leaf-edges-shadow {
     clip-path: url(#leaf-edges);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); REMOVED FOR PERF */
+    filter: none;
   }
 
   .rough-edges-shadow {
     clip-path: url(#rough-edges);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); REMOVED FOR PERF */
+    filter: none;
   }
 }
 
