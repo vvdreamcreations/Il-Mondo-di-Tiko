@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 const Reviews: React.FC = () => {
     return (
         <section className="container mx-auto px-4 overflow-hidden py-4 md:py-6">
-            <div className="bg-white/5 backdrop-blur-md rough-edges-shadow py-6 border border-white/30 ring-1 ring-white/10 relative overflow-hidden">
+            <div className="bg-white/5 backdrop-blur-sm md:backdrop-blur-md rough-edges-shadow py-6 border border-white/30 ring-1 ring-white/10 relative overflow-hidden">
                 {/* Glass Sheen */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
 
@@ -36,7 +36,7 @@ const Reviews: React.FC = () => {
                         {[...REVIEWS, ...REVIEWS].map((review, index) => (
                             <div
                                 key={`${review.id}-${index}`}
-                                className="w-64 min-h-56 backdrop-blur-sm bg-white/10 p-6 torn-edges flex-shrink-0 flex flex-col whitespace-normal border border-white/20 relative transition-colors duration-300"
+                                className="w-64 min-h-56 backdrop-blur-[2px] md:backdrop-blur-sm bg-white/10 p-6 torn-edges flex-shrink-0 flex flex-col whitespace-normal border border-white/20 relative transition-colors duration-300"
                             >
                                 <Quote className="absolute top-3 right-3 text-white/10 rotate-180" size={24} />
 

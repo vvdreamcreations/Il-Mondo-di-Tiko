@@ -96,6 +96,7 @@ const Values: React.FC = () => {
 
                         <motion.div
                             initial={{ scale: 0.9, opacity: 0, y: 30 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.95, opacity: 0, y: 30 }}
                             transition={{ type: "spring", duration: 0.6, bounce: 0.3 }}
                             className="bg-white/95 backdrop-blur-sm md:backdrop-blur-md rough-edges-shadow w-[95vw] md:w-[90vw] max-w-4xl relative z-10 overflow-hidden flex flex-col md:flex-row border border-white/50 max-h-[80vh] md:max-h-[85vh]"

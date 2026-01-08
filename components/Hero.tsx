@@ -36,6 +36,7 @@ const Hero: React.FC = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col items-center"
+          style={{ willChange: 'transform, opacity' }}
         >
           {/* Sparkles Badge */}
           <motion.div
@@ -54,7 +55,7 @@ const Hero: React.FC = () => {
           <h1 className="font-display text-4xl md:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight drop-shadow-2xl">
             Dove i sogni <br />
             <span className="relative inline-block mt-2">
-              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] bg-300% md:animate-gradient filter drop-shadow-[0_0_20px_rgba(255,165,0,0.5)]">
+              <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-[#FFD700] via-[#FFA500] to-[#FFD700] bg-300% md:animate-gradient filter drop-shadow-[0_0_20px_rgba(255,165,0,0.5)] transform-gpu">
                 prendono vita
               </span>
               {/* Glow behind text */}
