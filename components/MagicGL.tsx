@@ -388,9 +388,9 @@ const Particles = ({ isMobile }: { isMobile: boolean }) => {
     const texture = useTexture('/Effetti-Luce/firefly-light.svg');
     // viewport unused in init
 
-    // Desktop: 30 Fireflies, 100 Dust. Mobile: 10 Fireflies, 35 Dust.
-    const fireflyCount = isMobile ? 10 : 30;
-    const dustCount = isMobile ? 35 : 100;
+    // Desktop: 20 Fireflies, 60 Dust. Mobile: 10 Fireflies, 35 Dust.
+    const fireflyCount = isMobile ? 10 : 20;
+    const dustCount = isMobile ? 35 : 60;
 
     const { meshRef, positionAttr, colorAttr, particles, applyForce } = useCombinedParticlePhysics(fireflyCount, dustCount);
 
@@ -560,7 +560,7 @@ const MagicGL = () => {
         <div className="absolute inset-0 w-full h-full -z-10" style={{ pointerEvents: 'auto' }}>
             <Canvas
                 camera={{ position: [0, 0, 15], fov: 45 }}
-                dpr={[1, 1.5]}
+                dpr={[1, 1.25]}
                 gl={{ antialias: false, powerPreference: "high-performance", alpha: true }}
                 onCreated={({ gl }) => {
                     gl.setClearColor(new THREE.Color(0x000000), 0);
