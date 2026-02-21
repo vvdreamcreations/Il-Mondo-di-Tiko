@@ -2,6 +2,23 @@ import { Book, Review, ValueItem } from './types';
 
 export const BOOKS: Book[] = [
   {
+    id: '5',
+    asin: 'B0GNGSPKSZ',
+    title: 'Tiko e il Segreto della Pazienza',
+    age: '2-5 anni',
+    price: '€ 10,99',
+    coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0GNGSPKSZ.01.LZZZZZZZ.jpg',
+    shortDescription: 'Una fiaba dolcissima sulla magia di saper aspettare.',
+    fullDescription: 'Insegnare ai bambini il valore della pazienza è una delle sfide più grandi. Tiko impara che l\'attesa non è un vuoto noioso, ma un tempo magico in cui prendersi cura di ciò che si ama. Una dolce fiaba tra i ritmi lenti della natura.',
+    benefits: [
+      { title: 'Pazienza', description: 'Imparare a rispettare i tempi della natura.' },
+      { title: 'Gestione della noia', description: 'Trasformare l\'attesa in scoperta.' },
+      { title: 'Cura', description: 'Prendersi cura di ciò che amiamo.' }
+    ],
+    targetAudience: 'Perfetto per insegnare ai bambini a gestire la frustrazione dell\'attesa.',
+    themeColor: 'bg-purple-100'
+  },
+  {
     id: '1',
     asin: 'B0F9NZJ3CZ',
     title: 'Tiko e il Pennello Magico',
@@ -68,23 +85,6 @@ export const BOOKS: Book[] = [
     ],
     targetAudience: 'La lettura perfetta per il periodo natalizio.',
     themeColor: 'bg-red-100'
-  },
-  {
-    id: '5',
-    asin: 'B0GNGSPKSZ',
-    title: 'Tiko e il Segreto della Pazienza',
-    age: '2-5 anni',
-    price: '€ 10,99',
-    coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0GNGSPKSZ.01.LZZZZZZZ.jpg',
-    shortDescription: 'Una fiaba dolcissima sulla magia di saper aspettare.',
-    fullDescription: 'Insegnare ai bambini il valore della pazienza è una delle sfide più grandi. Tiko impara che l\'attesa non è un vuoto noioso, ma un tempo magico in cui prendersi cura di ciò che si ama. Una dolce fiaba tra i ritmi lenti della natura.',
-    benefits: [
-      { title: 'Pazienza', description: 'Imparare a rispettare i tempi della natura.' },
-      { title: 'Gestione della noia', description: 'Trasformare l\'attesa in scoperta.' },
-      { title: 'Cura', description: 'Prendersi cura di ciò che amiamo.' }
-    ],
-    targetAudience: 'Perfetto per insegnare ai bambini a gestire la frustrazione dell\'attesa.',
-    themeColor: 'bg-purple-100'
   }
 ];
 
