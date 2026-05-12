@@ -1,6 +1,8 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Cookie, Shield, Settings, Info, ExternalLink } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const CookiePolicy: React.FC = () => {
     const openCookieSettings = () => {
@@ -11,6 +13,11 @@ const CookiePolicy: React.FC = () => {
 
     return (
         <div className="min-h-screen flex flex-col">
+            <Helmet>
+                <title>Cookie Policy | Il Mondo di Tiko</title>
+                <meta name="description" content="Informativa sui cookie di vvdreamcreations.it: cosa sono, come li utilizziamo e come puoi gestirli." />
+            </Helmet>
+
             {/* Hero Section */}
             <section className="container mx-auto px-4 pt-32 pb-16">
                 <motion.div
@@ -19,19 +26,17 @@ const CookiePolicy: React.FC = () => {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-12"
                 >
-                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-tiko-orange/20 backdrop-blur-sm border border-tiko-orange/30">
-                        <Cookie className="w-5 h-5 text-tiko-orange" />
-                        <span className="text-white/90 text-sm font-bold">COOKIE POLICY</span>
-                    </div>
+                    <p className="text-tiko-yellow font-mono text-xs tracking-widest uppercase mb-3">Legale</p>
                     <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
-                        Informativa sui Cookie
+                        Cookie Policy
                     </h1>
-                    <p className="text-white/80 text-lg max-w-2xl mx-auto">
-                        Questa policy spiega cosa sono i cookie, come li utilizziamo e come puoi gestirli.
+                    <p className="text-white/55 text-lg max-w-2xl mx-auto">
+                        Cosa sono i cookie, come li utilizziamo e come puoi gestirli.
                     </p>
-                    <p className="text-white/60 text-sm mt-4">
+                    <p className="text-white/35 text-sm mt-4">
                         Ultimo aggiornamento: 18 Dicembre 2025
                     </p>
+                    <div className="h-px w-24 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto mt-8 opacity-60" />
                 </motion.div>
             </section>
 
@@ -41,7 +46,8 @@ const CookiePolicy: React.FC = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.2 }}
-                    className="bg-white/10 backdrop-blur-xl rough-edges-shadow p-8 md:p-12 border border-white/20 max-w-4xl mx-auto space-y-8"
+                    className="rounded-3xl p-8 md:p-12 max-w-4xl mx-auto space-y-8"
+                    style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)' }}
                 >
 
                     {/* 1. Cosa sono i cookie */}
@@ -268,6 +274,8 @@ const CookiePolicy: React.FC = () => {
 
                 </motion.div>
             </section>
+
+            <Footer />
         </div>
     );
 };

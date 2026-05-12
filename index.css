@@ -2,7 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom utilities from index.html */
+/* ============================================
+   NOISE TEXTURE OVERLAY
+   Elimina la piattezza digitale dei gradienti.
+   SVG feTurbulence a bassa opacità su tutto il body.
+   ============================================ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 1;
+}
+
+/* ============================================
+   FONT RENDERING
+   ============================================ */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ============================================
+   BORDER RADIUS SYSTEM
+   ============================================ */
+.card-radius {
+  border-radius: 2rem;
+}
+
+.container-radius {
+  border-radius: 3rem;
+}
+
+/* ============================================
+   MAGNETIC BUTTON BASE
+   ============================================ */
+.btn-magnetic {
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.03) translateY(-1px);
+}
+
+/* ============================================
+   GLASSMORPHISM TOKENS
+   ============================================ */
+.glass-dark {
+  background: rgba(26, 31, 46, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ============================================
+   GRADIENT TEXT UTILITY
+   ============================================ */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FACC15, #FDBA74, #FACC15);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -30,81 +109,6 @@
   transform: rotateY(180deg);
 }
 
-/* Organic Border Effects */
-.torn-edges {
-  clip-path: url(#torn-edges);
-  /* Remove heavy filter on mobile, keep clip-path */
-}
-
-.leaf-edges {
-  clip-path: url(#leaf-edges);
-}
-
-.rough-edges {
-  clip-path: url(#rough-edges);
-}
-
-/* Heavy shadows only on Desktop to fix mobile scroll stuttering */
-/* Heavy shadows only on Desktop to fix mobile scroll stuttering */
-@media (min-width: 768px) {
-  .torn-edges {
-    /* filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25)); RE MOVED FOR PERF */
-    filter: none;
-  }
-
-  .leaf-edges {
-    /* filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)); REMOVED FOR PERF */
-    filter: none;
-  }
-
-  .rough-edges {
-    /* filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3)); REMOVED FOR PERF */
-    filter: none;
-  }
-
-  /* Enhanced shadows - Reduced for performance */
-  .organic-shadow {
-    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25)); REMOVED FOR PERF */
-    filter: none;
-  }
-
-  .torn-edges-shadow {
-    clip-path: url(#torn-edges);
-    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25)); REMOVED FOR PERF */
-    filter: none;
-  }
-
-  .leaf-edges-shadow {
-    clip-path: url(#leaf-edges);
-    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); REMOVED FOR PERF */
-    filter: none;
-  }
-
-  .rough-edges-shadow {
-    clip-path: url(#rough-edges);
-    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)); REMOVED FOR PERF */
-    filter: none;
-  }
-}
-
-/* Mobile Fallbacks - Lighter or no shadow */
-@media (max-width: 767px) {
-  .torn-edges-shadow {
-    clip-path: url(#torn-edges);
-    /* No drop-shadow filter on mobile for performance */
-  }
-
-  .leaf-edges-shadow {
-    clip-path: url(#leaf-edges);
-  }
-
-  .rough-edges-shadow {
-    clip-path: url(#rough-edges);
-  }
-
-  /* Optional: Simple box shadow if clip-path allows, but usually they conflict visually. 
-     For now, prioritizing smoothness implies removing the heavy calculation. */
-}
 
 /* GPU Acceleration Utility */
 .gpu-accelerated {

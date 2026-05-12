@@ -32,9 +32,12 @@ const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
 
           {/* Modal Content */}
           <motion.div
+            initial={{ scale: 0.92, opacity: 0, y: 40 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 50 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-4xl bg-gradient-to-br from-gray-900/98 to-gray-800/98 backdrop-blur-sm md:backdrop-blur-xl rough-edges-shadow overflow-hidden max-h-[80vh] md:max-h-[85vh] overflow-y-auto flex flex-col md:flex-row border border-white/10"
+            className="relative w-full max-w-4xl overflow-hidden max-h-[80vh] md:max-h-[85vh] overflow-y-auto flex flex-col md:flex-row rounded-3xl border border-white/10"
+          style={{ background: 'rgba(26,31,46,0.97)', backdropFilter: 'blur(28px)', boxShadow: '0 0 80px rgba(0,0,0,0.7), 0 0 40px rgba(253,186,116,0.08)' }}
           >
             <button
               onClick={(e) => {
@@ -48,7 +51,7 @@ const BookModal: React.FC<BookModalProps> = ({ book, isOpen, onClose }) => {
 
             {/* Left Column: Visual & CTA */}
             <div className="w-full md:w-2/5 p-6 flex flex-col items-center justify-center bg-gradient-to-br from-tiko-yellow/10 to-tiko-orange/10 backdrop-blur-sm">
-              <div className="relative shadow-2xl torn-edges overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-500 max-w-[220px]">
+              <div className="relative shadow-2xl rounded-2xl overflow-hidden transform rotate-3 hover:rotate-0 transition-transform duration-500 max-w-[220px]" style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(253,186,116,0.12)' }}>
                 <img src={book.coverImage} alt={book.title} className="w-full h-auto object-cover" />
               </div>
               <a

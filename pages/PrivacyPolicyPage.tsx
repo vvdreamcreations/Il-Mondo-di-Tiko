@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
@@ -6,6 +7,10 @@ import Footer from '../components/Footer';
 const PrivacyPolicyPage: React.FC = () => {
     return (
         <div className="flex-grow flex flex-col pb-24">
+            <Helmet>
+                <title>Privacy Policy | Il Mondo di Tiko</title>
+                <meta name="description" content="Informativa completa sul trattamento dei dati personali di VV Dream Creations, in conformità al GDPR." />
+            </Helmet>
             <div className="container mx-auto px-4 pt-32">
                 {/* Page Header */}
                 <motion.div
@@ -14,13 +19,14 @@ const PrivacyPolicyPage: React.FC = () => {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+                    <p className="text-tiko-yellow font-mono text-xs tracking-widest uppercase mb-3">Legale</p>
+                    <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-4 drop-shadow-lg">
                         Privacy Policy
                     </h1>
-                    <p className="text-white/80 text-lg drop-shadow-md">
+                    <p className="text-white/40 text-sm">
                         Ultimo aggiornamento: 12 ottobre 2025
                     </p>
-                    <div className="h-1.5 w-32 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto rounded-full mt-8 shadow-[0_0_20px_rgba(253,186,116,0.6)]" />
+                    <div className="h-px w-24 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto mt-8 opacity-60" />
                 </motion.div>
 
                 {/* Content */}
@@ -30,7 +36,7 @@ const PrivacyPolicyPage: React.FC = () => {
                     transition={{ delay: 0.3, duration: 0.8 }}
                     className="max-w-4xl mx-auto"
                 >
-                    <div className="bg-white/10 backdrop-blur-2xl rounded-3xl p-8 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20">
+                    <div className="rounded-3xl p-8 md:p-16" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)' }}>
                         <div className="prose prose-invert prose-lg max-w-none space-y-8 text-white/90">
                             {/* Intro */}
                             <p className="text-lg leading-relaxed drop-shadow-md">

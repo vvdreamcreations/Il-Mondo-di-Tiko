@@ -64,7 +64,8 @@ const TopicSuggestionForm: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="bg-gradient-to-br from-tiko-yellow/20 to-tiko-orange/20 backdrop-blur-xl leaf-edges-shadow p-8 md:p-12 border border-tiko-yellow/30 max-w-4xl mx-auto"
+                className="rounded-3xl p-8 md:p-12 border border-tiko-yellow/20 max-w-4xl mx-auto"
+                style={{ background: 'linear-gradient(135deg, rgba(253,186,116,0.08) 0%, rgba(251,146,60,0.06) 100%)', backdropFilter: 'blur(20px)' }}
             >
                 {/* Header */}
                 <div className="text-center mb-8">

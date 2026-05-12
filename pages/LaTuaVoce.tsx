@@ -7,116 +7,144 @@ import TopicSuggestionForm from '../components/TopicSuggestionForm';
 import Footer from '../components/Footer';
 
 const LaTuaVoce: React.FC = () => {
-    return (
-        <div className="min-h-screen flex flex-col">
-            <Helmet>
-                <title>La Tua Voce | Partecipa alla creazione delle storie di Tiko</title>
-                <meta name="description" content="Vota i temi dei prossimi libri e suggerisci nuove idee. Il tuo parere aiuta a creare le avventure di Tiko." />
-            </Helmet>
-            {/* Hero Section */}
-            <section className="container mx-auto px-4 pt-24 pb-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-8"
-                >
-                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 rounded-full bg-tiko-yellow/20 backdrop-blur-sm border border-tiko-yellow/30">
-                        <Heart className="w-5 h-5 text-tiko-yellow" />
-                        <span className="text-white/90 text-sm font-bold">LA TUA VOCE</span>
-                    </div>
-                    <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-                        Il tuo parere aiuta a creare le nostre storie
-                    </h1>
-                    <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-                        Le tue opinioni e le tue idee sono preziose per noi! Partecipa attivamente nella creazione delle nuove avventure di Tiko votando il tema che preferisci o suggerendone uno nuovo.
-                    </p>
-                </motion.div>
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>La Tua Voce | Partecipa alla creazione delle storie di Tiko</title>
+        <meta name="description" content="Vota i temi dei prossimi libri e suggerisci nuove idee. Il tuo parere aiuta a creare le avventure di Tiko." />
+      </Helmet>
 
-                {/* Features */}
-                <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8 items-center">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-white/10 backdrop-blur-xl leaf-edges p-6 border border-tiko-blue/30"
-                    >
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="p-2 rounded-full bg-tiko-blue/20">
-                                <Vote className="w-5 h-5 text-tiko-blue" />
-                            </div>
-                            <h3 className="font-bold text-white text-lg">Vota il Tema</h3>
-                        </div>
-                        <p className="text-white/80 text-sm">
-                            Scegli quale tema emotivo vorresti vedere nel prossimo libro di Tiko. Il tuo voto conta davvero!
-                        </p>
-                    </motion.div>
+      {/* Hero */}
+      <section className="container mx-auto px-4 pt-32 pb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
+          <div
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold mb-5"
+            style={{
+              background: 'rgba(253,186,116,0.15)',
+              border: '1px solid rgba(253,186,116,0.3)',
+              color: '#FDE68A',
+            }}
+          >
+            <Heart size={11} />
+            La Tua Voce
+          </div>
+          <h1 className="font-display font-bold text-white text-4xl md:text-6xl mb-5 drop-shadow-lg">
+            Il tuo parere aiuta<br className="hidden md:block" /> a creare le nostre storie
+          </h1>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
+            Le tue opinioni e le tue idee sono preziose. Vota il tema che preferisci o suggerisci una nuova avventura per Tiko.
+          </p>
+          <div className="h-px w-24 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto mt-8 opacity-60" />
+        </motion.div>
 
-                    {/* Tiko Greeting Image */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.25, duration: 0.5 }}
-                        className="flex justify-center md:col-span-1"
-                    >
-                        <img
-                            src="/tiko-saluta.webp"
-                            alt="Tiko che saluta"
-                            className="h-48 md:h-56 lg:h-64 w-auto object-contain drop-shadow-[0_0_30px_rgba(250,204,21,0.4)] hover:scale-105 transition-transform duration-300"
-                        />
-                    </motion.div>
+        {/* Feature cards */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center mb-4">
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="bg-white/10 backdrop-blur-xl leaf-edges p-6 border border-tiko-orange/30"
-                    >
-                        <div className="flex items-center gap-3 mb-3">
-                            <div className="p-2 rounded-full bg-tiko-orange/20">
-                                <Lightbulb className="w-5 h-5 text-tiko-orange" />
-                            </div>
-                            <h3 className="font-bold text-white text-lg">Suggerisci un'Idea</h3>
-                        </div>
-                        <p className="text-white/80 text-sm">
-                            Hai un tema particolare in mente? Condividilo con noi! Valutiamo accuratamente ogni suggerimento.
-                        </p>
-                    </motion.div>
-                </div>
-            </section>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+            className="rounded-3xl p-6"
+            style={{
+              background: 'linear-gradient(135deg, rgba(96,165,250,0.1) 0%, rgba(26,31,46,0.6) 100%)',
+              border: '1px solid rgba(96,165,250,0.2)',
+            }}
+          >
+            <div
+              className="w-10 h-10 rounded-2xl flex items-center justify-center mb-4"
+              style={{ background: 'rgba(96,165,250,0.15)', border: '1px solid rgba(96,165,250,0.25)' }}
+            >
+              <Vote size={18} style={{ color: '#60A5FA' }} />
+            </div>
+            <h3 className="font-bold text-white text-lg mb-2">Vota il Tema</h3>
+            <p className="text-white/60 text-sm leading-relaxed">
+              Scegli quale tema emotivo vorresti vedere nel prossimo libro di Tiko. Il tuo voto conta davvero!
+            </p>
+          </motion.div>
 
-            {/* Survey Section */}
-            <section className="mb-12">
-                <TopicSurvey />
-            </section>
+          {/* Tiko */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+            className="flex justify-center"
+          >
+            <img
+              src="/tiko-saluta.webp"
+              alt="Tiko che saluta"
+              className="h-48 md:h-60 w-auto object-contain hover:scale-105 transition-transform duration-300"
+              style={{ filter: 'drop-shadow(0 0 30px rgba(250,204,21,0.35))' }}
+            />
+          </motion.div>
 
-            {/* Suggestion Form Section */}
-            <section className="mb-12">
-                <TopicSuggestionForm />
-            </section>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            className="rounded-3xl p-6"
+            style={{
+              background: 'linear-gradient(135deg, rgba(251,146,60,0.1) 0%, rgba(26,31,46,0.6) 100%)',
+              border: '1px solid rgba(251,146,60,0.2)',
+            }}
+          >
+            <div
+              className="w-10 h-10 rounded-2xl flex items-center justify-center mb-4"
+              style={{ background: 'rgba(251,146,60,0.15)', border: '1px solid rgba(251,146,60,0.25)' }}
+            >
+              <Lightbulb size={18} style={{ color: '#FB923C' }} />
+            </div>
+            <h3 className="font-bold text-white text-lg mb-2">Suggerisci un'Idea</h3>
+            <p className="text-white/60 text-sm leading-relaxed">
+              Hai un tema in mente? Condividilo con noi — valutiamo ogni suggerimento con cura.
+            </p>
+          </motion.div>
 
-            {/* Closing Message */}
-            <section className="container mx-auto px-4 pb-12">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center bg-gradient-to-r from-tiko-yellow/20 to-tiko-orange/20 backdrop-blur-xl rough-edges-shadow p-8 md:p-12 border border-tiko-yellow/30"
-                >
-                    <Sparkles className="w-12 h-12 text-tiko-yellow mx-auto mb-4" />
-                    <h2 className="font-display text-2xl md:text-4xl font-bold text-white mb-4">
-                        Grazie per la Tua Partecipazione!
-                    </h2>
-                    <p className="text-white/90 text-lg max-w-2xl mx-auto">
-                        Ogni voce è importante e contribuisce a rendere le storie di Tiko sempre più speciali e vicine al cuore dei bambini.
-                    </p>
-                </motion.div>
-            </section>
-
-            <Footer />
         </div>
-    );
+      </section>
+
+      {/* Survey */}
+      <section className="mb-12">
+        <TopicSurvey />
+      </section>
+
+      {/* Suggestion form */}
+      <section className="mb-12">
+        <TopicSuggestionForm />
+      </section>
+
+      {/* Closing */}
+      <section className="container mx-auto px-4 pb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center rounded-3xl p-10 md:p-14 max-w-2xl mx-auto relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, rgba(253,186,116,0.12) 0%, rgba(26,31,46,0.8) 100%)',
+            border: '1px solid rgba(253,186,116,0.2)',
+          }}
+        >
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 w-48 h-24 rounded-full blur-[60px] pointer-events-none opacity-25"
+            style={{ background: '#FACC15' }} />
+          <Sparkles size={28} className="text-tiko-yellow mx-auto mb-5 opacity-80" />
+          <h2 className="font-display font-bold text-white text-2xl md:text-4xl mb-4">
+            Grazie per la Tua Partecipazione!
+          </h2>
+          <p className="text-white/60 text-base leading-relaxed">
+            Ogni voce è importante e contribuisce a rendere le storie di Tiko sempre più speciali e vicine al cuore dei bambini.
+          </p>
+        </motion.div>
+      </section>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default LaTuaVoce;
-

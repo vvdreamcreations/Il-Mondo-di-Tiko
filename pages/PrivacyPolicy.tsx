@@ -1,10 +1,17 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Shield, Mail, Eye, Lock, Database, Globe, Clock, UserCheck } from 'lucide-react';
+import Footer from '../components/Footer';
 
 const PrivacyPolicy: React.FC = () => {
     return (
         <div className="min-h-screen flex flex-col">
+            <Helmet>
+                <title>Privacy Policy | Il Mondo di Tiko</title>
+                <meta name="description" content="Informativa sulla privacy di VV Dream Creations. Come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali." />
+            </Helmet>
+
             {/* Hero Section */}
             <section className="container mx-auto px-4 pt-32 pb-16">
                 <motion.div
@@ -261,6 +268,8 @@ const PrivacyPolicy: React.FC = () => {
 
                 </motion.div>
             </section>
+
+            <Footer />
         </div>
     );
 };

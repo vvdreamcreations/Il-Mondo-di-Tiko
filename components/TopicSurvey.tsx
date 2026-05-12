@@ -189,7 +189,8 @@ const TopicSurvey: React.FC = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rough-edges-shadow p-6 md:p-10 border border-tiko-yellow/30"
+        className="rounded-3xl p-6 md:p-10 border border-white/10"
+        style={{ background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(20px)' }}
       >
         {/* Header */}
         <div className="text-center mb-4 md:mb-6">

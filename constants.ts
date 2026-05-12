@@ -16,7 +16,15 @@ export const BOOKS: Book[] = [
       { title: 'Cura', description: 'Prendersi cura di ciò che amiamo.' }
     ],
     targetAudience: 'Perfetto per insegnare ai bambini a gestire la frustrazione dell\'attesa.',
-    themeColor: 'bg-purple-100'
+    themeColor: 'bg-purple-100',
+    accentColor: '#A78BFA',
+    gradient: 'linear-gradient(135deg, rgba(167,139,250,0.18) 0%, rgba(139,92,246,0.08) 100%)',
+    internalImages: [
+      '/img/libri/pazienza/p3.jpg',
+      '/img/libri/pazienza/p7.jpg',
+      '/img/libri/pazienza/p12.jpg',
+      '/img/libri/pazienza/p17.jpg',
+    ],
   },
   {
     id: '1',
@@ -33,7 +41,15 @@ export const BOOKS: Book[] = [
       { title: 'Resilienza', description: 'La magia di non arrendersi mai.' }
     ],
     targetAudience: 'Perfetto per insegnare il valore dell\'amicizia e della non rinuncia.',
-    themeColor: 'bg-orange-100'
+    themeColor: 'bg-orange-100',
+    accentColor: '#FB923C',
+    gradient: 'linear-gradient(135deg, rgba(251,146,60,0.18) 0%, rgba(245,158,11,0.08) 100%)',
+    internalImages: [
+      '/img/libri/pennello/pag2.jpg',
+      '/img/libri/pennello/pag5.jpg',
+      '/img/libri/pennello/pag11.jpg',
+      '/img/libri/pennello/pag14.jpg',
+    ],
   },
   {
     id: '2',
@@ -50,7 +66,15 @@ export const BOOKS: Book[] = [
       { title: 'Serenità', description: 'Ritrovare l\'equilibrio interiore.' }
     ],
     targetAudience: 'Ideale per gestire i capricci e momenti di stress.',
-    themeColor: 'bg-blue-100'
+    themeColor: 'bg-blue-100',
+    accentColor: '#38BDF8',
+    gradient: 'linear-gradient(135deg, rgba(56,189,248,0.18) 0%, rgba(59,130,246,0.08) 100%)',
+    internalImages: [
+      '/img/libri/sassolino/05.jpg',
+      '/img/libri/sassolino/07.jpg',
+      '/img/libri/sassolino/10.jpg',
+      '/img/libri/sassolino/16.jpg',
+    ],
   },
   {
     id: '3',
@@ -60,19 +84,27 @@ export const BOOKS: Book[] = [
     price: '€ 10,99',
     coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0FJ1JZQSV.01.LZZZZZZZ.jpg',
     shortDescription: 'Una tenera favola sulla bellezza dell\'accoglienza e dell\'adozione.',
-    fullDescription: 'Il cuore non ha confini quando si tratta di voler bene. Tiko accoglie Bibi e scopre che famiglia non è solo chi ti assomiglia, ma chi ti sceglie con amore. Un racconto delicato per spiegare ai più piccoli la meraviglia dell\'adozione.',
+    fullDescription: 'Il cuore non ha confinis quando si tratta di voler bene. Tiko accoglie Bibi e scopre che famiglia non è solo chi ti assomiglia, ma chi ti sceglie con amore. Un racconto delicato per spiegare ai più piccoli la meraviglia dell\'adozione.',
     benefits: [
       { title: 'Accoglienza', description: 'Aprire il cuore agli altri.' },
       { title: 'Adozione', description: 'L\'amore che crea una famiglia.' },
       { title: 'Inclusione', description: 'Nessuno deve sentirsi solo.' }
     ],
     targetAudience: 'Per insegnare la gentilezza e la socializzazione.',
-    themeColor: 'bg-green-100'
+    themeColor: 'bg-green-100',
+    accentColor: '#34D399',
+    gradient: 'linear-gradient(135deg, rgba(52,211,153,0.18) 0%, rgba(16,185,129,0.08) 100%)',
+    internalImages: [
+      '/img/libri/bibi/pag6.jpg',
+      '/img/libri/bibi/pag8.jpg',
+      '/img/libri/bibi/pag10.jpg',
+      '/img/libri/bibi/pag15.jpg',
+    ],
   },
   {
     id: '4',
     asin: 'B0FTS8H6ZJ',
-    title: 'Tiko e la magia del Natale',
+    title: 'Tiko e la Magia del Natale',
     age: '3-6 anni',
     price: '€ 10,99',
     coverImage: 'https://images-na.ssl-images-amazon.com/images/P/B0FTS8H6ZJ.01.LZZZZZZZ.jpg',
@@ -84,8 +116,16 @@ export const BOOKS: Book[] = [
       { title: 'Altruismo', description: 'Pensare agli altri rende felici.' }
     ],
     targetAudience: 'La lettura perfetta per il periodo natalizio.',
-    themeColor: 'bg-red-100'
-  }
+    themeColor: 'bg-red-100',
+    accentColor: '#F87171',
+    gradient: 'linear-gradient(135deg, rgba(248,113,113,0.18) 0%, rgba(244,63,94,0.08) 100%)',
+    internalImages: [
+      '/img/libri/natale/1.jpg',
+      '/img/libri/natale/04.jpg',
+      '/img/libri/natale/11.jpg',
+      '/img/libri/natale/17.jpg',
+    ],
+  },
 ];
 
 export const REVIEWS: Review[] = [

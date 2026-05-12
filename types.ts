@@ -5,16 +5,19 @@ export interface BookBenefit {
 
 export interface Book {
   id: string;
-  asin: string; // Amazon Standard Identification Number
+  asin: string;
   title: string;
   age: string;
   price: string;
-  coverImage: string; // URL
+  coverImage: string;
   shortDescription: string;
   fullDescription: string;
   benefits: BookBenefit[];
   targetAudience: string;
-  themeColor: string; // Tailwind class equivalent for background
+  themeColor: string;
+  internalImages: string[];
+  accentColor: string;
+  gradient: string;
 }
 
 export interface Review {

@@ -1,138 +1,170 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { ShoppingCart, BookOpen, Star } from 'lucide-react';
 import { BOOKS } from '../constants';
 import Footer from '../components/Footer';
 
 const LibriPage: React.FC = () => {
-    return (
-        <div className="min-h-screen flex flex-col pb-24">
-            <Helmet>
-                <title>I Libri di Tiko | Storie di amicizia, emozioni e magia</title>
-                <meta name="description" content="Esplora la collana di libri di Tiko: il Pennello Magico, il Sassolino della Calma e altri. Favole educative per la crescita dei tuoi bambini." />
-                <script type="application/ld+json">
-                    {`
-                    {
-                        "@context": "https://schema.org",
-                        "@type": "ItemList",
-                        "itemListElement": [
-                            ${BOOKS.map((book, index) => `{
-                                "@type": "ListItem",
-                                "position": ${index + 1},
-                                "item": {
-                                    "@type": "Book",
-                                    "name": "${book.title}",
-                                    "description": "${book.shortDescription}",
-                                    "image": "${book.coverImage}",
-                                    "url": "https://www.vvdreamcreations.it/libri#${book.id}",
-                                    "author": {
-                                        "@type": "Organization",
-                                        "name": "VV Dream Creations"
-                                    }
-                                }
-                            }`).join(',')}
-                        ]
-                    }
-                `}
-                </script>
-            </Helmet>
-            <div className="container mx-auto px-4 pt-32">
-                {/* Page Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
-                >
-                    <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-                        I Nostri Libri
-                    </h1>
-                    <p className="text-white/90 text-xl max-w-3xl mx-auto font-medium drop-shadow-md">
-                        Scopri tutte le avventure di Tiko, il piccolo scoiattolo che insegna ai bambini il valore dell'amicizia, della gentilezza e della crescita emotiva.
-                    </p>
-                    <div className="h-1.5 w-32 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto rounded-full mt-8 shadow-[0_0_20px_rgba(253,186,116,0.6)]" />
-                </motion.div>
+  return (
+    <div className="min-h-screen flex flex-col pb-24">
+      <Helmet>
+        <title>I Libri di Tiko | Storie di amicizia, emozioni e magia</title>
+        <meta name="description" content="Esplora la collana di libri di Tiko: il Pennello Magico, il Sassolino della Calma e altri. Favole educative per la crescita dei tuoi bambini." />
+        <script type="application/ld+json">
+          {`{
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": [
+              ${BOOKS.map((book, index) => `{
+                "@type": "ListItem",
+                "position": ${index + 1},
+                "item": {
+                  "@type": "Book",
+                  "name": "${book.title}",
+                  "description": "${book.shortDescription}",
+                  "image": "${book.coverImage}",
+                  "url": "https://www.vvdreamcreations.it/libri#${book.id}",
+                  "author": { "@type": "Organization", "name": "VV Dream Creations" }
+                }
+              }`).join(',')}
+            ]
+          }`}
+        </script>
+      </Helmet>
 
-                {/* Books List */}
-                <div className="space-y-12">
-                    {BOOKS.map((book, index) => (
-                        <motion.article
-                            key={book.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.1, duration: 0.6, ease: "easeOut" }}
-                            className="bg-white/10 backdrop-blur-2xl rough-edges-shadow p-8 md:p-12 border border-white/20 hover:border-tiko-yellow/50 transition-all duration-300"
-                        >
-                            <div className="flex flex-col md:flex-row gap-8 items-start">
-                                {/* Book Cover */}
-                                <div className="flex-shrink-0 w-full md:w-64">
-                                    <div className="relative group">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-tiko-yellow/20 to-tiko-orange/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                                        <img
-                                            src={book.coverImage}
-                                            alt={book.title}
-                                            className="relative w-full torn-edges shadow-2xl transform group-hover:scale-105 transition-transform duration-300"
-                                        />
-                                    </div>
-                                </div>
+      <div className="container mx-auto px-4 pt-32">
 
-                                {/* Book Details */}
-                                <div className="flex-grow">
-                                    <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
-                                        {book.title}
-                                    </h2>
-                                    <p className="text-white/90 text-lg leading-relaxed mb-6 drop-shadow-md">
-                                        {book.fullDescription}
-                                    </p>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-16"
+        >
+          <p className="text-tiko-yellow font-mono text-xs tracking-widest uppercase mb-3">
+            La Collana
+          </p>
+          <h1 className="font-display font-bold text-white text-5xl md:text-7xl mb-4 drop-shadow-lg">
+            I Libri di Tiko
+          </h1>
+          <p className="text-white/55 text-lg max-w-2xl mx-auto">
+            Cinque avventure, cinque emozioni. Ogni storia un seme di crescita.
+          </p>
+          <div className="h-px w-24 bg-gradient-to-r from-tiko-yellow to-tiko-orange mx-auto mt-8 opacity-60" />
+        </motion.div>
 
-                                    {/* Book Benefits */}
-                                    {book.benefits && book.benefits.length > 0 && (
-                                        <div className="mb-6">
-                                            <h3 className="font-display text-xl font-semibold text-tiko-yellow mb-3 drop-shadow-md">
-                                                Cosa insegna questo libro:
-                                            </h3>
-                                            <ul className="space-y-2">
-                                                {book.benefits.map((benefit, idx) => (
-                                                    <li key={idx} className="text-white/80 flex items-start">
-                                                        <span className="text-tiko-yellow mr-2">✨</span>
-                                                        <span className="drop-shadow-md"><strong>{benefit.title}:</strong> {benefit.description}</span>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    )}
+        {/* Books */}
+        <div className="space-y-8 max-w-5xl mx-auto">
+          {BOOKS.map((book, index) => (
+            <motion.article
+              key={book.id}
+              id={book.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.08, duration: 0.6, ease: 'easeOut' }}
+              className="relative rounded-3xl overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(26,31,46,0.8) 100%)',
+                border: `1px solid ${book.accentColor}22`,
+              }}
+            >
+              {/* Glow accento */}
+              <div
+                className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-[80px] pointer-events-none opacity-20"
+                style={{ background: book.accentColor }}
+              />
 
-                                    {/* Price and CTA */}
-                                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                                        {/* Price */}
-                                        <div className="flex items-baseline gap-2">
-                                            <span className="text-tiko-yellow font-bold text-3xl md:text-4xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                                                {book.price}
-                                            </span>
-                                        </div>
+              <div className="relative z-10 flex flex-col md:flex-row gap-8 p-8 md:p-10 items-start">
 
-                                        {/* Amazon Link */}
-                                        <a
-                                            href={`https://www.amazon.it/dp/${book.asin}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 bg-gradient-to-r from-tiko-yellow to-tiko-orange text-white font-semibold px-8 py-3 rounded-full hover:shadow-[0_0_30px_rgba(250,204,21,0.5)] transition-all duration-300 transform hover:scale-105"
-                                        >
-                                            <span>Acquista su Amazon</span>
-                                            <ExternalLink size={20} />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.article>
-                    ))}
+                {/* Copertina */}
+                <div className="flex-shrink-0 w-36 md:w-44 mx-auto md:mx-0">
+                  <div className="relative group">
+                    <div
+                      className="absolute -inset-3 rounded-2xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300 pointer-events-none"
+                      style={{ background: book.accentColor }}
+                    />
+                    <img
+                      src={book.coverImage}
+                      alt={book.title}
+                      className="relative rounded-2xl shadow-2xl w-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+                      style={{ aspectRatio: '3/4' }}
+                    />
+                  </div>
                 </div>
-            </div>
 
-            <Footer />
+                {/* Contenuto */}
+                <div className="flex-1 min-w-0">
+                  {/* Badge età */}
+                  <div
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold mb-4"
+                    style={{
+                      background: `${book.accentColor}20`,
+                      border: `1px solid ${book.accentColor}40`,
+                      color: book.accentColor,
+                    }}
+                  >
+                    <BookOpen size={11} />
+                    {book.age}
+                  </div>
+
+                  <h2 className="font-display font-bold text-white text-2xl md:text-3xl mb-3 leading-tight">
+                    {book.title}
+                  </h2>
+
+                  <p className="text-white/65 text-base leading-relaxed mb-5">
+                    {book.fullDescription}
+                  </p>
+
+                  {/* Benefici */}
+                  <div className="mb-6 space-y-2">
+                    {book.benefits.map((benefit, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-sm">
+                        <span style={{ color: book.accentColor }} className="mt-0.5 shrink-0">✦</span>
+                        <span className="text-white/70">
+                          <strong className="text-white/90">{benefit.title}:</strong>{' '}
+                          {benefit.description}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Stelle + prezzo + CTA */}
+                  <div className="flex flex-wrap items-center gap-4">
+                    <div className="flex gap-0.5">
+                      {[...Array(5)].map((_, si) => (
+                        <Star key={si} size={13} fill={book.accentColor} color={book.accentColor} />
+                      ))}
+                    </div>
+                    <span className="font-bold text-white/90 text-xl">{book.price}</span>
+                    <motion.a
+                      href={`https://www.amazon.it/dp/${book.asin}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm"
+                      style={{
+                        background: book.accentColor,
+                        color: '#1A1F2E',
+                        boxShadow: `0 0 24px ${book.accentColor}44`,
+                      }}
+                      whileHover={{ scale: 1.04, boxShadow: `0 0 40px ${book.accentColor}66` }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                    >
+                      <ShoppingCart size={14} />
+                      Acquista su Amazon
+                    </motion.a>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
         </div>
-    );
+      </div>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default LibriPage;

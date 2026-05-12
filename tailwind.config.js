@@ -10,6 +10,7 @@ export default {
     theme: {
         extend: {
             colors: {
+                'tiko-forest': '#1A1F2E',
                 'tiko-cream': '#FFFDD0',
                 'tiko-yellow': '#FACC15',
                 'tiko-orange': '#FDBA74',

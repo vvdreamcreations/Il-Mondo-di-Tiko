@@ -95,7 +95,8 @@ const CookieConsent: React.FC<CookieConsentProps> = ({ onClose }) => {
                     initial={{ scale: 0.9, y: 20 }}
                     animate={{ scale: 1, y: 0 }}
                     exit={{ scale: 0.9, y: 20 }}
-                    className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-3xl p-8 max-w-2xl w-full shadow-[0_0_60px_rgba(0,0,0,0.9)] border border-tiko-yellow/30"
+                    className="rounded-3xl p-8 max-w-2xl w-full border border-tiko-yellow/25"
+                    style={{ background: 'rgba(26,31,46,0.97)', backdropFilter: 'blur(28px)', boxShadow: '0 0 60px rgba(0,0,0,0.8), 0 0 30px rgba(253,186,116,0.08)' }}
                 >
                     {/* Header */}
                     <div className="flex items-start justify-between mb-6">

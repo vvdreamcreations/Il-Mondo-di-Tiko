@@ -2,7 +2,7 @@ import './index.css';
 import './src/fonts.css'; // Optimized local fonts
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import App from './App';
 const HomePage = React.lazy(() => import('./pages/HomePage'));
@@ -14,6 +14,7 @@ const PrivacyPolicyPage = React.lazy(() => import('./pages/PrivacyPolicyPage'));
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
 const CookiePolicy = React.lazy(() => import('./pages/CookiePolicy'));
 const LaTuaVoce = React.lazy(() => import('./pages/LaTuaVoce'));
+const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'));
 import ScrollToTop from './components/ScrollToTop';
 
 const rootElement = document.getElementById('root');
@@ -25,9 +26,9 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <HelmetProvider>
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop />
-        <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-gray-900 text-tiko-yellow">Caricamento...</div>}>
+        <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center text-tiko-yellow" style={{ background: '#1A1F2E' }}>Caricamento...</div>}>
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<HomePage />} />
@@ -39,10 +40,11 @@ root.render(
               <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="privacy" element={<PrivacyPolicy />} />
               <Route path="cookie-policy" element={<CookiePolicy />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </React.Suspense>
-      </HashRouter>
+      </BrowserRouter>
     </HelmetProvider>
   </React.StrictMode>
 );

@@ -31,25 +31,10 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col relative font-sans overflow-x-hidden">
 
-      {/* GLOBAL BACKGROUND SYSTEM - FIXED & STATIC */}
-      <div className="fixed inset-0 w-full h-[100lvh] z-0 overflow-hidden bg-gray-900">
+      {/* GLOBAL BACKGROUND — colore piatto tiko-forest per coerenza design system */}
+      <div className="fixed inset-0 w-full h-[100lvh] z-0 overflow-hidden bg-tiko-forest">
 
-        {/* LAYER 1: DEEP VISUALS (Static Image) */}
-        <div className="absolute inset-0 w-full h-full">
-          <picture>
-            <source media="(max-width: 768px)" srcSet="/bg-mobile.webp" />
-            <img
-              src="/sfondo-bosco-statico.webp"
-              alt="Sfondo Bosco Magico"
-              className="w-full h-full object-cover"
-              loading="eager"
-              width="1920"
-              height="1080"
-            />
-          </picture>
-        </div>
-
-        {/* LAYER 2: REAL-TIME PARTICLES (WebGL) */}
+        {/* PARTICELLE WebGL sopra il colore */}
         {showParticles && (
           <Suspense fallback={null}>
             <motion.div
@@ -63,15 +48,8 @@ const App: React.FC = () => {
           </Suspense>
         )}
 
-        {/* LAYER 2: ATMOSPHERIC OVERLAYS */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none">
-          {/* Darker overlay to ensure text readability over the video while scrolling */}
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
-
-          {/* Warm/Magic Tint */}
-          <div className="absolute inset-0 bg-tiko-orange/10 mix-blend-overlay" />
-        </div>
+        {/* Tint caldo ambientale */}
+        <div className="absolute inset-0 bg-tiko-orange/5 pointer-events-none" />
       </div>
 
       {/* NAVIGATION */}
