@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ShoppingCart, Star, BookOpen, Info } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -73,8 +74,11 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
   const sectionRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const coverRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const bleedRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showOutro, setShowOutro] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -87,17 +91,10 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
     const total = cards.length;
     let rafId = 0;
 
-    // Stato iniziale
+    // A: No filter in initial state — only transform + opacity
     cards.forEach((card, i) => {
-      if (i === 0) {
-        card.style.transform = 'translateY(0%) scale(1)';
-        card.style.filter = 'none';
-        card.style.opacity = '1';
-      } else {
-        card.style.transform = 'translateY(100%) scale(1)';
-        card.style.filter = 'none';
-        card.style.opacity = '1';
-      }
+      card.style.transform = i === 0 ? 'translateY(0%) scale(1)' : 'translateY(100%) scale(1)';
+      card.style.opacity = '1';
     });
 
     gsap.from(titleRef.current, {
@@ -105,10 +102,11 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
       scrollTrigger: { trigger: section, start: 'top 85%' },
     });
 
+    // C: 3×100vh scroll distance → (total-1) * 0.75 = 3 screens
     ScrollTrigger.create({
       trigger: section,
       start: 'top top',
-      end: () => `+=${(total - 1) * window.innerHeight * 0.5}`,
+      end: () => `+=${(total - 1) * window.innerHeight * 0.75}`,
       pin: sticky,
       anticipatePin: 1,
       pinSpacing: true,
@@ -122,33 +120,47 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
           const currentIdx = Math.min(Math.floor(rawIndex), total - 2);
           const cardProgress = rawIndex - currentIdx;
           setActiveIndex(Math.round(rawIndex));
+          // G: Outro detection at end of last card
+          setShowOutro(progress > 0.93);
 
           cards.forEach((card, i) => {
+            const cover = coverRefs.current[i];
             if (i < currentIdx) {
+              // A: No blur — just opacity + scale
               card.style.transform = 'translateY(0%) scale(0.88)';
-              card.style.filter = 'blur(10px)';
-              card.style.opacity = '0.25';
+              card.style.opacity = '0.2';
+              if (cover) cover.style.transform = '';
             } else if (i === currentIdx) {
-              const scale = 1 - 0.1 * cardProgress;
-              const fadeStart = 0.55;
+              const scale = 1 - 0.12 * cardProgress;
+              const fadeStart = 0.45;
               const fadeProgress = cardProgress > fadeStart
                 ? (cardProgress - fadeStart) / (1 - fadeStart) : 0;
-              const blur = 8 * fadeProgress;
-              const opacity = 1 - 0.72 * fadeProgress;
+              const opacity = 1 - 0.8 * fadeProgress;
               card.style.transform = `translateY(0%) scale(${scale})`;
-              card.style.filter = blur > 0.1 ? `blur(${blur}px)` : 'none';
               card.style.opacity = String(opacity);
+              // D: Parallax — cover drifts slower than text
+              if (cover) cover.style.transform = `translateY(${cardProgress * 20}px)`;
             } else if (i === currentIdx + 1) {
               const y = (1 - cardProgress) * 100;
               card.style.transform = `translateY(${y}%) scale(1)`;
-              card.style.filter = 'none';
               card.style.opacity = '1';
+              // E: Ken Burns — entering cover zooms in subtly
+              if (cover) cover.style.transform = `scale(${1 + 0.08 * cardProgress})`;
             } else {
               card.style.transform = 'translateY(100%) scale(1)';
-              card.style.filter = 'none';
               card.style.opacity = '1';
+              if (cover) cover.style.transform = '';
             }
           });
+
+          // F: Accent color bleed between cards
+          if (bleedRef.current) {
+            const nextIdx = Math.min(currentIdx + 1, total - 1);
+            const bleedOpacity = cardProgress > 0.5
+              ? (cardProgress - 0.5) / 0.5 * 0.12 : 0;
+            bleedRef.current.style.background = BOOKS[nextIdx].accentColor;
+            bleedRef.current.style.opacity = String(bleedOpacity);
+          }
         });
       },
     });
@@ -163,7 +175,7 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
 
   return (
     <section id="books" className="relative" ref={sectionRef}
-      style={{ height: `${BOOKS.length * 50}vh` }}
+      style={{ height: `${100 + (BOOKS.length - 1) * 75}vh` }}
     >
       <div ref={stickyRef} className="sticky top-0 overflow-hidden" style={{ height: '100dvh' }}>
         <div
@@ -198,7 +210,7 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
             className="book-card absolute inset-0"
             style={{
               zIndex: i,
-              willChange: 'transform, filter, opacity',
+              willChange: 'transform, opacity',
               background: 'linear-gradient(to bottom, transparent 0%, #1A1F2E 22%, #1A1F2E 100%)',
             }}
           >
@@ -223,7 +235,7 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
 
             <div className="relative z-10 h-full flex flex-row items-center gap-8 px-12 lg:px-16 pt-32 pb-12 max-w-7xl mx-auto">
               <div className="flex flex-row items-start gap-8 flex-1 min-w-0">
-                <div className="relative shrink-0">
+                <div ref={el => { coverRefs.current[i] = el; }} className="relative shrink-0" style={{ willChange: 'transform' }}>
                   <div className="absolute -inset-4 rounded-3xl blur-2xl opacity-40 pointer-events-none" style={{ background: book.accentColor }} />
                   <img
                     src={book.coverImage}
@@ -305,6 +317,67 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
             </div>
           </div>
         ))}
+
+        {/* F: Accent color bleed overlay */}
+        <div
+          ref={bleedRef}
+          className="absolute inset-0 pointer-events-none"
+          style={{ opacity: 0, mixBlendMode: 'soft-light', zIndex: BOOKS.length + 1 }}
+        />
+
+        {/* G: Outro — zoom-out + all 5 covers + CTA */}
+        <AnimatePresence>
+          {showOutro && (
+            <motion.div
+              key="outro"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
+              className="absolute inset-0 flex flex-col items-center justify-center"
+              style={{ zIndex: BOOKS.length + 2, background: 'rgba(26,31,46,0.92)', backdropFilter: 'blur(8px)' }}
+            >
+              <p className="text-tiko-yellow font-mono text-xs tracking-widest uppercase mb-6">Tutti i libri di Tiko</p>
+              <div className="flex gap-5 mb-8">
+                {BOOKS.map((bk, bi) => (
+                  <motion.img
+                    key={bk.id}
+                    src={bk.coverImage}
+                    alt={bk.title}
+                    className="rounded-xl shadow-xl object-cover"
+                    style={{
+                      width: 'clamp(64px, 9vw, 110px)',
+                      aspectRatio: '3/4',
+                      border: `2px solid ${bk.accentColor}55`,
+                      boxShadow: `0 8px 30px rgba(0,0,0,0.4), 0 0 20px ${bk.accentColor}22`,
+                    }}
+                    initial={{ opacity: 0, y: 24, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: bi * 0.07, duration: 0.45, ease: [0.22, 0.61, 0.36, 1] }}
+                  />
+                ))}
+              </div>
+              <Link to="/libri">
+                <motion.span
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm cursor-pointer"
+                  style={{
+                    background: 'linear-gradient(135deg, #FACC15, #FB923C)',
+                    color: '#1A1F2E',
+                    boxShadow: '0 0 30px rgba(250,204,21,0.3)',
+                  }}
+                  whileHover={{ scale: 1.05, boxShadow: '0 0 50px rgba(250,204,21,0.5)' }}
+                  whileTap={{ scale: 0.97 }}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35, duration: 0.4 }}
+                >
+                  <BookOpen size={16} />
+                  Scopri tutti i libri →
+                </motion.span>
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
