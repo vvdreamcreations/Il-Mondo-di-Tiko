@@ -16,7 +16,16 @@ const App: React.FC = () => {
   const [showParticles, setShowParticles] = React.useState(false);
 
   useEffect(() => {
-    // Delay particles by 2.5 seconds to prioritize LCP and main thread
+    // Salta del tutto le particelle WebGL se l'utente preferisce ridurre le
+    // animazioni, è su mobile (dispositivi mid-range Android stutterano molto)
+    // o ha attivato Save-Data. Su desktop, ritarda di 2.5s per non rubare
+    // main thread e LCP.
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    const conn = (navigator as any).connection;
+    const saveData = !!(conn && conn.saveData);
+    if (reducedMotion || isMobile || saveData) return;
+
     const timer = setTimeout(() => setShowParticles(true), 2500);
     return () => clearTimeout(timer);
   }, []);

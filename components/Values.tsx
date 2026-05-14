@@ -11,8 +11,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 const iconMap = { Rocket, Heart, Sprout, Palette };
 
-// Particelle magiche fluttuanti
-const MagicParticles: React.FC<{ color?: string; count?: number }> = ({ color = '#FACC15', count = 6 }) => (
+// Particelle magiche fluttuanti — disabilitate su mobile / reduced-motion
+// per ridurre il numero di nodi animati simultanei (era ~25 per sezione).
+const MagicParticles: React.FC<{ color?: string; count?: number }> = ({ color = '#FACC15', count = 6 }) => {
+  const [shouldRender, setShouldRender] = useState(false);
+  useEffect(() => {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = window.matchMedia('(max-width: 767px)').matches;
+    setShouldRender(!reducedMotion && !isMobile);
+  }, []);
+  if (!shouldRender) return null;
+  return (
   <div className="absolute inset-0 pointer-events-none overflow-hidden">
     {Array.from({ length: count }).map((_, i) => (
       <motion.div
@@ -40,7 +49,8 @@ const MagicParticles: React.FC<{ color?: string; count?: number }> = ({ color = 
       />
     ))}
   </div>
-);
+  );
+};
 
 // ─── Card 1: Fantasia ─────────────────────────────────────────────────────────
 const FantasiaCard: React.FC<{ value: ValueItem; onClick: () => void }> = ({ value, onClick }) => {
@@ -367,7 +377,8 @@ const Values: React.FC = () => {
         {/* Glow centrale decorativo */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-40 bg-tiko-yellow/5 blur-3xl rounded-full pointer-events-none" />
 
-        {/* Stelle decorative di sfondo */}
+        {/* Stelle decorative di sfondo — nascoste su mobile per ridurre rumore visivo */}
+        <div className="hidden md:block">
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
@@ -379,6 +390,7 @@ const Values: React.FC = () => {
             <Star size={i % 2 === 0 ? 8 : 5} className="text-tiko-yellow/30" fill="currentColor" />
           </motion.div>
         ))}
+        </div>
 
         {/* Header */}
         <div ref={titleRef} className="text-center mb-10 relative z-10">
