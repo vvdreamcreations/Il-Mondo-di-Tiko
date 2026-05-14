@@ -37,9 +37,13 @@ const HomePage: React.FC = () => {
             <React.Suspense fallback={<div className="h-screen w-full" />}>
                 {/* Su mobile spacing ridotto per non allungare ulteriormente la Home */}
                 <div className="space-y-16 md:space-y-32 pb-12 md:pb-24 mt-6 md:mt-10">
-                    <Values />
+                    <div className="content-visibility-auto">
+                        <Values />
+                    </div>
                     <ScrollVideo />
-                    <About />
+                    <div className="content-visibility-auto">
+                        <About />
+                    </div>
                 </div>
 
                 {/* BooksStack fuori dal space-y per non interferire col pin desktop */}
@@ -48,8 +52,12 @@ const HomePage: React.FC = () => {
                 </div>
 
                 <div className="space-y-16 md:space-y-32 pb-12 md:pb-24 mt-16 md:mt-32">
-                    <Reviews />
-                    <Newsletter />
+                    <div className="content-visibility-auto">
+                        <Reviews />
+                    </div>
+                    <div className="content-visibility-auto">
+                        <Newsletter />
+                    </div>
                 </div>
 
                 <Footer />

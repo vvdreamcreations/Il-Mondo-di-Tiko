@@ -1,8 +1,8 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import CookieConsent from './components/CookieConsent';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { hasAnalyticsConsent, initializeAnalytics } from './utils/consent';
 
 // Lazy load non-critical components
@@ -11,6 +11,7 @@ const MagicGL = lazy(() => import('./components/MagicGL'));
 const TikoMascot = lazy(() => import('./components/TikoMascot'));
 
 const App: React.FC = () => {
+  const location = useLocation();
 
   // Lazy load particles to unblock initial render
   const [showParticles, setShowParticles] = React.useState(false);
@@ -66,7 +67,18 @@ const App: React.FC = () => {
 
       {/* SCROLLABLE CONTENT LAYER */}
       <div className="relative z-10 flex-grow flex flex-col">
-        <Outlet />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
+            className="flex-grow flex flex-col"
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Magic Cursor - Lazy loaded - DISABLED FOR DEBUGGING CLICK ISSUES */}

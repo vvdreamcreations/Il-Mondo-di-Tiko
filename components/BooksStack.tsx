@@ -108,7 +108,7 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
     ScrollTrigger.create({
       trigger: section,
       start: 'top top',
-      end: () => `+=${(total - 1) * window.innerHeight}`,
+      end: () => `+=${(total - 1) * window.innerHeight * 0.5}`,
       pin: sticky,
       anticipatePin: 1,
       pinSpacing: true,
@@ -163,7 +163,7 @@ const BooksDesktopStack: React.FC<{ onOpenDetails: (b: Book) => void }> = ({ onO
 
   return (
     <section id="books" className="relative" ref={sectionRef}
-      style={{ height: `${BOOKS.length * 100}vh` }}
+      style={{ height: `${BOOKS.length * 50}vh` }}
     >
       <div ref={stickyRef} className="sticky top-0 overflow-hidden" style={{ height: '100dvh' }}>
         <div
